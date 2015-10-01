@@ -10,6 +10,14 @@ class Debit(Transaction):
     pass
 
 
+class Deposit(Transaction):
+    pass
+
+
+class Payment(Transaction):
+    pass
+
+
 class Transfer(Transaction):
     pass
 

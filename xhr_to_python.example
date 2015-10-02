@@ -1,0 +1,72 @@
+************************************ Python Server *************************************
+
+from CGIHTTPServer import CGIHTTPRequestHandler
+from BaseHTTPServer import HTTPServer
+
+server_address=('',5001)
+httpd = HTTPServer(server_address, CGIHTTPRequestHandler)
+httpd.serve_forever()
+
+*******************************************************************************************
+
+
+****************************************** HTML *******************************************
+<html>
+	<body>
+		<form>
+			<input name="test" id="test">
+			<input type="submit" value="Send" id="submit">
+		</form>
+		<span id="out"></span>
+		<script>
+			function ajaxCall() {
+				var xhr = new XMLHttpRequest();
+				var formdata = new FormData();
+				formdata.append("test", 'whatever');
+				formdata.append("from_form", document.getElementById('test').value);
+				xhr.open("post","cgi-bin/test_py.py",false);
+				xhr.onload = function(event){
+					if(event.target.status == 200){
+						document.getElementById('out').innerHTML = event.target.responseText;
+					}
+				}
+				xhr.send(formdata);
+				console.log(typeof xhr.response);
+				return false;
+				// var response = JSON.parse(xhr.response);
+				// console.log(response, typeof response, response["reply"]);
+				// document.getElementById("test").value = response["reply"];
+			}
+			document.getElementById('submit').onclick = ajaxCall;
+		</script>
+	</body>
+</html>
+
+**********************************************************************************************
+
+
+
+
+
+************************************Python CGI *************************************************
+
+#!/usr/bin/python
+
+# Import modules for CGI handling 
+import cgi, cgitb
+cgitb.enable()
+
+# Create instance of FieldStorage 
+form = cgi.FieldStorage() 
+
+print 'Content-type: text/html\n'
+# # Get data from fields
+print "test", form.getvalue("test")
+print "from_form", form.getvalue("from_form")
+# #test = form['test'].value
+# #print test
+
+with open('test.txt','a') as f: 
+	f.write('Hello World!’)
+
+***************************************************************************************************

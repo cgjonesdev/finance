@@ -7,7 +7,27 @@ server_address=('',5001)
 httpd = HTTPServer(server_address, CGIHTTPRequestHandler)
 httpd.serve_forever()
 
-*******************************************************************************************
+
+************************************ Python CGI *******************************************
+
+#!/usr/bin/python
+
+# Import modules for CGI handling 
+import cgi, cgitb
+cgitb.enable()
+
+# Create instance of FieldStorage 
+form = cgi.FieldStorage() 
+
+print 'Content-type: text/html\n'
+# # Get data from fields
+print "test", form.getvalue("test")
+print "from_form", form.getvalue("from_form")
+# #test = form['test'].value
+# #print test
+
+with open('test.txt','a') as f: 
+	f.write('Hello World!’)
 
 
 ****************************************** HTML *******************************************
@@ -43,30 +63,3 @@ httpd.serve_forever()
 </html>
 
 **********************************************************************************************
-
-
-
-
-
-************************************Python CGI *************************************************
-
-#!/usr/bin/python
-
-# Import modules for CGI handling 
-import cgi, cgitb
-cgitb.enable()
-
-# Create instance of FieldStorage 
-form = cgi.FieldStorage() 
-
-print 'Content-type: text/html\n'
-# # Get data from fields
-print "test", form.getvalue("test")
-print "from_form", form.getvalue("from_form")
-# #test = form['test'].value
-# #print test
-
-with open('test.txt','a') as f: 
-	f.write('Hello World!’)
-
-***************************************************************************************************

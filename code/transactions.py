@@ -1,5 +1,12 @@
-class Transaction(object):
-    pass
+from base import AccountBase
+
+
+class Transaction(AccountBase):
+    amount = 0.0
+    date = None
+    note = ''
+    confirmation_number = ''
+    kind = ''
 
 
 class Credit(Transaction):

@@ -1,5 +1,5 @@
 '''
-Tokenizer to parse text files and convert line items to html tables
+Code to parse text files and convert line items to html tables
 '''
 
 import sys
@@ -7,22 +7,22 @@ import os
 from pprint import pprint, pformat
 
 
-for f in os.listdir('.'):
+for f in os.listdir('data'):
+    f = 'data/{}'.format(f)
     if os.path.splitext(f)[-1] == '.txt':
         try:
             with open(f) as _:
                 setattr(
                     sys.modules[__name__],
-                    'parsed_{}'.format(f.split('.txt')[0]),
+                    'parsed_{}'.format(f.split('.txt')[0].split('/')[1]),
                     [_[:-1] for _ in _.readlines()]
                 )
         except:
             setattr(
                 sys.modules[__name__],
-                'parsed_{}'.format(f.split('.txt')[0]),
+                'parsed_{}'.format(f.split('.txt')[0].split('/')[1]),
                 []
             )
-
 
 class Base(object):
 
@@ -133,13 +133,13 @@ for i, p in enumerate(parsed_expenses):
     expenses.append(Expense(data))
 
 
-with open('template.html') as f:
+with open('templates/template.html') as f:
     finances = f.read()
 
 def create_table(objectlist):
-    with open('table.html') as t:
+    with open('templates/table.html') as t:
         table = t.read()
-    with open('table1.html') as t:
+    with open('templates/table1.html') as t:
         table1 = t.read()
     arows = []
     rows = []
@@ -233,6 +233,6 @@ finances = (
     .replace('{balance}', create_balance())
 )
 
-with open('index.html', 'w') as out:
+with open('templates/index.html', 'w') as out:
     out.write(finances)
 

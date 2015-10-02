@@ -4,27 +4,37 @@ from base import AccountBase
 class Account(AccountBase):
     balance = 0.0
     number = ''
+    kind = ''
 
 
-class Receivable(Account):
+class Cashflow(Account):
     amount = 0.0
+    date = None
 
 
-class Payable(Account):
-    amount = 0.0
+class Receivable(Cashflow):
+    pass
 
 
-class Checking(Account):
+class Payable(Cashflow):
+    pass
+
+
+class Institution(Account):
     nickname = ''
 
 
-class Savings(Account):
+class Checking(Institution):
     nickname = ''
 
 
-class Credit(Account):
+class Savings(Institution):
+    nickname = ''
+
+
+class Credit(Institution):
     limit = 0.0
-    interest_rate = 0.0
+    rate = 0.0
 
 
 class CreditCard(Credit):
@@ -35,6 +45,5 @@ class LineOfCredit(Credit):
     pass
 
 
-class Investment(Account):
+class Investment(Institution):
     pass
-

@@ -5,7 +5,7 @@ class Transaction(AccountBase):
     amount = 0.0
     date = None
     note = ''
-    confirmation_number = ''
+    conf = ''
     kind = ''
 
 

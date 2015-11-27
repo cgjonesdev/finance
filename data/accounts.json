@@ -1,6 +1,6 @@
-{'accounts': [
-		{'name': null, 'balance': null, 'number': null, 'nickname': null, 'limit': null, 'rate': null, 'kind': null},
-		{'name': null, 'amount': null, 'number': null, 'date': null, 'conf': null, 'kind': null},
-		{'name': null, 'amount': null, 'date': null, 'note': null, 'conf': null, 'kind': null}
+{"accounts": [
+		{"name": null, "balance": null, "number": null, "nickname": null, "limit": null, "rate": null, "kind": null},
+		{"name": null, "amount": null, "number": null, "date": null, "conf": null, "kind": null},
+		{"name": null, "amount": null, "date": null, "note": null, "conf": null, "kind": null}
 	]
 }

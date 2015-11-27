@@ -1,6 +1,8 @@
-bofa|580.12||checking|pay bills
+bofa|575.93||checking|pay bills
 chase|-181.70||checking|pay bills
 chase|43.95||checking|spending
 chase|1.11||savings|savings
 chase|-136.72||business checking|spendsy
-chase|907.66||checking|ucard
+chase|630.39||checking|ucard
+paypal|189.00|||paypal
+

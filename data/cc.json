@@ -1,0 +1,27 @@
+{
+    "credit cards": {
+        "date": {
+            "11-19-15": [
+                {"name": "Total Visa", "balance": 233.83, "available_credit": 66.17, "minimum_payment": 37.00, "limit": 300.00, "due_date": "?"},
+                {"name": "CapitalOne Quicksilver", "balance": 283.04, "available_credit": 16.96, "minimum_payment": 25.00, "limit": 300.00, "due_date": "?"},
+                {"name": "CapitalOne Platinum", "balance": 990.60, "available_credit": 9.40, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "?"},
+                {"name": "Premier Bankcard", "balance": 282.38, "available_credit": 11.00, "minimum_payment": 30.00, "limit": 300.00, "due_date": "11-18-15"},
+                {"name": "CreditOne", "balance": 389.93, "available_credit": 10.00, "minimum_payment": 25.00, "limit": 400.00, "due_date": "11-23-15"}
+            ],
+            "11-27-15": [
+                {"name": "Total Visa", "balance": 199.66, "available_credit": 100.34, "minimum_payment": 0.00, "limit": 300.00, "due_date": "12-4-15", "confirmation": "3847785"},
+                {"name": "CapitalOne Quicksilver", "balance": 300.00, "available_credit": 0.00, "minimum_payment": 0.00, "limit": 300.00, "due_date": "12-11-15", "confirmation": "B1DZZPBBCG"},
+                {"name": "CapitalOne Platinum", "balance": 937.61, "available_credit": 33.53, "minimum_payment": 25.00, "limit": 1000.00, "due_date": "12-23-15", "confirmation": "B1DZZPBBCH"},
+                {"name": "Premier Bankcard", "balance": 277.92, "available_credit": 22.08, "minimum_payment": 30.00, "limit": 300.00, "due_date": "12-18-15", "confirmation": "Western Union - 761710"},
+                {"name": "CreditOne", "balance": 318.38, "available_credit": 81.00, "minimum_payment": 0.00, "limit": 400.00, "due_date": "12-23-15", "confirmation": "453477268536"}
+            ],
+            "12-4-15": [
+                {"name": "Total Visa", "balance": 150.57, "available_credit": 149.43, "minimum_payment": 0.00, "limit": 300.00, "due_date": "12-4-15", "confirmation": ""},
+                {"name": "CapitalOne Quicksilver", "balance": 226.24, "available_credit": 73.76, "minimum_payment": 0.00, "limit": 300.00, "due_date": "12-11-15", "confirmation": ""},
+                {"name": "CapitalOne Platinum", "balance": 707.08, "available_credit": 292.92, "minimum_payment": 0.00, "limit": 1000.00, "due_date": "12-23-15", "confirmation": ""},
+                {"name": "Premier Bankcard", "balance": 209.59, "available_credit": 90.41, "minimum_payment": 0.00, "limit": 300.00, "due_date": "12-18-15", "confirmation": ""},
+                {"name": "CreditOne", "balance": 240.01, "available_credit": 159.99, "minimum_payment": 0.00, "limit": 400.00, "due_date": "12-23-15", "confirmation": ""}
+            ]
+        }
+    }
+}

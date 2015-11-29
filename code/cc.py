@@ -5,7 +5,7 @@ from operator import attrgetter
 from math import ceil
 
 
-with open('../data/cc.json') as f:
+with open('cc.json') as f:
     data = json.loads(f.read())
 
 
@@ -13,14 +13,8 @@ class CreditCard(object):
     def __init__(self, kwargs):
         self.__dict__.update(kwargs)
 
-    def __str__(self):
-        return str(''.join(self.name.split()).lower())
-
     def __repr__(self):
-        output = ''
-        for k, v in self.__dict__.items():
-            output += '{}: {}\n'.format(' '.join(k.split('_')).title(), v)
-        return output
+        return str(''.join(self.name.split()).lower())
 
     def __add__(self, other):
         self.balance += other.balance
@@ -49,30 +43,6 @@ class CardHolder(object):
     def __init__(self, cards, cash=0.0):
         self.cards = cards
         self.cash = cash
-
-    def __repr__(self):
-        self.payment_amounts()
-        output = ''
-        output += '\nTotal balances: ${}\n'.format(self.balances())
-        output += 'Total credit limit: ${}\n'.format(self.limits())
-        output += 'Total available credit: ${}\n'.format(self.available_credit())
-        output += 'Total minimum payments: ${}\n'.format(self.minimums())
-        output += '\nPayments to make:\n\t{}\n'.format(
-                pformat([{card.name: ('$'+str(round(card.payment_amount, 2)),
-                         '| due by {}'.format(card.due_date))}
-                         for card in self.cards]
-            ).replace('\n', '\n\t')\
-             .replace('u\'', '')\
-             .replace('[', ' ')\
-             .replace('{', ''))\
-             .replace('}', '')\
-             .replace('(', '')\
-             .replace(')', '')\
-             .replace(']', '')\
-             .replace('\'', '')\
-             .replace(',', '')
-        output += '\nCash: ${}\n'.format(self.cash)
-        return output
 
     def balances(self):
         return sum([card.balance for card in self.cards])
@@ -134,18 +104,41 @@ class CardHolder(object):
             ceil(self.cash)
         )
 
+
     def make_payment(self, card, payment_amount):
         card.balance -= payment_amount
         card.available_credit += payment_amount
 
+    def show(self):
+        self.payment_amounts()
+        print '\nTotal balances: ${}'.format(self.balances())
+        print 'Total credit limit: ${}'.format(self.limits())
+        print 'Total available credit: ${}'.format(self.available_credit())
+        print 'Total minimum payments: ${}'.format(self.minimums())
+        print '\nPayments to make:\n\t{}'.format(
+                pformat([{card.name: ('$'+str(round(card.payment_amount, 2)),
+                         '| due by {}'.format(card.due_date))}
+                         for card in self.cards]
+            ).replace('\n', '\n\t')\
+             .replace('u\'', '')\
+             .replace('[', ' ')\
+             .replace('{', ''))\
+             .replace('}', '')\
+             .replace('(', '')\
+             .replace(')', '')\
+             .replace(']', '')\
+             .replace('\'', '')\
+             .replace(',', '')
+        print '\nCash: ${}\n'.format(self.cash)
+
 
 
 credit_cards = [
-    CreditCard(cc) for cc in data['credit cards']['date']['11-27-15']
+    CreditCard(cc) for cc in data['credit cards']['date']['11-24-15']
 ]
 cardholder = CardHolder(
     credit_cards, float(sys.argv[1]) if len(sys.argv) > 1 else 0.0
 )
 if not cardholder.cash:
     cardholder.cash = cardholder.minimums()
-print repr(cardholder)
+cardholder.show()

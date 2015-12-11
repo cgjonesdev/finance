@@ -1,0 +1,54 @@
+{
+    "credit_cards": [
+        {
+            "CapitalOne Platinum": {
+                "info": {
+                    "website": "", "username": "carygjones"
+                },
+                "transactions": [
+                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                ]
+            }
+        },
+        {
+            "CapitalOne Quicksilver": {
+                "info": {
+                    "website": "", "username": "carygjones"
+                },
+                "transactions": [
+                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                ]
+            }
+        },
+        {
+            "CreditOne": {
+                "info": {
+                    "website": "", "username": "carygjones"
+                },
+                "transactions": [
+                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                ]
+            }
+        },
+        {
+            "Premier Bankcard": {
+                "info": {
+                    "website": "", "username": "carygjones"
+                },
+                "transactions": [
+                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                ]
+            }
+        },
+        {
+            "Total Visa": {
+                "info": {
+                    "website": "", "username": "carygjones"
+                },
+                "transactions": [
+                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                ]
+            }
+        }
+    ]
+}

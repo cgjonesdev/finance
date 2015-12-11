@@ -29,10 +29,14 @@ class CreditCard(object):
             if k not in ('name', 'payment_amount'):
                 if isinstance(v, float):
                     output += '   {}: ${}\n'.format(k, round(abs(v), 2))\
-                        .replace('_', ' ').title().zfill(5)
-                else:
-                    output += '   {}: {}\n'.format(k, v)\
                         .replace('_', ' ').title()
+                else:
+                    if k == 'confirmation':
+                        output += '   {}: {}\n'.format(k.title(), v.upper())\
+                            .replace('_', ' ')
+                    else:
+                        output += '   {}: {}\n'.format(k, v)\
+                            .replace('_', ' ').title()
         return output
 
     def __add__(self, other):

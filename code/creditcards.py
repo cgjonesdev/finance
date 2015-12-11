@@ -7,9 +7,15 @@ from operator import attrgetter
 from math import ceil
 
 
-with open('../data/creditcards.json') as f:
+path = sys.argv[0].split('/')
+if path[0] == 'code':
+    path = '.'
+elif path[0] == 'creditcards.py':
+    path = '..'
+else:
+    path = '/'.join(path[:-2])
+with open(path + '/data/creditcards.json') as f:
     data = json.loads(f.read())
-
 
 class CreditCard(object):
     def __init__(self, kwargs):
@@ -18,9 +24,15 @@ class CreditCard(object):
     def __repr__(self):
         output = ''
         output += '{}\n'.format(self.name)
+        output += '   PAYMENT AMOUNT: ${}\n'.format(round(abs(self.payment_amount), 2))
         for k, v in self.__dict__.items():
-            if k != 'name':
-                output += '   {}: {}\n'.format(k, v).title()
+            if k not in ('name', 'payment_amount'):
+                if isinstance(v, float):
+                    output += '   {}: ${}\n'.format(k, round(abs(v), 2))\
+                        .replace('_', ' ').title().zfill(5)
+                else:
+                    output += '   {}: {}\n'.format(k, v)\
+                        .replace('_', ' ').title()
         return output
 
     def __add__(self, other):
@@ -53,33 +65,23 @@ class CardHolder(object):
 
     def __repr__(self):
         self.payment_amounts()
+        line = '-' * 60
         output = \
-            '{}\nTotal balances: ${}'\
-            '\nTotal credit limit: ${}'\
-            '\nTotal available credit: ${}'\
-            '\nTotal minimum payments: ${}'\
-            '\n\nPayments to make:\n\t{}'\
-            '\nCash: ${}\n'\
+            '\n{}\n{line}\n\nTotal Balances: ${}'\
+            '\nTotal Credit Limit: ${}'\
+            '\nTotal Available Credit: ${}'\
+            '\nTotal Minimum Payments: ${}'\
+            '\n\nCash: ${}\n'\
             .format(
                 '\n'.join([repr(card) for card in self]),
                 self.balances(),
                 self.limits(),
                 self.available_credit(),
                 self.minimums(),
-                pformat([{card.name: '$' + str(round(card.payment_amount, 2))
-                    + '| due by {}'.format(card.due_date)} for card in self])\
-                        .replace('\n','\n\t')\
-                        .replace('u\'', '')\
-                        .replace('[', ' ')\
-                        .replace('{', '')\
-                        .replace('}', '')\
-                        .replace('(', '')\
-                        .replace(')', '')\
-                        .replace(']', '')\
-                        .replace('\'', '')\
-                        .replace(',', ''),
-                self.cash)
-        with open(datetime.now().strftime('%d%b%Y_cc.log'), 'w') as _:
+                self.cash,
+                line=line)
+        with open(
+            datetime.now().strftime(path + '/code/%d%b%Y_cc.log'), 'w') as _:
             _.write(output)
         return output
 

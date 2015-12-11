@@ -6,7 +6,7 @@
                     "website": "", "username": "carygjones"
                 },
                 "transactions": [
-                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                    {"date": "12-10-15", "balance": 995.29, "available_credit": 4.71, "minimum_payment": 0.00, "limit": 1000.00, "last_payment": 230.53, "due_date": "12-23-15"}
                 ]
             }
         },
@@ -16,7 +16,7 @@
                     "website": "", "username": "carygjones"
                 },
                 "transactions": [
-                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                    {"date": "12-10-15", "balance": 293.54, "available_credit": 6.46, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 73.76, "rewards_cash": 33.83, "due_date": "12-11-15"}
                 ]
             }
         },
@@ -26,7 +26,7 @@
                     "website": "", "username": "carygjones"
                 },
                 "transactions": [
-                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                    {"date": "12-10-15", "balance": 332.67, "available_credit": 57.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": "?", "due_date": "12-23-15"}
                 ]
             }
         },
@@ -36,17 +36,17 @@
                     "website": "", "username": "carygjones"
                 },
                 "transactions": [
-                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                    {"date": "12-10-15", "balance": 291.85, "available_credit": 8.00, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 68.33, "due_date": "12-18-15"}
                 ]
             }
         },
         {
             "Total Visa": {
                 "info": {
-                    "website": "", "username": "carygjones"
+                    "website": "", "username": "carygjones1"
                 },
                 "transactions": [
-                    {"date": "", "balance": 928.77, "available_credit": 71.23, "minimum_payment": 50.00, "limit": 1000.00, "due_date": "_________"}
+                    {"date": "12-10-15", "balance": 293.88, "available_credit": 6.12, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 49.09, "due_date": "12-4-15"}
                 ]
             }
         }

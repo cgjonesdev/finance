@@ -63,7 +63,8 @@ class CardHolder(object):
                 self.cash,
                 line=line)
         with open(
-            datetime.now().strftime(path + '/code/%d%b%Y_cc.log'), 'w') as _:
+            datetime.now().strftime(
+                path + '/code/logs/creditcards/%d%b%Y_cc.log'), 'w') as _:
             _.write(output)
         return output
 

@@ -39,28 +39,6 @@ class CreditCard(object):
                             .replace('_', ' ').title()
         return output
 
-    def __add__(self, other):
-        self.balance += other.balance
-        return self
-
-    def __radd__(self, other):
-        self.balance += other.balance
-        return self
-
-    def __sub__(self, other):
-        self.balance -= other.balance
-        return self
-
-    def __rsub__(self, other):
-        self.balance -= other.balance
-        return self
-
-    def __gt__(self, other):
-        return self if self.balance > other.balance else other
-
-    def __lt__(self, other):
-        return self if self.balance < other.balance else other
-
 
 class CardHolder(object):
     def __init__(self, cash=0.0):
@@ -188,7 +166,6 @@ if __name__ == '__main__':
         data = card[name]['transactions'][-1]
         data.update({'name': name})
         cardholder + CreditCard(data)
-        # print repr(cardholder[name])
 
     cardholder.cash = float(sys.argv[1]) if len(sys.argv) > 1 else cardholder.minimums()
     print repr(cardholder)

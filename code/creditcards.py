@@ -50,7 +50,7 @@ class CardHolder(object):
         self.payment_amounts()
         line = '-' * 60
         output = \
-            '\n{}\n{line}\n\nTotal Balances: ${}'\
+            '{}\n{line}\n\nTotal Balances: ${}'\
             '\nTotal Credit Limit: ${}'\
             '\nTotal Available Credit: ${}'\
             '\nTotal Minimum Payments: ${}'\
@@ -168,5 +168,5 @@ if __name__ == '__main__':
     print output
     with open(
         datetime.now().strftime(
-            path + '/code/logs/creditcards/%d%b%Y.log'), 'w') as _:
+            path + '/code/logs/creditcards/%a%d%b%Y.log'), 'w') as _:
         _.write(output)

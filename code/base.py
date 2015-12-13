@@ -1,11 +1,14 @@
 import sys
-from mixins import Magic, IO
+from mixins import *
 
 
 class Base(Magic, IO):
+    update_attrs = []
 
     def __init__(self):
-        self.filename = '../data/{}.json'.format(str(self).lower())
+        self.filename = '../../data/{}.json'.format(str(self).lower()) if \
+        str(self) == 'Accounts' else '../data/{}.json'.format(str(self)\
+                .lower())
         self.read()
         self.__dict__.update(self.data)
 
@@ -13,10 +16,7 @@ class Base(Magic, IO):
 class BaseMany(Base):
 
     def __repr__(self):
-        output = ''
-        for item in self.items:
-            output += repr(item) + '\n'
-        return output
+        return '\n'.join(repr(item) for item in self)
 
     def __iter__(self):
         return (item for item in self.items)
@@ -45,7 +45,8 @@ class BaseMany(Base):
             raise AttributeError('{} not in self'.format(item))
 
 
-class BaseSingleton(Base):
+class BaseSingleton(Base, Add, Subtract, Multiply, Divide):
+    update_attrs = ['balance', 'amount', 'limit']
 
     def __init__(self, data):
         self.__dict__.update(data)
@@ -53,80 +54,34 @@ class BaseSingleton(Base):
     def __str__(self):
         return '{}: {} | {}'.format(self.__class__.__name__, self.name, self.id)
 
-    def __add__(self, other):
-        for k, v in self.__dict__.items():
-            if isinstance(v, (int, float)):
-                if isinstance(other, (int, float)):
-                    self.__dict__[k] += other
-                elif isinstance(other, self.__class__):
-                    self.__dict__[k] += other.__dict__[k]
-        return self
-
-    __radd__ = __add__
-
-    def __sub__(self, other):
-        for k, v in self.__dict__.items():
-            if isinstance(v, (int, float)):
-                if isinstance(other, (int, float)):
-                    self.__dict__[k] -= other
-                elif isinstance(other, self.__class__):
-                    self.__dict__[k] -= other.__dict__[k]
-        return self
-
-    __rsub__ = __sub__
-
-    def __mul__(self, other):
-        for k, v in self.__dict__.items():
-            if isinstance(v, (int, float)):
-                if isinstance(other, (int, float)):
-                    self.__dict__[k] *= other
-                elif isinstance(other, self.__class__):
-                    self.__dict__[k] *= other.__dict__[k]
-        return self
-
-    __rmul__ = __mul__
-
-    def __div__(self, other):
-        for k, v in self.__dict__.items():
-            if isinstance(v, (int, float)):
-                if isinstance(other, (int, float)):
-                    self.__dict__[k] /= other
-                elif isinstance(other, self.__class__):
-                    self.__dict__[k] /= other.__dict__[k]
-        return self
-
-    __rdiv__ = __div__
-
 
 if __name__ == '__main__':
-
-    class TestBase(BaseSingleton):
-        def __init__(self, balance=500.0, amount=100.0, limit=1000.0):
-            self.balance = balance
-            self.amount = amount
-            self.limit = limit
-
-    tb1, tb2 = [TestBase()] * 2
+    data = {
+        'balance': 500.0,
+        'amount': 100.0,
+        'limit': 1000.0
+    }
+    tb1, tb2 = [BaseSingleton(data)] * 2
     print (tb1 + tb2).__dict__
-    tb1, tb2 = [TestBase()] * 2
+    tb1, tb2 = [BaseSingleton(data)] * 2
     print (tb1 - tb2).__dict__
-    tb1, tb2 = [TestBase()] * 2
+    tb1, tb2 = [BaseSingleton(data)] * 2
     print (tb1 * tb2).__dict__
-    tb1, tb2 = [TestBase()] * 2
+    tb1, tb2 = [BaseSingleton(data)] * 2
     print (tb1 / tb2).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (tb1 + 5).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (tb1 - 5).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (tb1 * 5).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (tb1 / 5).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (5 + tb1).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (5 - tb1).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (5 * tb1).__dict__
-    tb1 = TestBase()
+    tb1 = BaseSingleton(data)
     print (5 / tb1).__dict__

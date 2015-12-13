@@ -20,4 +20,3 @@ class Notifications(object):
 
 class Rating(object):
     pass
-

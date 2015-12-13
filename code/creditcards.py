@@ -17,6 +17,7 @@ else:
 with open(path + '/data/creditcards.json') as f:
     data = json.loads(f.read())
 
+
 class CreditCard(object):
     def __init__(self, kwargs):
         self.__dict__.update(kwargs)
@@ -62,20 +63,13 @@ class CardHolder(object):
                 self.minimums(),
                 self.cash,
                 line=line)
-        with open(
-            datetime.now().strftime(
-                path + '/code/logs/creditcards/%d%b%Y_cc.log'), 'w') as _:
-            _.write(output)
         return output
 
     def __iter__(self):
         return (card for card in self.cards)
 
     def __len__(self):
-        count = 0
-        for card in self.cards:
-            count += 1
-        return count
+        return sum(1 for card in self)
 
     def __contains__(self, card):
         return card in self.cards
@@ -168,5 +162,11 @@ if __name__ == '__main__':
         data.update({'name': name})
         cardholder + CreditCard(data)
 
-    cardholder.cash = float(sys.argv[1]) if len(sys.argv) > 1 else cardholder.minimums()
-    print repr(cardholder)
+    cardholder.cash = float(sys.argv[1]) if len(sys.argv) > 1 else \
+        cardholder.minimums()
+    output = repr(cardholder)
+    print output
+    with open(
+        datetime.now().strftime(
+            path + '/code/logs/creditcards/%d%b%Y.log'), 'w') as _:
+        _.write(output)

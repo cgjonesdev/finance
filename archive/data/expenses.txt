@@ -1,9 +1,0 @@
-starbucks|4.27|9/28/15|coffee|
-gas station|27.45|9/28/15|gas|
-lucid software|9.95|9/28/15|?|
-chase|350.00|9/25/15|account transfer|
-chase|-400|9/25/15|deposit|
-microsoft office|7.57|9/14/15|office suite|
-24 hr fitness|27.05|9/14/15|gym membership
-horizon card services|-29.95|9/14/15||
-south shore district|1687.51|10/1/15|rent|

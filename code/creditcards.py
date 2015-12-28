@@ -97,7 +97,7 @@ class CardHolder(object):
         return sum([card.minimum_payment for card in self.cards])
 
     def available_credit(self):
-        return self.limits() - self.balances()
+        return sum([card.available_credit for card in self.cards])
 
     def payment_amounts(self):
         # Test that cash input is not less than total minimum payments

@@ -109,7 +109,7 @@
             "account_number": "300-3613-361",
             "contact": {
                 "address": "P.O. Box 2678 San Antonio, TX 78289",
-                "phone": "(210) 353-2222",
+                "phone": {"main": "(210) 353-2222", "payment": "877-257-1172"},
                 "email": "feedback@cpsenergy.com",
                 "website": {
                     "home": "https://www.cpsenergy.com/en.html",
@@ -119,10 +119,11 @@
                 },
                 "username": null
             },
-            "amount_due": 75.00,
+            "amount_due": 122.80,
             "due_date": "?",
-            "last_payment_amount": 0.00,
-            "last_payment_date": null,
+            "last_payment_amount": 122.80,
+            "last_payment_date": 12-30-15,
+            "confirmation_number": "CPSRES009995796",
             "cycle": "monthly",
             "cashflow": "payable"
         },

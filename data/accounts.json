@@ -39,6 +39,7 @@
             "last_payment_amount": 575.00,
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -59,6 +60,7 @@
             "last_payment_amount": 600.00,
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -69,17 +71,38 @@
             "contact": {
                 "address": "PO Box 537104 Atlanta, GA 30353",
                 "phone": "800.331.0500",
-                "email": "https://www.securedcontact.com/contactus/ContactUs?lang=EN&brand=FC&region=US",
-                "website": "http://credit.ford.com/",
+                "email": "",
+                "website": "https://www.att.com/",
                 "username": "7608458310"
             },
             "amount_due": 129.46,
             "due_date": "12-15-15",
-            "last_payment_amount": 124.450,
+            "last_payment_amount": 124.45,
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
+        {
+            "name": "AT&T Uverse",
+            "id": "8a2bb83a-0017-4ed5-b34a-40e2ef7eb4ef",
+            "description": "Business Internet",
+            "account_number": "137684091",
+            "contact": {
+                "address": "",
+                "phone": "1-877-503-2622",
+                "email": "",
+                "website": "https://www.businessdirect.att.com/portal/smallbusiness/index.jsp",
+                "username": "7608458310"
+            },
+            "amount_due": 0.00,
+            "due_date": "",
+            "last_payment_amount": 0.00,
+            "last_payment_date": "",
+            "cycle": "monthly",
+            "status": null,
+            "cashflow": "payable"
+        },        
         {
             "name": "Asset Acceptance",
             "id": "104bfef5-de76-4098-b497-c65f9c45b2e9",
@@ -100,6 +123,7 @@
             "last_payment_amount": 75.00,
             "last_payment_date": "11-18-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -125,6 +149,7 @@
             "last_payment_date": "12-30-15",
             "confirmation_number": "CPSRES009995796",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -151,6 +176,7 @@
             "last_payment_amount": 257.89,
             "last_payment_date": "1-3-16",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -170,6 +196,7 @@
             "last_payment_amount": 91.02,
             "last_payment_date": "12-1-16",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -190,6 +217,7 @@
             "last_payment_amount": 89.52,
             "last_payment_date": "12-1-16",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -211,6 +239,7 @@
             "last_payment_amount": 21.63,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -231,6 +260,7 @@
             "last_payment_amount": 5.40,
             "last_payment_date": "12-7-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -251,6 +281,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -272,6 +303,7 @@
             "last_payment_amount": 50.00,
             "last_payment_date": "12-16-15",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -293,6 +325,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -313,6 +346,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -333,6 +367,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -360,6 +395,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -385,8 +421,9 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
-        },
+        },  
         {
             "name": "Texas Workforce Commission",
             "id": "c27f5d4b-1a53-46af-9bf9-3eca5cecbbaa",
@@ -406,6 +443,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "cycle": "monthly",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -427,6 +465,7 @@
             "reference #": "EUO565",
             "bill id": "13498307",
             "last_payment_date": "",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -446,6 +485,7 @@
             "due_date": "1-3-16",
             "last_payment_amount": 0.00,
             "last_payment_date": "",
+            "status": null,
             "cashflow": "payable"
         },
         {
@@ -525,6 +565,7 @@
             "limit": 0.00,
             "minimum_payment": 114.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -575,6 +616,7 @@
             "balance": 0.00,
             "limit": 0.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -593,6 +635,7 @@
             "balance": 0.00,
             "limit": 0.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -611,6 +654,7 @@
             "balance": 0.00,
             "limit": 0.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -629,6 +673,7 @@
             "balance": 0.00,
             "limit": 0.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -647,6 +692,7 @@
             "balance": 0.00,
             "limit": 0.00,
             "type": "creditcard",
+            "status": null,
             "cashflow": "payable",
             "contact": {
                 "address": "",
@@ -666,6 +712,7 @@
             "limit": 0.00,
             "type": "loan",
             "website": "https://www.cashnetusa.com/login",
+            "status": null,
             "cashflow": "payable"
         },
         {

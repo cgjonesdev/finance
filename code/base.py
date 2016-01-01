@@ -6,8 +6,8 @@ class Base(Magic, IO):
     update_attrs = []
 
     def __init__(self):
-        self.filename = '../../data/{}.json'.format(str(self).lower()) if \
-        str(self) == 'Accounts' else '../data/{}.json'.format(str(self)\
+        self.filename = '../../data/{}.json'.format(str(self).lower().split('accounts')) if \
+         'Accounts' in str(self) else '../data/{}.json'.format(str(self)\
                 .lower())
         self.read()
         self.__dict__.update(self.data)

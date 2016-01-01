@@ -9,7 +9,7 @@
             "amount": 0.00,
             "last_amount": 0.00,
             "cycle": "weekly",
-            "cashflow": "receivable"
+            "type": "receivable"
         },
         {
             "name": "Veteran's Affairs",
@@ -20,7 +20,7 @@
             "amount": 0.00,
             "last_amount": 0.00,
             "cycle": "monthly",
-            "cashflow": "receivable"
+            "type": "receivable"
         },
         {
             "name": "Lynd Properties",
@@ -40,7 +40,7 @@
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Ford Credit",
@@ -61,7 +61,7 @@
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "AT&T Wireless",
@@ -81,7 +81,7 @@
             "last_payment_date": "11-16-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "AT&T Uverse",
@@ -101,7 +101,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },        
         {
             "name": "Asset Acceptance",
@@ -124,7 +124,7 @@
             "last_payment_date": "11-18-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "CPS Energy",
@@ -150,7 +150,7 @@
             "confirmation_number": "CPSRES009995796",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Foremost",
@@ -177,7 +177,7 @@
             "last_payment_date": "1-3-16",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Creditrepair.com",
@@ -197,7 +197,7 @@
             "last_payment_date": "12-1-16",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Fedloan Servicing",
@@ -218,7 +218,7 @@
             "last_payment_date": "12-1-16",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Sirius XM",
@@ -240,7 +240,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Pandora",
@@ -261,7 +261,7 @@
             "last_payment_date": "12-7-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Itunes",
@@ -282,7 +282,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Github",
@@ -304,7 +304,7 @@
             "last_payment_date": "12-16-15",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Github",
@@ -326,7 +326,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Atlassian",
@@ -347,7 +347,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Google Cloud",
@@ -368,7 +368,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Twillio",
@@ -396,7 +396,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Plaid",
@@ -422,7 +422,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },  
         {
             "name": "Texas Workforce Commission",
@@ -444,7 +444,7 @@
             "last_payment_date": "",
             "cycle": "monthly",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "MSB",
@@ -466,7 +466,7 @@
             "bill id": "13498307",
             "last_payment_date": "",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "TxTag",
@@ -486,7 +486,7 @@
             "last_payment_amount": 0.00,
             "last_payment_date": "",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Chase Personal Checking",
@@ -494,7 +494,8 @@
             "description": "",
             "account_number": "159202870",
             "balance": 0.00,
-            "type": "checking",
+            "type": "bank",
+            "subtype": "checking",
             "nickname": "pay bills",
             "contact": {
                 "address": "",
@@ -507,11 +508,12 @@
         },
         {
             "name": "Chase Personal Checking",
-            "id": "915c511a-f2df-441d-b9ad-e76756c174ac",
+            "id": "9e05050e-d899-4522-b613-d3514104aa0d",
             "description": "",
             "account_number": "423826556",
             "balance": 0.00,
-            "type": "checking",
+            "type": "bank",
+            "subtype": "checking",
             "nickname": "pay bills",
             "contact": {
                 "address": "",
@@ -528,7 +530,8 @@
             "description": "",
             "account_number": "291882920",
             "balance": 0.00,
-            "type": "savings",
+            "type": "bank",
+            "subtype": "savings",
             "nickname": "savings",
             "contact": {
                 "address": "",
@@ -545,7 +548,8 @@
             "description": "",
             "account_number": "657930280",
             "balance": 0.00,
-            "type": "checking",
+            "type": "bank",
+            "subtype": "business",
             "nickname": null,
             "contact": {
                 "address": "",
@@ -566,7 +570,7 @@
             "minimum_payment": 114.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -582,7 +586,8 @@
             "description": "",
             "account_number": "0184108615",
             "balance": 0.00,
-            "type": "checking",
+            "type": "bank",
+            "subtype": "checking",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -598,7 +603,8 @@
             "description": "",
             "account_number": "457006424547",
             "balance": 0.04,
-            "type": "checking",
+            "type": "bank",
+            "subtype": "checking",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -617,7 +623,7 @@
             "limit": 0.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -636,7 +642,7 @@
             "limit": 0.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -655,7 +661,7 @@
             "limit": 0.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -674,7 +680,7 @@
             "limit": 0.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -693,7 +699,7 @@
             "limit": 0.00,
             "type": "creditcard",
             "status": null,
-            "cashflow": "payable",
+            "type": "payable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -713,7 +719,7 @@
             "type": "loan",
             "website": "https://www.cashnetusa.com/login",
             "status": null,
-            "cashflow": "payable"
+            "type": "payable"
         },
         {
             "name": "Scottrade",
@@ -722,7 +728,7 @@
             "account_number": null,
             "balance": 0.00,
             "type": "investment",
-            "cashflow": "receivable",
+            "type": "receivable",
             "contact": {
                 "address": "",
                 "phone": "",
@@ -739,7 +745,7 @@
             "account_number": null,
             "balance": 0.00,
             "type": "investment",
-            "cashflow": "receivable",
+            "type": "receivable",
             "contact": {
                 "address": "",
                 "phone": "",

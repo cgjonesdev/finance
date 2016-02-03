@@ -1,16 +1,29 @@
+import os
+from datetime import datetime as dt
 import json
-from lib.mixins import Magic
+# from lib.mixins import Magic
 
 
 class IO(object):
 
-    def read(self):
-        with open(self.filename) as _:
-            self.data = json.loads(_.read())
+    def __str__(self):
+        return self.__class__.__name__
 
-    def write(self):
-        with open(self.filename, 'w') as _:
-            _.write(json.dumps(self.data))
+    def read(self, filename):
+        with open(filename) as _:
+            self.text = _.read()
+        return self.text
+
+    def write(self, filename, daylog=False):
+        directory = os.path.split(filename)[0]
+        if directory and not os.path.isdir(directory):
+            os.makedirs(directory)
+        timefunc = lambda x: '_' + x.replace(' ', '_').replace(':', '-') + '.'
+        if daylog:
+            daylog = dt.now().strftime('%a %b %d %Y')
+        filename = timefunc(daylog or dt.now().strftime('%c')).join(filename.split('.'))
+        with open(filename, 'w') as _:
+            _.write(repr(self))
 
 
 class Add(object):

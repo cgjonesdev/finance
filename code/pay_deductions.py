@@ -9,9 +9,9 @@ data = [
         'pay': 1460.01,
         'chase overdraft': -322.18,
         'rich dad education': -500.0,
-        'credit cards': -45.16,
+        'credit cards': -97.0,
         'chase business overdraft': -164.15,
-        'costco': -100.0,
+        'costco': -48.16,
         'bofa overdraft': -182.52
     },
     {

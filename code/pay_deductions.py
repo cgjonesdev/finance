@@ -12,6 +12,7 @@ data = [
         'credit cards': -97.0,
         'chase business overdraft': -164.15,
         'costco': -48.16,
+        # 'costco': -58.16,
         'bofa overdraft': -182.52
     },
     {
@@ -51,7 +52,10 @@ class Deductions(IO):
                     str(abs(v)).ljust(13),
                     str(round(self.total, 2) + v))
                 self.total += v
-        output += '\nTotal left: ${}\n'.format(str(round(self.total, 2)))
+        self.total = round(self.total, 2)
+        # Fix -0.0 case
+        self.total = abs(self.total) if str(self.total) == '-0.0' else self.total
+        output += '\nTotal left: ${}\n'.format(str(self.total))
         output += line
         print output
         return output

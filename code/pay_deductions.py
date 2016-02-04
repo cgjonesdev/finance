@@ -57,7 +57,28 @@ class Deductions(IO):
         return output
 
 
+class Main(object):
+    arg1 = sys.argv[1] if len(sys.argv) > 1 else None
+    arg2 = sys.argv[2] if len(sys.argv) > 2 else None
+    arg_map = {
+        '-a': 'all',
+        '-s': 'single',
+        None: 'single'
+    }
+
+    @classmethod
+    def run(cls):
+        getattr(cls, cls.arg_map[cls.arg1])()
+
+    @classmethod
+    def all(cls):
+        list(Deductions())
+
+    @classmethod
+    def single(cls):
+        arg2 = int(cls.arg2 or -1)
+        Deductions(arg2).write('logs/pay/deductions.log', True)
+
+
 if __name__ == '__main__':
-    list(Deductions())
-    # Deductions(int(sys.argv[1]) if len(sys.argv) > 1 else 0).write(
-    #     'pay_deductions.log', True)
+    Main.run()

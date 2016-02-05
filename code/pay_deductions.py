@@ -22,6 +22,8 @@ data = [
             'car supplies': -14.05,
             'snacks': -3.83,
             'chase ink': -76.00,
+            'post office': -13.78,
+            'premier bank card': -97.0
         }
     },
     {
@@ -53,6 +55,7 @@ class Deductions(IO):
 
     def __init__(self, index=-1):
         self.index = index
+        self.date = data[index]['date']
 
     def __iter__(self):
         dates = []
@@ -117,7 +120,8 @@ class Main(object):
     @classmethod
     def single(cls):
         arg2 = int(cls.arg2 or -1)
-        Deductions(arg2).write('logs/pay/deductions.log', True)
+        d = Deductions(arg2)
+        d.write('logs/pay/deductions_{}.txt'.format(d.date), True)
 
 
 if __name__ == '__main__':

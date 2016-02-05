@@ -6,32 +6,53 @@ from mixins import IO
 data = [
     {
         'date': '2-5-16',
-        'pay': 1460.01,
-        'chase overdraft': -322.18,
-        'rich dad education': -500.0,
-        'credit cards': -97.0,
-        'chase business overdraft': -164.15,
-        'costco': -48.16,
-        # 'costco': -58.16,
-        'bofa overdraft': -182.52
+        'estimated': {
+            'pay': 1460.01,
+            'ford': -462.08,
+            'chase overdraft': -322.18,
+            'credit cards': -97.0,
+            'chase ink': -76.00,
+            'gas': -75.00,
+        },
+        'actual': {
+            'chase overdraft': -322.18,
+            'pay': 1460.01,
+            'ford': -462.08,
+            'gas': -24.53,
+            'car supplies': -14.05,
+            'snacks': -3.83,
+            'chase ink': -76.00,
+        }
     },
     {
         'date': '2-12-16',
-        'pay': 1460.01,
-        'ford': -600.0,
-        'credit cards': -500.0,
-        'costco': -200.0
+        'estimated': {
+            'pay': 1460.01,
+            'rich dad education': -500.0,
+            'costco': -200.0,
+            'chase business overdraft': -232.15,
+            'chase ink': -116.00,
+            'bofa overdraft': -182.52
+        },
+        'actual': {'pay': 1460.01}
+    },
+    {
+        'date': '2-19-16',
+        'estimated': {
+            'pay': 1460.01,
+            'credit cards': -500.0,
+        },
+        'actual': {'pay': 1460.01}
     }
 ]
+
+line = '\n' + '=' * 60 + '\n'
 
 
 class Deductions(IO):
 
     def __init__(self, index=-1):
         self.index = index
-        self.total = data[index]['pay']
-        data[self.index]['savings'] = -1 * round(self.total * .1, 2)
-        self.max_len_names = max([len(k) for k in data[self.index].keys()]) + 7
 
     def __iter__(self):
         dates = []
@@ -41,11 +62,26 @@ class Deductions(IO):
         return (d for d in dates)
 
     def __repr__(self):
-        line = '\n' + '=' * 60 + '\n'
-        output = 'Date: {} | Pay: ${}\n\n'.format(data[self.index]['date'], self.total, line=line)
+        return self._estimated() + self._actual()
+
+    def _estimated(self):
+        output = 'Date: {} | Pay: ${} | ESTIMATED\n\n'.format(
+            data[self.index]['date'], data[self.index]['estimated']['pay'], line=line)
+        return self._prepare_output('estimated', output)
+
+    def _actual(self):
+        output = 'Date: {} | Pay: ${} | ACTUAL\n\n'.format(
+            data[self.index]['date'], data[self.index]['actual']['pay'], line=line)
+        return self._prepare_output('actual', output)
+
+    def _prepare_output(self, key, output):
+        self.total = data[self.index][key]['pay']
+        data[self.index][key]['savings'] = -1 * round(self.total * .1, 2)
+        data[self.index][key]['misc'] = -1 * round(self.total * .05, 2)
+        self.max_len_names = max([len(k) for k in data[self.index][key].keys()]) + 7
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  + 'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'
-        for k, v in data[self.index].items():
+        for k, v in data[self.index][key].items():
             if k not in ('pay', 'date'):
                 output += '{}${}${}\n'.format(
                     k.ljust(self.max_len_names),

@@ -60,7 +60,6 @@ class Deductions(IO):
             self.total
         output += '\nTotal left: ${}\n'.format(str(self.total))
         output += line
-        print output
         return output
 
     def _misc(self, key):
@@ -69,6 +68,26 @@ class Deductions(IO):
                 self.total * .06849, 2)
         else:
             self.data[self.index][key]['misc'] = -1 * round(self.total * .05, 2)
+
+class Reports(object):
+
+    def __repr__(self):
+        totals = {}
+        output = 'Totals:\n'
+        for actual in self:
+            for k, v in actual.items():
+                _sum = round(sum(v) if isinstance(v, list) else v, 2)
+                if k in totals:
+                    totals[k] += _sum
+                else:
+                    totals[k] = _sum
+        for k, v in sorted(totals.items()):
+            output += '\t{}: {}\n'.format(k, v)
+        return output
+
+
+    def __iter__(self):
+        return (x['actual'] for x in Deductions().data)
 
 
 class Main(object):
@@ -86,7 +105,7 @@ class Main(object):
 
     @classmethod
     def all(cls):
-        output = ''.join(list(Deductions()))
+        output = ''.join(list(Deductions())) + repr(Reports())
         print output
         with open('logs/pay/deductions_all_{}.txt'.format(
             dt.now().strftime('%a_%b_%d_%Y')), 'w') as out:
@@ -96,6 +115,7 @@ class Main(object):
     def single(cls):
         arg2 = int(cls.arg2 or -1)
         d = Deductions(arg2)
+        print repr(d)
         d.write('logs/pay/deductions_{}.txt'.format(d.date), True)
 
 

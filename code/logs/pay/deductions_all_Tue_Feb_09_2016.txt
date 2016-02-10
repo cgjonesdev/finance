@@ -45,12 +45,13 @@ Name                           Amount        Balance
 chase business overdraft       $-232.15      $1227.86
 chase ink                      $-116.0       $1111.86
 cps energy                     $-64.47       $1047.39
-misc                           $-100.0       $947.39
-renters insurance              $-220         $727.39
-rich dad education             $-500.0       $227.39
-savings                        $-146.0       $81.39
+creditrepair.com               $-33          $1014.39
+misc                           $-100.0       $914.39
+renters insurance              $-220         $694.39
+rich dad education             $-500.0       $194.39
+savings                        $-146.0       $48.39
 
-Total left: $81.39
+Total left: $48.39
 
 ============================================================
 
@@ -70,13 +71,13 @@ Date: 2-19-16 | Pay: $1460.01 | ESTIMATED
 Name                 Amount        Balance
 -------------------------------------------
 bofa overdraft       $-182.52      $1277.49
-credit cards         $-200.0       $1077.49
-ford                 $-600         $477.49
-misc                 $-100.0       $377.49
-savings              $-146.0       $231.49
-toll bill            $-121.25      $110.24
+credit cards         $-310.24      $967.25
+ford                 $-600         $367.25
+misc                 $-100.0       $267.25
+savings              $-146.0       $121.25
+toll bill            $-121.25      $0.0
 
-Total left: $110.24
+Total left: $0.0
 
 ============================================================
 
@@ -114,3 +115,18 @@ Total left: $1214.01
 
 ============================================================
 
+Totals:
+	adjustment: 4.84
+	car supplies: -14.05
+	chase ink: -76.0
+	chase overdraft: -322.18
+	costco: -141.08
+	food: -32.01
+	ford: -462.08
+	gas: -60.04
+	groceries: -2.51
+	itunes: -1.07
+	pay: 5840.04
+	post office: -13.78
+	premier bank card: -97.0
+	snacks: -15.04

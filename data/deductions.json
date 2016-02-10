@@ -1,0 +1,63 @@
+{
+    "items": [
+        {
+            "date": "2-5-16",
+            "estimated": {
+                "pay": 1460.01,
+                "ford": -462.08,
+                "chase overdraft": -322.18,
+                "credit cards": -97.0,
+                "chase ink": -76.00,
+                "gas": -75.00
+            },
+            "actual": {
+                "chase overdraft": -322.18,
+                "pay": 1460.01,
+                "ford": -462.08,
+                "gas": [-24.53, -15.81, -19.70],
+                "car supplies": -14.05,
+                "snacks": [-3.83, -2.15, -4.20, -2.15, -2.71],
+                "chase ink": -76.00,
+                "post office": -13.78,
+                "premier bank card": -97.0,
+                "costco": -141.08,
+                "itunes": -1.07,
+                "groceries": -2.51,
+                "food": [-2.79, -8, -5.57, -5.15, -10.5],
+                "adjustment": 4.84
+            }
+        },
+        {
+            "date": "2-12-16",
+            "estimated": {
+                "pay": 1460.01,
+                "rich dad education": -500.0,
+                "chase business overdraft": -232.15,
+                "chase ink": -116.00,
+                "renters insurance": -220,
+                "cps energy": -64.47,
+                "creditrepair.com": -33
+            },
+            "actual": {"pay": 1460.01}
+        },
+        {
+            "date": "2-19-16",
+            "estimated": {
+                "pay": 1460.01,
+                "credit cards": -310.24,
+                "toll bill": [-83.84, -37.41],
+                "bofa overdraft": -182.52,
+                "ford": -600
+            },
+            "actual": {"pay": 1460.01}
+        },
+        {
+            "date": "2-26-16",
+            "estimated": {
+                "pay": 1460.01,
+                "rent": -1133
+            },
+            "actual": {"pay": 1460.01}
+        }
+    ]
+}

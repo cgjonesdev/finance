@@ -72,19 +72,29 @@ class Deductions(IO):
 class Reports(object):
 
     def __repr__(self):
-        totals = {}
+        return self._totals() + self._balance()
+
+    def _totals(self):
+        self.totals = {}
         output = 'Totals:\n'
         for actual in self:
             for k, v in actual.items():
                 _sum = round(sum(v) if isinstance(v, list) else v, 2)
-                if k in totals:
-                    totals[k] += _sum
+                if k in self.totals:
+                    self.totals[k] += _sum
                 else:
-                    totals[k] = _sum
-        for k, v in sorted(totals.items()):
+                    self.totals[k] = _sum
+        for k, v in sorted(self.totals.items()):
             output += '\t{}: {}\n'.format(k, v)
         return output
 
+    def _balance(self):
+        output = '\nBalance: '
+        balance = 0.0
+        for t in self.totals:
+            balance += self.totals[t]
+        output += '${}'.format(balance)
+        return output
 
     def __iter__(self):
         return (x['actual'] for x in Deductions().data)

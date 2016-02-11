@@ -23,18 +23,20 @@ car supplies            $-14.05       $1450.8
 chase ink               $-76.0        $1374.8
 chase overdraft         $-322.18      $1052.62
 costco                  $-141.08      $911.54
-food                    $-39.26       $872.28
-ford                    $-462.08      $410.2
-gas                     $-60.04       $350.16
-groceries               $-2.51        $347.65
-itunes                  $-1.07        $346.58
-misc                    $-73.0        $273.58
-post office             $-13.78       $259.8
-premier bank card       $-97.0        $162.8
-savings                 $-146.0       $16.8
-snacks                  $-15.04       $1.76
+food                    $-48.79       $862.75
+ford                    $-462.08      $400.67
+gas                     $-60.04       $340.63
+groceries               $-2.51        $338.12
+gym                     $-27.05       $311.07
+itunes                  $-1.07        $310.0
+misc                    $-73.0        $237.0
+post office             $-13.78       $223.22
+premier bank card       $-97.0        $126.22
+savings                 $-146.0       $-19.78
+snacks                  $-15.04       $-34.82
+xfer from savings       $80           $45.18
 
-Total left: $1.76
+Total left: $45.18
 
 ============================================================
 

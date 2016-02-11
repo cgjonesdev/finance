@@ -18,25 +18,23 @@ Date: 2-5-16 | Pay: $1460.01 | ACTUAL
 
 Name                    Amount        Balance
 ----------------------------------------------
-adjustment              $4.84         $1464.85
-car supplies            $-14.05       $1450.8
-chase ink               $-76.0        $1374.8
-chase overdraft         $-322.18      $1052.62
-costco                  $-141.08      $911.54
-food                    $-48.79       $862.75
-ford                    $-462.08      $400.67
-gas                     $-60.04       $340.63
-groceries               $-2.51        $338.12
-gym                     $-27.05       $311.07
-itunes                  $-1.07        $310.0
-misc                    $-73.0        $237.0
-post office             $-13.78       $223.22
-premier bank card       $-97.0        $126.22
-savings                 $-146.0       $-19.78
-snacks                  $-15.04       $-34.82
-xfer from savings       $80           $45.18
+car supplies            $-14.05       $1445.96
+chase ink               $-76.0        $1369.96
+chase overdraft         $-322.18      $1047.78
+costco                  $-266.67      $781.11
+food                    $-48.79       $732.32
+ford                    $-462.08      $270.24
+gas                     $-82.81       $187.43
+groceries               $-2.51        $184.92
+gym                     $-27.05       $157.87
+itunes                  $-1.07        $156.8
+misc                    $-73.0        $83.8
+post office             $-13.78       $70.02
+premier bank card       $-97.0        $-26.98
+savings                 $-146.0       $-172.98
+snacks                  $-17.04       $-190.02
 
-Total left: $45.18
+Total left: $-190.02
 
 ============================================================
 
@@ -57,14 +55,14 @@ Total left: $289.07
 
 ============================================================
 
-Date: 2-12-16 | Pay: $1460.01 | ACTUAL
+Date: 2-12-16 | Pay: $0 | ACTUAL
 
 Name          Amount        Balance
 ------------------------------------
-misc          $-100.0       $1360.01
-savings       $-146.0       $1214.01
+misc          $-0.0         $0.0
+savings       $-0.0         $0.0
 
-Total left: $1214.01
+Total left: $0.0
 
 ============================================================
 
@@ -84,14 +82,14 @@ Total left: $0.0
 
 ============================================================
 
-Date: 2-19-16 | Pay: $1460.01 | ACTUAL
+Date: 2-19-16 | Pay: $0 | ACTUAL
 
 Name          Amount        Balance
 ------------------------------------
-misc          $-100.0       $1360.01
-savings       $-146.0       $1214.01
+misc          $-0.0         $0.0
+savings       $-0.0         $0.0
 
-Total left: $1214.01
+Total left: $0.0
 
 ============================================================
 
@@ -107,33 +105,31 @@ Total left: $81.01
 
 ============================================================
 
-Date: 2-26-16 | Pay: $1460.01 | ACTUAL
+Date: 2-26-16 | Pay: $0 | ACTUAL
 
 Name          Amount        Balance
 ------------------------------------
-misc          $-100.0       $1360.01
-savings       $-146.0       $1214.01
+misc          $-0.0         $0.0
+savings       $-0.0         $0.0
 
-Total left: $1214.01
+Total left: $0.0
 
 ============================================================
 
 Totals:
-	adjustment: 4.84
 	car supplies: -14.05
 	chase ink: -76.0
 	chase overdraft: -322.18
-	costco: -141.08
+	costco: -266.67
 	food: -48.79
 	ford: -462.08
-	gas: -60.04
+	gas: -82.81
 	groceries: -2.51
 	gym: -27.05
 	itunes: -1.07
-	pay: 5840.04
+	pay: 1460.01
 	post office: -13.78
 	premier bank card: -97.0
-	snacks: -15.04
-	xfer from savings: 80.0
+	snacks: -17.04
 
-Balance: $4644.21
+Balance: $28.98

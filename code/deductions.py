@@ -78,6 +78,7 @@ class Reports(object):
         self.totals = {}
         output = 'Totals:\n'
         for actual in self:
+            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
             for k, v in actual.items():
                 _sum = round(sum(v) if isinstance(v, list) else v, 2)
                 if k in self.totals:

@@ -13,6 +13,7 @@
             "actual": {
                 "chase overdraft": -322.18,
                 "pay": 1460.01,
+                "savings": -146,
                 "ford": -462.08,
                 "gas": [-24.53, -15.81, -19.70, -22.77],
                 "car supplies": -14.05,
@@ -22,9 +23,10 @@
                 "premier bank card": -97.0,
                 "costco": [-141.08, -125.59],
                 "itunes": -1.07,
-                "groceries": -2.51,
-                "food": [-2.79, -8, -5.57, -5.15, -10.5, -7.25, -9.53],
-                "gym": -27.05
+                "groceries": [-2.51, -1.44],
+                "food": [-2.79, -8, -5.57, -5.15, -10.5, -7.25, -9.53, -6.8],
+                "gym": -27.05,
+                "xfer from savings": [80, 64.66, 67.11]
             }
         },
         {
@@ -33,12 +35,15 @@
                 "pay": 1460.01,
                 "rich dad education": -500.0,
                 "chase business overdraft": -232.15,
-                "at&t": 124.68,                
-                "renters insurance": -220,
+                "at&t": -124.68,
                 "cps energy": -64.47,
-                "creditrepair.com": -33
+                "creditrepair.com": -33,
+                "gas": -75
             },
-            "actual": {"pay": 0}
+            "actual": {
+                "pay": 1460.01,
+                "rich dad education": -500
+            }
         },
         {
             "date": "2-19-16",

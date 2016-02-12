@@ -1,0 +1,140 @@
+Date: 2-5-16 | Pay: $1460.01 | ESTIMATED
+
+Name                  Amount        Balance
+--------------------------------------------
+chase ink             $-76.0        $1384.01
+chase overdraft       $-322.18      $1061.83
+credit cards          $-97.0        $964.83
+ford                  $-462.08      $502.75
+gas                   $-75.0        $427.75
+misc                  $-73.0        $354.75
+savings               $-146.0       $208.75
+
+Total left: $208.75
+
+============================================================
+
+Date: 2-5-16 | Pay: $1460.01 | ACTUAL
+
+Name                    Amount        Balance
+----------------------------------------------
+car supplies            $-14.05       $1445.96
+chase ink               $-76.0        $1369.96
+chase overdraft         $-322.18      $1047.78
+costco                  $-266.67      $781.11
+food                    $-55.59       $725.52
+ford                    $-462.08      $263.44
+gas                     $-82.81       $180.63
+groceries               $-3.95        $176.68
+gym                     $-27.05       $149.63
+itunes                  $-1.07        $148.56
+misc                    $-73.0        $75.56
+post office             $-13.78       $61.78
+premier bank card       $-97.0        $-35.22
+savings                 $-146.0       $-181.22
+snacks                  $-17.04       $-198.26
+xfer from savings       $211.77       $13.51
+
+Total left: $13.51
+
+============================================================
+
+Date: 2-12-16 | Pay: $1460.01 | ESTIMATED
+
+Name                           Amount        Balance
+-----------------------------------------------------
+at&t                           $-124.68      $1335.33
+chase business overdraft       $-232.15      $1103.18
+cps energy                     $-64.47       $1038.71
+creditrepair.com               $-33          $1005.71
+gas                            $-75          $930.71
+misc                           $-100.0       $830.71
+rich dad education             $-500.0       $330.71
+savings                        $-146.0       $184.71
+
+Total left: $184.71
+
+============================================================
+
+Date: 2-12-16 | Pay: $1460.01 | ACTUAL
+
+Name                     Amount        Balance
+-----------------------------------------------
+misc                     $-100.0       $1360.01
+rich dad education       $-500         $860.01
+savings                  $-146.0       $714.01
+
+Total left: $714.01
+
+============================================================
+
+Date: 2-19-16 | Pay: $1460.01 | ESTIMATED
+
+Name                 Amount        Balance
+-------------------------------------------
+bofa overdraft       $-182.52      $1277.49
+chase ink            $-116.0       $1161.49
+credit cards         $-194.24      $967.25
+ford                 $-600         $367.25
+misc                 $-100.0       $267.25
+savings              $-146.0       $121.25
+toll bill            $-121.25      $0.0
+
+Total left: $0.0
+
+============================================================
+
+Date: 2-19-16 | Pay: $0 | ACTUAL
+
+Name          Amount        Balance
+------------------------------------
+misc          $-0.0         $0.0
+savings       $-0.0         $0.0
+
+Total left: $0.0
+
+============================================================
+
+Date: 2-26-16 | Pay: $1460.01 | ESTIMATED
+
+Name          Amount        Balance
+------------------------------------
+misc          $-100.0       $1360.01
+rent          $-1133        $227.01
+savings       $-146.0       $81.01
+
+Total left: $81.01
+
+============================================================
+
+Date: 2-26-16 | Pay: $0 | ACTUAL
+
+Name          Amount        Balance
+------------------------------------
+misc          $-0.0         $0.0
+savings       $-0.0         $0.0
+
+Total left: $0.0
+
+============================================================
+
+Totals:
+	car supplies: -14.05
+	chase ink: -76.0
+	chase overdraft: -322.18
+	costco: -266.67
+	food: -55.59
+	ford: -462.08
+	gas: -82.81
+	groceries: -3.95
+	gym: -27.05
+	itunes: -1.07
+	pay: 2920.02
+	post office: -13.78
+	premier bank card: -97.0
+	rich dad education: -500.0
+	savings: -146.0
+	snacks: -17.04
+	xfer from savings: 211.77
+
+Balance: $1046.52

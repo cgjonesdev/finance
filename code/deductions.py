@@ -43,7 +43,9 @@ class Deductions(IO):
         self.data[self.index][key]['savings'] = -1 * round(self.total * .1, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
-        self._misc(key)
+        if key == 'estimated':
+            self.data[self.index][key]['misc'] = -1 * round(
+                self.total * (100.0 / (self.data[self.index][key]['pay'] or 1.0)), 2)
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  +\
             'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'
@@ -62,17 +64,16 @@ class Deductions(IO):
         output += line
         return output
 
-    def _misc(self, key):
-        if self.index != 0:
-            self.data[self.index][key]['misc'] = -1 * round(
-                self.total * .06849, 2)
-        else:
-            self.data[self.index][key]['misc'] = -1 * round(self.total * .05, 2)
-
 class Reports(object):
 
     def __repr__(self):
-        return self._totals() + self._balance()
+        return self._totals() + self._averages() + self._balance()
+
+    def __iter__(self):
+        return (x['actual'] for x in Deductions().data)
+
+    def __len__(self):
+        return sum(1 for x in self)
 
     def _totals(self):
         self.totals = {}
@@ -86,7 +87,27 @@ class Reports(object):
                 else:
                     self.totals[k] = _sum
         for k, v in sorted(self.totals.items()):
-            output += '\t{}: {}\n'.format(k, v)
+            output += '\t{}: ${}\n'.format(k, abs(v))
+        return output + '\n'
+
+    def _averages(self):
+        self.averages = {}
+        output = 'Averages:\n'
+        for actual in self:
+            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
+            count = 0
+            for k, v in actual.items():
+                _sum = round(sum(v) if isinstance(v, list) else v, 2)
+                if k not in self.averages:
+                    self.averages[k] = [_sum, count + 1]
+                else:
+                    self.averages[k][0] += _sum
+                    self.averages[k][1] += 1
+        for k, v in sorted(self.averages.items()):
+            self.averages[k] = round(v[0] / v[1], 2)
+            output += '\t{}: ${}\n'.format(k, abs(self.averages[k]))
+        return output
+
         return output
 
     def _balance(self):
@@ -95,10 +116,7 @@ class Reports(object):
         for t in self.totals:
             balance += self.totals[t]
         output += '${}'.format(balance)
-        return output
-
-    def __iter__(self):
-        return (x['actual'] for x in Deductions().data)
+        return output + '\n'
 
 
 class Main(object):

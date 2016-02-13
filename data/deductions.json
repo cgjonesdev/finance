@@ -43,13 +43,15 @@
                 "pay": 1460.01,
                 "rich dad education": -500,
                 "at&t": -124.68,
-                "food": [-11.89]
+                "food": [-11.89, -10.83],
+                "gas": -12.68,
+                "snacks": [-4.31]
             }
         },
         {
             "date": "2-19-16",
             "estimated": {
-                "pay": 1460.01,
+                "pay": 1523.48,
                 "chase ink": -116.00,
                 "credit cards": -194.24,
                 "toll bill": [-83.84, -37.41],
@@ -61,7 +63,7 @@
         {
             "date": "2-26-16",
             "estimated": {
-                "pay": 1460.01,
+                "pay": 1523.48,
                 "rent": -1133
             },
             "actual": {"pay": 0}

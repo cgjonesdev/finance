@@ -37,17 +37,24 @@
                 "at&t": -124.68,
                 "cps energy": -64.47,
                 "creditrepair.com": -33,
-                "gas": -75
+                "gas": -75,
+                "fedloan": -89.52
             },
             "actual": {
                 "pay": 1460.01,
+                "chase business overdraft": -232.15,
                 "rich dad education": -500,
                 "at&t": -124.68,
-                "food": [-11.89, -10.83, -7.42],
-                "gas": -12.68,
-                "snacks": [-4.31],
+                "food": [-11.89, -10.83, -7.42, -10.7, -11.88, -64.13, -9.42, -12.67],
+                "gas": [-12.68, -14.44],
+                "snacks": [-4.31, -6.35,  -3.29, -2.15, -1.5, 2.11],
                 "tools": -17.28,
-                "business": -7.57
+                "business": -7.57,
+                "household": -4,
+                "cps energy": -64.47,
+                "groceries": -15.12,
+                "fedloan": -89.52
+
             }
         },
         {
@@ -55,9 +62,8 @@
             "estimated": {
                 "pay": 1523.48,
                 "chase ink": -116.00,
-                "credit cards": -194.24,
-                "toll bill": [-83.84, -37.41],
-                "bofa overdraft": -182.52,
+                "credit cards": -400,
+                "fedloan": -89.52,
                 "ford": -600
             },
             "actual": {"pay": 0}
@@ -67,6 +73,14 @@
             "estimated": {
                 "pay": 1523.48,
                 "rent": -1133
+            },
+            "actual": {"pay": 0}
+        },
+        {
+            "date": "3-4-16",
+            "estimated": {
+                "pay": 1523.48,
+                "toll bill": [-83.84, -37.41]
             },
             "actual": {"pay": 0}
         }

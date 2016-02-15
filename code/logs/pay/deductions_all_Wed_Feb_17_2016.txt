@@ -46,45 +46,50 @@ at&t                           $-124.68      $1335.33
 chase business overdraft       $-232.15      $1103.18
 cps energy                     $-64.47       $1038.71
 creditrepair.com               $-33          $1005.71
-gas                            $-75          $930.71
-misc                           $-100.0       $830.71
-rich dad education             $-500.0       $330.71
-savings                        $-146.0       $184.71
+fedloan                        $-89.52       $916.19
+gas                            $-75          $841.19
+misc                           $-100.0       $741.19
+rich dad education             $-500.0       $241.19
+savings                        $-146.0       $95.19
 
-Total left: $184.71
+Total left: $95.19
 
 ============================================================
 
 Date: 2-12-16 | Pay: $1460.01 | ACTUAL
 
-Name                     Amount        Balance
------------------------------------------------
-at&t                     $-124.68      $1335.33
-business                 $-7.57        $1327.76
-food                     $-30.14       $1297.62
-gas                      $-12.68       $1284.94
-rich dad education       $-500         $784.94
-savings                  $-146.0       $638.94
-snacks                   $-4.31        $634.63
-tools                    $-17.28       $617.35
+Name                           Amount        Balance
+-----------------------------------------------------
+at&t                           $-124.68      $1335.33
+business                       $-7.57        $1327.76
+chase business overdraft       $-232.15      $1095.61
+cps energy                     $-64.47       $1031.14
+fedloan                        $-89.52       $941.62
+food                           $-138.94      $802.68
+gas                            $-27.12       $775.56
+groceries                      $-15.12       $760.44
+household                      $-4           $756.44
+rich dad education             $-500         $256.44
+savings                        $-146.0       $110.44
+snacks                         $-15.49       $94.95
+tools                          $-17.28       $77.67
 
-Total left: $617.35
+Total left: $77.67
 
 ============================================================
 
 Date: 2-19-16 | Pay: $1523.48 | ESTIMATED
 
-Name                 Amount        Balance
--------------------------------------------
-bofa overdraft       $-182.52      $1340.96
-chase ink            $-116.0       $1224.96
-credit cards         $-194.24      $1030.72
-ford                 $-600         $430.72
-misc                 $-100.0       $330.72
-savings              $-152.35      $178.37
-toll bill            $-121.25      $57.12
+Name               Amount        Balance
+-----------------------------------------
+chase ink          $-116.0       $1407.48
+credit cards       $-400         $1007.48
+fedloan            $-89.52       $917.96
+ford               $-600         $317.96
+misc               $-100.0       $217.96
+savings            $-152.35      $65.61
 
-Total left: $57.12
+Total left: $65.61
 
 ============================================================
 
@@ -120,25 +125,51 @@ Total left: $0.0
 
 ============================================================
 
+Date: 3-4-16 | Pay: $1523.48 | ESTIMATED
+
+Name            Amount        Balance
+--------------------------------------
+misc            $-100.0       $1423.48
+savings         $-152.35      $1271.13
+toll bill       $-121.25      $1149.88
+
+Total left: $1149.88
+
+============================================================
+
+Date: 3-4-16 | Pay: $0 | ACTUAL
+
+Name          Amount        Balance
+------------------------------------
+savings       $-0.0         $0.0
+
+Total left: $0.0
+
+============================================================
+
 Totals:
 	at&t: $124.68
 	business: $7.57
 	car supplies: $14.05
+	chase business overdraft: $232.15
 	chase ink: $76.0
 	chase overdraft: $322.18
 	costco: $266.67
-	food: $124.96
+	cps energy: $64.47
+	fedloan: $89.52
+	food: $233.76
 	ford: $462.08
-	gas: $95.49
-	groceries: $3.95
+	gas: $109.93
+	groceries: $19.07
 	gym: $27.05
+	household: $4.0
 	itunes: $1.07
 	pay: $2920.02
 	post office: $13.78
 	premier bank card: $97.0
 	rich dad education: $500.0
 	savings: $292.0
-	snacks: $21.35
+	snacks: $32.53
 	tools: $17.28
 	xfer from savings: $147.11
 
@@ -146,22 +177,26 @@ Averages:
 	at&t: $124.68
 	business: $7.57
 	car supplies: $14.05
+	chase business overdraft: $232.15
 	chase ink: $76.0
 	chase overdraft: $322.18
 	costco: $266.67
-	food: $62.48
+	cps energy: $64.47
+	fedloan: $89.52
+	food: $116.88
 	ford: $462.08
-	gas: $47.75
-	groceries: $3.95
+	gas: $54.97
+	groceries: $9.54
 	gym: $27.05
+	household: $4.0
 	itunes: $1.07
-	pay: $730.0
+	pay: $584.0
 	post office: $13.78
 	premier bank card: $97.0
 	rich dad education: $500.0
-	savings: $73.0
-	snacks: $10.67
+	savings: $58.4
+	snacks: $16.27
 	tools: $17.28
 	xfer from savings: $147.11
 
-Balance: $599.97
+Balance: $60.29

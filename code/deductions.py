@@ -87,7 +87,7 @@ class Reports(object):
                 else:
                     self.totals[k] = _sum
         for k, v in sorted(self.totals.items()):
-            output += '\t{}: ${}\n'.format(k, abs(v))
+            output += '\t{}: ${}\n'.format(k, v)
         return output + '\n'
 
     def _averages(self):
@@ -105,9 +105,7 @@ class Reports(object):
                     self.averages[k][1] += 1
         for k, v in sorted(self.averages.items()):
             self.averages[k] = round(v[0] / v[1], 2)
-            output += '\t{}: ${}\n'.format(k, abs(self.averages[k]))
-        return output
-
+            output += '\t{}: ${}\n'.format(k, self.averages[k])
         return output
 
     def _balance(self):

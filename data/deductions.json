@@ -3,6 +3,7 @@
         {
             "date": "2-5-16",
             "estimated": {
+                "starting balance": 17.38,
                 "pay": 1460.01,
                 "ford": -462.08,
                 "chase overdraft": -322.18,
@@ -11,6 +12,7 @@
                 "gas": -75.00
             },
             "actual": {
+                "starting balance": 17.38,
                 "chase overdraft": -322.18,
                 "pay": 1460.01,
                 "ford": -462.08,

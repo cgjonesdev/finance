@@ -117,7 +117,7 @@ class Reports(object):
         result = [header]
         for row in rows:
             result.append(line_item_format.format(**row))
-        return 'Reports:\n\n' + '\n'.join(result) + self._balance()
+        return 'REPORTS:\n\n' + '\n'.join(result) + self._balance()
 
     def __iter__(self):
         return (x['actual'] for x in Deductions().data if 'actual' in x)
@@ -126,7 +126,7 @@ class Reports(object):
         return sum(1 for x in self)
 
     def _balance(self):
-        output = '\nBalance: '
+        output = '\nRunning balance: '
         balance = 0.0
         for t in self.totals:
             balance += self.totals[t]

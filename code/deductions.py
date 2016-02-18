@@ -145,7 +145,10 @@ class Main(object):
 
     @classmethod
     def run(cls):
-        getattr(cls, cls.arg_map[cls.arg1])()
+        try:
+            getattr(cls, cls.arg_map[cls.arg1])()
+        except:
+            cls.single()
 
     @classmethod
     def all(cls):
@@ -157,7 +160,7 @@ class Main(object):
 
     @classmethod
     def single(cls):
-        arg2 = int(cls.arg2 or -1)
+        arg2 = int(cls.arg2 or cls.arg1 or -1)
         d = Deductions(arg2)
         print repr(d)
         d.write('logs/pay/deductions_{}.txt'.format(d.date), True)

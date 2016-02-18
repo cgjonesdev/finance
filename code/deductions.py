@@ -111,8 +111,8 @@ class Reports(object):
         percentages = [str(v) + '%'.ljust(max_len_percentages) for v in percentages.values()]
         total_lens = max_len_items + max_len_totals + max_len_averages + max_len_percentages
         header = ('Item name'.ljust(max_len_items) +
-                  'Total spent'.ljust(max_len_totals + 1) +
-                  'Average spent'.ljust(max_len_averages + 1) +
+                  'Total +/-'.ljust(max_len_totals + 1) +
+                  'Average +/-'.ljust(max_len_averages + 1) +
                   '% of avg pay\n' + '-' *  total_lens)
         result = [header]
         for row in rows:

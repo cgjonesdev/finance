@@ -53,8 +53,9 @@ gas                            $-75          $799.19
 misc                           $-100.0       $699.19
 rich dad education             $-500.0       $199.19
 savings                        $-146.0       $53.19
+starting balance               $29.74        $82.93
 
-Total left: $53.19
+Total left: $82.93
 
 ============================================================
 
@@ -68,17 +69,18 @@ business                       $-7.57        $1252.76
 chase business overdraft       $-232.15      $1020.61
 cps energy                     $-64.47       $956.14
 fedloan                        $-89.52       $866.62
-food                           $-138.94      $727.68
-gas                            $-27.12       $700.56
-groceries                      $-15.12       $685.44
-household                      $-4           $681.44
-rich dad education             $-500         $181.44
-savings                        $-146.0       $35.44
-snacks                         $-15.49       $19.95
-tools                          $-17.28       $2.67
-xfer from savings              $29.34        $32.01
+food                           $-152.82      $713.8
+gas                            $-27.12       $686.68
+groceries                      $-15.12       $671.56
+household                      $-4           $667.56
+rich dad education             $-500         $167.56
+savings                        $-146.0       $21.56
+snacks                         $-19.71       $1.85
+starting balance               $29.74        $31.59
+tools                          $-17.28       $14.31
+xfer from savings              $29.34        $43.65
 
-Total left: $32.01
+Total left: $43.65
 
 ============================================================
 
@@ -124,7 +126,7 @@ Total left: $1149.88
 
 REPORTS:
 
-Item name                    Total spent       Average spent     % of avg pay
+Item name                    Total +/-         Average +/-       % of avg pay
 ------------------------------------------------------------------------------
 rich dad education           $-500.0           $-500.0           -34.2
 ford                         $-462.08          $-462.08          -31.6
@@ -132,8 +134,8 @@ chase overdraft              $-322.18          $-322.18          -22.1
 costco                       $-266.67          $-266.67          -18.3
 chase business overdraft     $-232.15          $-232.15          -15.9
 savings                      $-292.0           $-146.0           -10.0
+food                         $-247.64          $-123.82          -8.5
 at&t                         $-124.68          $-124.68          -8.5
-food                         $-233.76          $-116.88          -8.0
 premier bank card            $-97.0            $-97.0            -6.6
 fedloan                      $-89.52           $-89.52           -6.1
 chase ink                    $-76.0            $-76.0            -5.2
@@ -141,16 +143,16 @@ asset acceptance             $-75.0            $-75.0            -5.1
 cps energy                   $-64.47           $-64.47           -4.4
 gas                          $-109.93          $-54.97           -3.8
 gym                          $-27.05           $-27.05           -1.9
+snacks                       $-36.75           $-18.38           -1.3
 tools                        $-17.28           $-17.28           -1.2
-snacks                       $-32.53           $-16.27           -1.1
 car supplies                 $-14.05           $-14.05           -1.0
 post office                  $-13.78           $-13.78           -0.9
 groceries                    $-19.07           $-9.54            -0.7
 business                     $-7.57            $-7.57            -0.5
 household                    $-4.0             $-4.0             -0.3
 itunes                       $-1.07            $-1.07            -0.1
-starting balance             $17.38            $17.38            1.2
+starting balance             $47.12            $23.56            1.6
 xfer from savings            $176.45           $88.22            6.0
 pay                          $2920.02          $1460.01          100.0
 
-Running balance: $32.01
+Running balance: $43.65

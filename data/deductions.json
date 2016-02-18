@@ -33,6 +33,7 @@
         {
             "date": "2-12-16",
             "estimated": {
+                "starting balance": 29.74,
                 "pay": 1460.01,
                 "rich dad education": -500.0,
                 "chase business overdraft": -232.15,
@@ -43,13 +44,14 @@
                 "asset acceptance": -75
             },
             "actual": {
+                "starting balance": 29.74,
                 "pay": 1460.01,
                 "chase business overdraft": -232.15,
                 "rich dad education": -500,
                 "at&t": -124.68,
-                "food": [-11.89, -10.83, -7.42, -10.7, -11.88, -64.13, -9.42, -12.67],
+                "food": [-11.89, -10.83, -7.42, -10.7, -11.88, -64.13, -13.88, -9.42, -12.67],
                 "gas": [-12.68, -14.44],
-                "snacks": [-4.31, -6.35,  -3.29, -2.15, -1.5, 2.11],
+                "snacks": [-4.31, -6.35,  -3.29, -2.15, -1.5, -2.11],
                 "tools": -17.28,
                 "business": -7.57,
                 "household": -4,

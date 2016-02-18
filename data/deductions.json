@@ -38,9 +38,9 @@
                 "chase business overdraft": -232.15,
                 "at&t": -124.68,
                 "cps energy": -64.47,
-                "creditrepair.com": -33,
                 "gas": -75,
-                "fedloan": -89.52
+                "fedloan": -89.52,
+                "asset acceptance": -75
             },
             "actual": {
                 "pay": 1460.01,
@@ -55,7 +55,9 @@
                 "household": -4,
                 "cps energy": -64.47,
                 "groceries": -15.12,
-                "fedloan": -89.52
+                "fedloan": -89.52,
+                "asset acceptance": -75,
+                "xfer from savings": 29.34
 
             }
         },
@@ -66,25 +68,23 @@
                 "chase ink": -116.00,
                 "credit cards": -400,
                 "fedloan": -89.52,
-                "ford": -600
-            },
-            "actual": {"pay": 0}
+                "ford": -600,
+                "creditrepair.com": -33
+            }
         },
         {
             "date": "2-26-16",
             "estimated": {
                 "pay": 1523.48,
                 "rent": -1133
-            },
-            "actual": {"pay": 0}
+            }
         },
         {
             "date": "3-4-16",
             "estimated": {
                 "pay": 1523.48,
                 "toll bill": [-83.84, -37.41]
-            },
-            "actual": {"pay": 0}
+            }
         }
     ]
 }

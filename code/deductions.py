@@ -2,9 +2,10 @@ import sys
 import json
 from pprint import pprint, pformat
 from datetime import datetime as dt
+from operator import itemgetter
 from mixins import IO
 
-line = '\n' + '=' * 60 + '\n\n'
+double_line = '\n' + '=' * 60 + '\n\n'
 
 
 class Deductions(IO):
@@ -25,18 +26,22 @@ class Deductions(IO):
         return self._estimated() + self._actual()
 
     def _estimated(self):
+        line = '-' * 60 + '\n'
         output = 'Date: {} | Pay: ${} | ESTIMATED\n\n'.format(
             self.data[self.index]['date'],
             self.data[self.index]['estimated']['pay'],
-            line=line)
+            line=double_line)
         return self._prepare_output('estimated', output)
 
     def _actual(self):
-        output = 'Date: {} | Pay: ${} | ACTUAL\n\n'.format(
-            self.data[self.index]['date'],
-            self.data[self.index]['actual']['pay'],
-            line=line)
-        return self._prepare_output('actual', output)
+        try:
+            output = 'Date: {} | Pay: ${} | ACTUAL\n\n'.format(
+                self.data[self.index]['date'],
+                self.data[self.index]['actual']['pay'],
+                line=double_line)
+            return self._prepare_output('actual', output)
+        except:
+            return ''
 
     def _prepare_output(self, key, output):
         self.total = self.data[self.index][key]['pay']
@@ -61,52 +66,64 @@ class Deductions(IO):
         self.total = abs(self.total) if str(self.total) == '-0.0' else\
             self.total
         output += '\nTotal left: ${}\n'.format(str(self.total))
-        output += line
+        output += double_line
         return output
 
 class Reports(object):
-
     def __repr__(self):
-        return self._totals() + self._averages() + self._balance()
+        line_item_format = '{item}{total}{average}{percentage}'
+        _sum = lambda v: round(sum(v) if isinstance(v, list) else v, 2)
+        avg = lambda v, c: round(_sum(v) / c, 2)
+        perc = lambda v, c, pay: round((avg(v, c) / pay) * 100, 1)
+        line_items = set()
+        items = set()
+        counts = {}
+        totals = {}
+        averages = {}
+        percentages = {}
+        for actual in self:
+            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
+            for k, v in actual.items():
+                items.add(k)
+                counts[k] = 1 if k not in counts else counts[k] + 1
+                totals[k] = _sum(v) if k not in totals else round(totals[k] + _sum(v), 2)
+                averages[k] = avg(v, counts[k]) if k not in averages else avg(totals[k], counts[k])
+                percentages[k] = (round(averages[k] / averages['pay'] if 'pay'
+                                  in averages else averages[k] / actual['pay'], 3)
+                                  * 100)
+        self.totals = totals
+        max_len_items = max([len(v) for v in items]) + 5
+        max_len_totals = max([len(str(v)) for v in totals.values()]) + 10
+        max_len_averages = max([len(str(v)) for v in averages.values()]) + 10
+        max_len_percentages = max([len(str(v)) for v in percentages.values()]) + 10
+        rows = []
+        for row in zip(items, totals.values(), averages.values(), percentages.values()):
+            rows.append(dict(zip(('item', 'total', 'average', 'percentage'), row)))
+        for row in rows:
+            row['item'] = row['item'].ljust(max_len_items)
+            row['total'] = '$' + str(row['total']).ljust(max_len_totals)
+            row['average'] = '$' + str(row['average']).ljust(max_len_totals)
+        rows = sorted(rows, key=itemgetter('percentage'))
+
+        items = [item.ljust(max_len_items) for item in items]
+        totals = ['$' + str(v).ljust(max_len_totals) for v in totals.values()]
+        averages = ['$' + str(v).ljust(max_len_averages) for v in averages.values()]
+        percentages = [str(v) + '%'.ljust(max_len_percentages) for v in percentages.values()]
+        total_lens = max_len_items + max_len_totals + max_len_averages + max_len_percentages
+        header = ('Item name'.ljust(max_len_items) +
+                  'Total spent'.ljust(max_len_totals + 1) +
+                  'Average spent'.ljust(max_len_averages + 1) +
+                  '% of avg pay\n' + '-' *  total_lens)
+        result = [header]
+        for row in rows:
+            result.append(line_item_format.format(**row))
+        return 'Reports:\n\n' + '\n'.join(result) + self._balance()
 
     def __iter__(self):
-        return (x['actual'] for x in Deductions().data)
+        return (x['actual'] for x in Deductions().data if 'actual' in x)
 
     def __len__(self):
         return sum(1 for x in self)
-
-    def _totals(self):
-        self.totals = {}
-        output = 'Totals:\n'
-        for actual in self:
-            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
-            for k, v in actual.items():
-                _sum = round(sum(v) if isinstance(v, list) else v, 2)
-                if k in self.totals:
-                    self.totals[k] += _sum
-                else:
-                    self.totals[k] = _sum
-        for k, v in sorted(self.totals.items()):
-            output += '\t{}: ${}\n'.format(k, v)
-        return output + '\n'
-
-    def _averages(self):
-        self.averages = {}
-        output = 'Averages:\n'
-        for actual in self:
-            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
-            count = 0
-            for k, v in actual.items():
-                _sum = round(sum(v) if isinstance(v, list) else v, 2)
-                if k not in self.averages:
-                    self.averages[k] = [_sum, count + 1]
-                else:
-                    self.averages[k][0] += _sum
-                    self.averages[k][1] += 1
-        for k, v in sorted(self.averages.items()):
-            self.averages[k] = round(v[0] / v[1], 2)
-            output += '\t{}: ${}\n'.format(k, self.averages[k])
-        return output
 
     def _balance(self):
         output = '\nBalance: '
@@ -114,7 +131,7 @@ class Reports(object):
         for t in self.totals:
             balance += self.totals[t]
         output += '${}'.format(balance)
-        return output + '\n'
+        return '\n' + output + '\n'
 
 
 class Main(object):

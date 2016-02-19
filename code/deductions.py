@@ -86,8 +86,10 @@ class Reports(object):
             for k, v in actual.items():
                 items.add(k)
                 counts[k] = 1 if k not in counts else counts[k] + 1
-                totals[k] = _sum(v) if k not in totals else round(totals[k] + _sum(v), 2)
-                averages[k] = avg(v, counts[k]) if k not in averages else avg(totals[k], counts[k])
+                totals[k] = (_sum(v) if k not in totals else
+                             round(totals[k] + _sum(v), 2))
+                averages[k] = (avg(v, counts[k]) if k not in averages else
+                               avg(totals[k], counts[k]))
                 percentages[k] = (round(averages[k] / averages['pay'] if 'pay'
                                   in averages else averages[k] / actual['pay'], 3)
                                   * 100)
@@ -106,10 +108,14 @@ class Reports(object):
         rows = sorted(rows, key=itemgetter('percentage'))
 
         items = [item.ljust(max_len_items) for item in items]
-        totals = ['$' + str(v).ljust(max_len_totals) for v in totals.values()]
-        averages = ['$' + str(v).ljust(max_len_averages) for v in averages.values()]
-        percentages = [str(v) + '%'.ljust(max_len_percentages) for v in percentages.values()]
-        total_lens = max_len_items + max_len_totals + max_len_averages + max_len_percentages
+        totals = ['$' + str(v).ljust(max_len_totals) for v in
+                  totals.values()]
+        averages = ['$' + str(v).ljust(max_len_averages) for v in
+                    averages.values()]
+        percentages = [str(v) + '%'.ljust(max_len_percentages) for v in
+                       percentages.values()]
+        total_lens = (max_len_items + max_len_totals + max_len_averages +
+                      max_len_percentages)
         header = ('Item name'.ljust(max_len_items) +
                   'Total +/-'.ljust(max_len_totals + 1) +
                   'Average +/-'.ljust(max_len_averages + 1) +

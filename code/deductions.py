@@ -146,7 +146,7 @@ class Main(object):
     arg_map = {
         '-a': 'all',
         '-s': 'single',
-        None: 'single'
+        None: 'all'
     }
 
     @classmethod

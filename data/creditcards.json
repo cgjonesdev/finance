@@ -10,7 +10,8 @@
                     {"date": "12-28-15", "balance": 991.91, "available_credit": 0.00, "minimum_payment": 25.00, "limit": 1000.00, "last_payment": 230.53, "confirmation": "B1DZZPBBCH", "due_date": "12-23-15"},
                     {"date": "1-15-16", "balance": 1004.85, "available_credit": 0.00, "minimum_payment": 25.00, "limit": 1000.00, "last_payment": 360.74, "confirmation": "B1DZZPBBCJ", "due_date": "1-23-16"},
                     {"date": "2-5-16", "balance": 997.44, "available_credit": 2.56, "minimum_payment": 30.00, "limit": 1000.00, "last_payment": 129.80, "confirmation": "B1DZZPBBCL", "due_date": "2-23-16"},
-                    {"date": "2-19-16", "balance": 997.44, "available_credit": 2.56, "minimum_payment": 30.00, "limit": 1000.00, "last_payment": 180.14, "confirmation": "B1DZZPBBCP", "due_date": "3-23-16"}
+                    {"date": "2-19-16", "balance": 997.44, "available_credit": 2.56, "minimum_payment": 30.00, "limit": 1000.00, "last_payment": 180.14, "confirmation": "B1DZZPBBCP", "due_date": "3-23-16"},
+                    {"date": "2-22-16", "balance": 817.30, "available_credit": 29.99, "minimum_payment": 30.00, "limit": 1000.00, "last_payment": 180.14, "confirmation": "B1DZZPBBCP", "due_date": "3-23-16"}
                 ]
             }
         },
@@ -24,7 +25,8 @@
                     {"date": "12-28-15", "balance": 295.89, "available_credit": 0.00, "minimum_payment": 25.00, "limit": 300.00, "last_payment": 106.39, "rewards_cash": 35.45, "confirmation": "B1DZZPBBCK", "due_date": "12-11-15"},
                     {"date": "1-15-16", "balance": 288.57, "available_credit": 11.43, "minimum_payment": 56.00, "limit": 300.00, "last_payment": 56.00, "rewards_cash": 0.00, "confirmation": "B1DZZPBBCM", "due_date": "1-11-16"},
                     {"date": "2-5-16", "balance": 285.69, "available_credit": 8.95, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 25.00, "rewards_cash": 1.18, "confirmation": "B1DZZPBBCN", "due_date": "2-11-16"},
-                    {"date": "2-19-16", "balance": 296.58, "available_credit": 1.92, "minimum_payment": 25.00, "limit": 300.00, "last_payment": 53.56, "rewards_cash": 1.35, "confirmation": "B1DZZPBBCQ", "due_date": "3-11-16"}
+                    {"date": "2-19-16", "balance": 296.58, "available_credit": 1.92, "minimum_payment": 25.00, "limit": 300.00, "last_payment": 53.56, "rewards_cash": 1.35, "confirmation": "B1DZZPBBCQ", "due_date": "3-11-16"},
+                    {"date": "2-22-16", "balance": 245.62, "available_credit": 26.24, "minimum_payment": 25.00, "limit": 300.00, "last_payment": 53.56, "rewards_cash": 1.35, "confirmation": "B1DZZPBBCQ", "due_date": "3-11-16"}
                 ]
             }
         },
@@ -38,7 +40,8 @@
                     {"date": "12-11-15", "balance": 406.58, "available_credit": 0.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 120.57, "confirmation": "453584597742", "due_date": "12-23-15"},
                     {"date": "1-15-16", "balance": 406.10, "available_credit": 0.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 120.57, "confirmation": "453815602509", "due_date": "1-23-16"},
                     {"date": "2-5-16", "balance": 390.91, "available_credit": 5.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 47.20, "confirmation": "453815602509", "due_date": "2-23-16"},
-                    {"date": "2-19-16", "balance": 395.21, "available_credit": 4.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 58.69, "confirmation": "454055007730", "due_date": "2-23-16"}
+                    {"date": "2-19-16", "balance": 395.21, "available_credit": 4.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 58.69, "confirmation": "454055007730", "due_date": "2-23-16"},
+                    {"date": "2-22-16", "balance": 395.21, "available_credit": 4.00, "minimum_payment": 25.00, "limit": 400.00, "last_payment": 58.69, "confirmation": "454055007730", "due_date": "2-23-16"}
                 ]
             }
         },
@@ -52,7 +55,8 @@
                     {"date": "12-11-15", "balance": 193.35, "available_credit": 1.00, "minimum_payment": 30.00, "limit": 300.00, "last_payment": 30.00, "confirmation": "W0108746079", "due_date": "11-06-15"},
                     {"date": "1-15-16", "balance": 193.35, "available_credit": 106.00, "minimum_payment": 30.00, "limit": 300.00, "last_payment": 105.78, "confirmation": "W0110235983", "due_date": "12-11-15"},
                     {"date": "2-5-16", "balance": 336.13, "available_credit": 0.00, "minimum_payment": 96.13, "limit": 300.00, "last_payment": 97.00, "confirmation": "9630935", "due_date": "1-18-16"},
-                    {"date": "2-19-16", "balance": 239.13, "available_credit": 60.00, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 43.19, "confirmation": "W0113268309", "due_date": "1-18-16"}
+                    {"date": "2-19-16", "balance": 239.13, "available_credit": 60.00, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 43.19, "confirmation": "W0113268309", "due_date": "1-18-16"},
+                    {"date": "2-22-16", "balance": 205.04, "available_credit": 35.00, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 43.19, "confirmation": "W0113268309", "due_date": "1-18-16"}
                 ]
             }
         },
@@ -65,8 +69,9 @@
                     {"date": "12-11-15", "balance": 298.49, "available_credit": 1.51, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 42.91, "confirmation": "3912418", "due_date": "12-4-15"},
                     {"date": "12-11-15", "balance": 275.11, "available_credit": 24.89, "minimum_payment": 0.00, "limit": 300.00, "last_payment": 49.09, "confirmation": "", "due_date": "1-4-16"},
                     {"date": "1-15-16", "balance": 281.68, "available_credit": 10.32, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 106.52, "confirmation": "4053884", "due_date": "2-4-16"},
-                    {"date": "2-5-16", "balance": 286.41, "available_credit": 13.59, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 106.52, "confirmation": "4053884", "due_date": "2-4-16"}
-                    {"date": "2-19-16", "balance": 301.65, "available_credit": -1.65, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 51.73, "confirmation": "4213631", "due_date": "2-4-16"}
+                    {"date": "2-5-16", "balance": 286.41, "available_credit": 13.59, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 106.52, "confirmation": "4053884", "due_date": "2-4-16"},
+                    {"date": "2-19-16", "balance": 301.65, "available_credit": -1.65, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 51.73, "confirmation": "4213631", "due_date": "2-4-16"},
+                    {"date": "2-22-16", "balance": 249.92, "available_credit": 50.08, "minimum_payment": 37.00, "limit": 300.00, "last_payment": 51.73, "confirmation": "4213631", "due_date": "2-4-16"}
                 ]
             }
         }

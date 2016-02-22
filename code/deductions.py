@@ -45,7 +45,7 @@ class Deductions(IO):
 
     def _prepare_output(self, key, output):
         self.total = self.data[self.index][key]['pay']
-        self.data[self.index][key]['savings'] = -1 * round(self.total * .1, 2)
+        self.data[self.index][key]['savings'] = -1 * round(self.total * .15, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
         if key == 'estimated':
@@ -82,7 +82,7 @@ class Reports(object):
         averages = {}
         percentages = {}
         for actual in self:
-            actual['savings'] = round(actual['pay'] * -1 * .1, 2)
+            actual['savings'] = round(actual['pay'] * -1 * .15, 2)
             for k, v in actual.items():
                 items.add(k)
                 counts[k] = 1 if k not in counts else counts[k] + 1
@@ -118,8 +118,8 @@ class Reports(object):
                       max_len_percentages)
         header = ('Item name'.ljust(max_len_items) +
                   'Total +/-'.ljust(max_len_totals + 1) +
-                  'Average +/-'.ljust(max_len_averages + 1) +
-                  '% of avg pay\n' + '-' *  total_lens)
+                  'Average +/-'.ljust(max_len_averages + 2) +
+                  '% of avg pay\n' + '-' *  (total_lens + 1))
         result = [header]
         for row in rows:
             result.append(line_item_format.format(**row))
@@ -154,7 +154,7 @@ class Main(object):
         try:
             getattr(cls, cls.arg_map[cls.arg1])()
         except:
-            cls.single()
+            cls.all()
 
     @classmethod
     def all(cls):

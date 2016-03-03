@@ -45,7 +45,12 @@ class Deductions(IO):
 
     def _prepare_output(self, key, output):
         self.total = self.data[self.index][key]['pay']
-        self.data[self.index][key]['savings'] = -1 * round(self.total * .15, 2) if self.index > 2 else -1 * round(self.total * .1, 2)
+        if self.index in range(3):
+            self.data[self.index][key]['savings'] = -1 * round(self.total * .1, 2)
+        elif self.index == 3:
+            self.data[self.index][key]['savings'] = -1 * round(self.total * .15, 2)
+        else:
+            self.data[self.index][key]['savings'] = -1 * round(self.total * .2, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
         if key == 'estimated':

@@ -74,6 +74,38 @@ class Deductions(IO):
         output += double_line
         return output
 
+
+class Upcoming(IO):
+
+    def __init__(self):
+        self.data = json.loads(self.read('../data/deductions.json'))['upcoming']
+
+    def __iter__(self):
+        return (x for x in sorted(self.data, key=itemgetter('amount'), reverse=True))
+
+    def __add__(self, other):
+        return self.sum + other
+
+    def __sub__(self, other):
+        return self.sum - other
+
+    def __iadd__(self, other):
+        self.data.append(other)
+        return self
+
+    @property
+    def names(self):
+        return (str(x['name']) for x in self)
+
+    @property
+    def amounts(self):
+        return (x['amount'] for x in self)
+
+    @property
+    def sum(self):
+        return sum(list(self.amounts))
+
+
 class Reports(object):
     def __repr__(self):
         line_item_format = '{item}{total}{average}{percentage}'

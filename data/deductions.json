@@ -122,5 +122,12 @@
                 "costco": -184.07
             }
         }
+    ],
+    "upcoming": [
+        {"name": "dentist", "amount": 300},
+        {"name": "chase business overdraft", "amount": 225},
+        {"name": "la ticket 1", "amount": 900},
+        {"name": "la ticket 2", "amount": 900},
+        {"name": "toll bill", "amount": 330}
     ]
 }

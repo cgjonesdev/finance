@@ -53,9 +53,9 @@ class Deductions(IO):
             self.data[self.index][key]['savings'] = -1 * round(self.total * .2, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
-        if key == 'estimated':
-            self.data[self.index][key]['misc'] = -1 * round(
-                self.total * (100.0 / (self.data[self.index][key]['pay'] or 1.0)), 2)
+        # if key == 'estimated':
+        #     self.data[self.index][key]['misc'] = -1 * round(
+        #         self.total * (100.0 / (self.data[self.index][key]['pay'] or 1.0)), 2)
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  +\
             'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'

@@ -80,6 +80,13 @@ class Upcoming(IO):
     def __init__(self):
         self.data = json.loads(self.read('../data/deductions.json'))['upcoming']
 
+    def __repr__(self):
+        output = 'Upcoming:\n\n'
+        for item in self:
+            output += '\t{}: ${}\n'.format(item['name'].title(), item['amount'])
+        output += '\nTotal: ${}'.format(self.sum)
+        return output
+
     def __iter__(self):
         return (x for x in sorted(self.data, key=itemgetter('amount'), reverse=True))
 
@@ -183,6 +190,7 @@ class Main(object):
     arg_map = {
         '-a': 'all',
         '-s': 'single',
+        '-u': 'upcoming',
         None: 'all'
     }
 
@@ -207,6 +215,12 @@ class Main(object):
         d = Deductions(arg2)
         print repr(d)
         d.write('logs/pay/deductions_{}.txt'.format(d.date), True)
+
+    @classmethod
+    def upcoming(cls):
+        upcoming = Upcoming()
+        print repr(upcoming)
+        upcoming.write('logs/pay/upcoming.txt', True)
 
 
 if __name__ == '__main__':

@@ -135,13 +135,48 @@
                 "ford": -600,
                 "gas": -50
             }
+        },
+        {
+            "date": "3-18-16",
+            "estimated": {
+                "pay": 1522.72,
+                "rich dad education": -500,
+                "credit cards": -300,
+                "probation": -120,
+                "spending": -150,
+                "gas": -75
+            }
+        },
+        {
+            "date": "3-25-16",
+            "estimated": {
+                "pay": 1522.72,
+                "spending": -150,
+                "gas": -75,
+                "chase business overdraft": -253.64,
+                "toll bill - CTRMA": -66.34,
+                "toll bill - MSB": -63.16,
+                "toll bill": -350,
+                "chase ink credit card": -229
+            }
+        },
+        {
+            "date": "4-1-16",
+            "estimated": {
+                "pay": 1522.72,
+                "rent": -1166
+            }
         }        
     ],
     "upcoming": [
         {"name": "dentist", "amount": 300},
-        {"name": "chase business overdraft", "amount": 225},
+        {"name": "chase business overdraft", "amount": 253.64},
         {"name": "la ticket 1", "amount": 900},
         {"name": "la ticket 2", "amount": 900},
-        {"name": "toll bill", "amount": 330}
+        {"name": "toll bill - CTRMA", "amount": 66.34},
+        {"name": "toll bill - MSB", "amount": 63.16},
+        {"name": "toll bill", "amount": 350},
+        {"name": "chase ink credit card", "amount": 229},
+        {"name": "probation", "amount": 120}
     ]
 }

@@ -26,7 +26,7 @@
                 "itunes": -1.07,
                 "groceries": [-2.51, -1.44],
                 "food": [-2.79, -8, -5.57, -5.15, -10.5, -7.25, -9.53, -6.8, -39.23],
-                "gym": -27.05,
+                "gym membership": -27.05,
                 "xfer from savings": [80, 67.11]
             }
         },
@@ -135,16 +135,30 @@
                 "credit cards": -200,
                 "ford": -600,
                 "gas": -50
+            },
+            "actual": {
+                "starting balance": 1.79,
+                "pay": 1522.72,
+                "at&t": -128.73,
+                "food": [-8, -5.62, -19.51, -27.90, -19.36, -10.05, -4.35, -5.9, -12.69, -18.95, -9.69],
+                "snacks": [-6.8, -2.1, -58.43, -1.25, -1.25, -1.25, -5.07, -6.47, -4.45, -1.29, -3.01],
+                "gym membership": -27.05,
+                "drinks": -16,
+                "business": -7.57,
+                "travel": [-6.75, -8, -25, -31.57, -300],
+                "grooming": -215,
+                "xfer from savings": [215, 350],
+                "chase business overdraft": -350,
+                "credit cards": [-100, -25]
             }
         },
         {
             "date": "3-18-16",
             "estimated": {
-                "pay": 1522.72,
-                "rich dad education": -500,
-                "credit cards": -300,
+                "pay": 1217.60,
+                "ford": -600,
                 "probation": -120,
-                "spending": -150,
+                "spending": -100,
                 "gas": -75
             }
         },
@@ -152,12 +166,11 @@
             "date": "3-25-16",
             "estimated": {
                 "pay": 1522.72,
-                "spending": -150,
+                "rich dad education": -500,
                 "gas": -75,
                 "chase business overdraft": -253.64,
                 "toll bill - CTRMA": -66.34,
                 "toll bill - MSB": -63.16,
-                "toll bill": -350,
                 "chase ink credit card": -229
             }
         },
@@ -167,7 +180,7 @@
                 "pay": 1522.72,
                 "rent": -1166
             }
-        }        
+        }
     ],
     "upcoming": [
         {"name": "dentist", "amount": 300},
@@ -178,6 +191,7 @@
         {"name": "toll bill - MSB", "amount": 63.16},
         {"name": "toll bill", "amount": 350},
         {"name": "chase ink credit card", "amount": 229},
-        {"name": "probation", "amount": 120}
+        {"name": "probation", "amount": 120},
+        {"name": "at&t uverse", "amount": 330}
     ]
 }

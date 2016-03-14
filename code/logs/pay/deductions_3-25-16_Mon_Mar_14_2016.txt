@@ -1,0 +1,17 @@
+Date: 3-25-16 | Pay: $1522.72 | ESTIMATED
+
+Name                           Amount        Balance
+-----------------------------------------------------
+chase business overdraft       $-253.64      $1269.08
+chase ink credit card          $-229         $1040.08
+gas                            $-75          $965.08
+savings                        $-304.54      $660.54
+spending                       $-150         $510.54
+toll bill                      $-350         $160.54
+toll bill - CTRMA              $-66.34       $94.2
+toll bill - MSB                $-63.16       $31.04
+
+Total left: $31.04
+
+============================================================
+

@@ -6,6 +6,8 @@ from operator import itemgetter
 from mixins import IO
 
 double_line = '\n' + '=' * 60 + '\n\n'
+_sum = lambda v: round(sum(v) if isinstance(v, list) else v, 2)
+avg = lambda v, c: round(_sum(v) / c, 2)
 
 
 class Deductions(IO):
@@ -114,10 +116,9 @@ class Upcoming(IO):
 
 
 class Reports(object):
+
     def __repr__(self):
-        line_item_format = '{item}{total}{average}{percentage}'
-        _sum = lambda v: round(sum(v) if isinstance(v, list) else v, 2)
-        avg = lambda v, c: round(_sum(v) / c, 2)
+        line_item_format = '{item}{total}{average}{percentage}'        
         perc = lambda v, c, pay: round((avg(v, c) / pay) * 100, 1)
         line_items = set()
         items = set()
@@ -167,7 +168,7 @@ class Reports(object):
         result = [header]
         for row in rows:
             result.append(line_item_format.format(**row))
-        return 'REPORTS:\n\n' + '\n'.join(result) + self._balance()
+        return 'REPORTS:\n\n' + '\n'.join(result) + self.balance
 
     def __iter__(self):
         return (x['actual'] for x in Deductions().data if 'actual' in x)
@@ -175,12 +176,24 @@ class Reports(object):
     def __len__(self):
         return sum(1 for x in self)
 
-    def _balance(self):
+    # @property
+    # def real_savings(self):        
+    #     output = '\nReal savings: '
+    #     self._real_savings = 0.0
+    #     for actual in self:
+    #         actual['savings'] = round(actual['pay'] * -1 * .15, 2)
+    #         output += '\n' + avg(str(actual['savings']) - avg(_sum(actual['xfer from savings'])) if actual.get('xfer from savings') else 0.0)
+    #     output += '\n'
+    #     output += '${}'.format(self._real_savings)
+    #     return '\n' + output + '\n'
+
+    @property
+    def balance(self):
         output = '\nRunning balance: '
-        balance = 0.0
+        self._balance = 0.0
         for t in self.totals:
-            balance += self.totals[t]
-        output += '${}'.format(balance)
+            self._balance += self.totals[t]
+        output += '${}'.format(self._balance)
         return '\n' + output + '\n'
 
 
@@ -193,13 +206,12 @@ class Main(object):
         '-u': 'upcoming',
         None: 'all'
     }
+    for i in range(-1000, 1000):
+        arg_map.update({str(i): 'single'})
 
     @classmethod
     def run(cls):
-        try:
-            getattr(cls, cls.arg_map[cls.arg1])()
-        except:
-            cls.all()
+        getattr(cls, cls.arg_map[cls.arg1])()
 
     @classmethod
     def all(cls):
@@ -211,7 +223,8 @@ class Main(object):
 
     @classmethod
     def single(cls):
-        arg2 = int(cls.arg2 or cls.arg1 or -1)
+        arg2 = (int(cls.arg2) if cls.arg2 else int(cls.arg1) if
+                cls.arg1.isdigit() else -1)
         d = Deductions(arg2)
         print repr(d)
         d.write('logs/pay/deductions_{}.txt'.format(d.date), True)

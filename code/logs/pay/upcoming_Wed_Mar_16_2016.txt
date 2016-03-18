@@ -1,0 +1,14 @@
+Upcoming:
+
+	Unemployment: $1000
+	La Ticket 1: $900
+	La Ticket 2: $900
+	Toll Bill: $350
+	At&T Uverse: $330
+	Dentist: $300
+	Chase Ink Credit Card: $229
+	Probation: $120
+	Toll Bill - Ctrma: $66.34
+	Toll Bill - Msb: $63.16
+
+Total: $4258.5

@@ -83,10 +83,10 @@ class Upcoming(IO):
         self.data = json.loads(self.read('../data/deductions.json'))['upcoming']
 
     def __repr__(self):
-        output = 'Upcoming:\n\n'
+        output = '\nUpcoming:\n\n'
         for item in self:
             output += '\t{}: ${}\n'.format(item['name'].title(), item['amount'])
-        output += '\nTotal: ${}'.format(self.sum)
+        output += '\nTotal: ${}\n'.format(self.sum)
         return output
 
     def __iter__(self):
@@ -118,7 +118,7 @@ class Upcoming(IO):
 class Reports(object):
 
     def __repr__(self):
-        line_item_format = '{item}{total}{average}{percentage}'        
+        line_item_format = '{item}{total}{average}{percentage}'
         perc = lambda v, c, pay: round((avg(v, c) / pay) * 100, 1)
         line_items = set()
         items = set()
@@ -168,7 +168,8 @@ class Reports(object):
         result = [header]
         for row in rows:
             result.append(line_item_format.format(**row))
-        return 'REPORTS:\n\n' + '\n'.join(result) + self.balance
+        return 'REPORTS:\n\n' + '\n'.join(result) + self.total_income + \
+            self.total_expenses + self.balance
 
     def __iter__(self):
         return (x['actual'] for x in Deductions().data if 'actual' in x)
@@ -176,25 +177,31 @@ class Reports(object):
     def __len__(self):
         return sum(1 for x in self)
 
-    # @property
-    # def real_savings(self):        
-    #     output = '\nReal savings: '
-    #     self._real_savings = 0.0
-    #     for actual in self:
-    #         actual['savings'] = round(actual['pay'] * -1 * .15, 2)
-    #         output += '\n' + avg(str(actual['savings']) - avg(_sum(actual['xfer from savings'])) if actual.get('xfer from savings') else 0.0)
-    #     output += '\n'
-    #     output += '${}'.format(self._real_savings)
-    #     return '\n' + output + '\n'
+    @property
+    def total_income(self):
+        output = '\n\nTotal Income: '
+        output += '${}'.format(
+            str(sum(v for k, v in self.totals.items() if k in
+                ('pay', 'starting balance', 'xfer from savings'))))
+        return output
+
+    @property
+    def total_expenses(self):
+        output = ' | Total Expenses: '
+        output += '${}'.format(
+            str(sum(v for k, v in self.totals.items() if k not in
+                ('pay', 'starting balance', 'xfer from savings'))))
+        return output
 
     @property
     def balance(self):
-        output = '\nRunning balance: '
+        output = ' | Balance: '
         self._balance = 0.0
         for t in self.totals:
             self._balance += self.totals[t]
         output += '${}'.format(self._balance)
-        return '\n' + output + '\n'
+        return output + '\n'
+
 
 
 class Main(object):

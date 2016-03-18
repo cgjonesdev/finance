@@ -184,7 +184,6 @@
     ],
     "upcoming": [
         {"name": "dentist", "amount": 300},
-        {"name": "chase business overdraft", "amount": 253.64},
         {"name": "la ticket 1", "amount": 900},
         {"name": "la ticket 2", "amount": 900},
         {"name": "toll bill - CTRMA", "amount": 66.34},
@@ -192,6 +191,7 @@
         {"name": "toll bill", "amount": 350},
         {"name": "chase ink credit card", "amount": 229},
         {"name": "probation", "amount": 120},
-        {"name": "at&t uverse", "amount": 330}
+        {"name": "at&t uverse", "amount": 330},
+        {"name": "unemployment", "amount": 1000}
     ]
 }

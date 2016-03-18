@@ -165,7 +165,10 @@
             "actual": {
                 "starting balance": [191.24, 52.98],
                 "pay": 1236.56,
-                "ford": -600
+                "ford": -600,
+                "food": [-9.42],
+                "snacks": [-3.99],
+                "credit cards": [-30, -37]
             }
         },
         {
@@ -174,10 +177,9 @@
                 "pay": 1522.72,
                 "rich dad education": -500,
                 "gas": -75,
-                "chase business overdraft": -253.64,
                 "toll bill - CTRMA": -66.34,
                 "toll bill - MSB": -63.16,
-                "chase ink credit card": -229
+                "credit cards": -500
             }
         },
         {

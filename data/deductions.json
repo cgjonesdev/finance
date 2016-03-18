@@ -149,17 +149,23 @@
                 "grooming": -215,
                 "xfer from savings": [215, 350],
                 "chase business overdraft": -350,
-                "credit cards": [-100, -25]
+                "credit cards": [-100, -25],
+                "old debt": -75
             }
         },
         {
             "date": "3-18-16",
             "estimated": {
-                "pay": 1217.60,
+                "pay": 1236.56,
                 "ford": -600,
                 "probation": -120,
                 "spending": -100,
                 "gas": -75
+            },
+            "actual": {
+                "starting balance": [191.24, 52.98],
+                "pay": 1236.56,
+                "ford": -600
             }
         },
         {
@@ -192,6 +198,7 @@
         {"name": "chase ink credit card", "amount": 229},
         {"name": "probation", "amount": 120},
         {"name": "at&t uverse", "amount": 330},
-        {"name": "unemployment", "amount": 1000}
+        {"name": "unemployment", "amount": 1000},
+        {"name": "rich dad education", "amount": 2600}
     ]
 }

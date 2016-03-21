@@ -166,9 +166,15 @@
                 "starting balance": [191.24, 52.98],
                 "pay": 1236.56,
                 "ford": -600,
-                "food": [-9.42],
-                "snacks": [-3.99],
-                "credit cards": [-30, -37]
+                "food": [-9.42, -11.63, -26.82, -37.15, -2.15, -1.29, -10.5],
+                "snacks": [-3.99, -4.49, -4.32],
+                "credit cards": [-30, -37],
+                "groceries": [-123.78, -50.68, -13.87, -27.95],
+                "gas": [-17.46, -23.88],
+                "carwash": -10,
+                "costco": [-52.33, -76.38, -17.31],
+                "xfer from savings": 179.04,
+                "fedloan": -179.04
             }
         },
         {
@@ -201,6 +207,7 @@
         {"name": "probation", "amount": 120},
         {"name": "at&t uverse", "amount": 330},
         {"name": "unemployment", "amount": 1000},
-        {"name": "rich dad education", "amount": 2600}
+        {"name": "rich dad education", "amount": 2600},
+        {"name": "2015 taxes", "amount": 4000}
     ]
 }

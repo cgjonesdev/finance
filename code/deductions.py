@@ -224,7 +224,7 @@ class Main(object):
     def all(cls):
         output = ''.join(list(Deductions())) + repr(Reports())
         print output
-        with open('logs/pay/deductions_all_{}.txt'.format(
+        with open('logs/pay/deductions_all_{}.log'.format(
             dt.now().strftime('%a_%b_%d_%Y')), 'w') as out:
             out.write(output)
 
@@ -234,13 +234,13 @@ class Main(object):
                 cls.arg1.isdigit() else -1)
         d = Deductions(arg2)
         print repr(d)
-        d.write('logs/pay/deductions_{}.txt'.format(d.date), True)
+        d.write('logs/pay/deductions_{}.log'.format(d.date), True)
 
     @classmethod
     def upcoming(cls):
         upcoming = Upcoming()
         print repr(upcoming)
-        upcoming.write('logs/pay/upcoming.txt', True)
+        upcoming.write('logs/pay/upcoming.log', True)
 
 
 if __name__ == '__main__':

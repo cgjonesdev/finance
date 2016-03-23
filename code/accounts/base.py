@@ -1,7 +1,7 @@
+import json
 from pprint import pprint, pformat
 from datetime import datetime
 from code.base import BaseMany, BaseSingleton
-from code.mixins import Magic
 
 
 class Accounts(BaseMany):
@@ -9,21 +9,22 @@ class Accounts(BaseMany):
     def __init__(self):
         self.filename = '../../data/accounts.json'
         self.read()
-        self.__dict__.update(self.data)
+        self.__dict__.update(json.loads(self.text))
         for i, item in enumerate(self.items):
             self.items[i] = AccountSingleton(item)
-            if 'contact' in item:
-                self.items[i].contact = Contact(item['contact'])
+
+    def __contains__(self, item):
+        return item in self.__dict__
+
+    def __len__(self):
+        return sum(1 for x in self)
+
+    def __repr__(self):
+        return '\n'.join([repr(a) for a in self])
 
 
 class AccountSingleton(BaseSingleton):
     pass
-
-
-class Contact(Magic):
-
-    def __init__(self, contact_dict):
-        self.__dict__.update(contact_dict)
 
 
 if __name__ == '__main__':

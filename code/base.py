@@ -2,13 +2,12 @@ import sys
 from mixins import *
 
 
-class Base(Magic, IO):
+class Base(IO):
     update_attrs = []
 
     def __init__(self):
-        self.filename = '../../data/{}.json'.format(str(self).lower().split('accounts')) if \
-         'Accounts' in str(self) else '../data/{}.json'.format(str(self)\
-                .lower())
+        self.filename = '../../data/{}.json'.format(str(self).lower()) if \
+            str(self) == 'Accounts' else '../data/{}.json'.format(str(self).lower())
         self.read()
         self.__dict__.update(self.data)
 
@@ -53,6 +52,12 @@ class BaseSingleton(Base, Add, Subtract, Multiply, Divide):
 
     def __str__(self):
         return '{}: {} | {}'.format(self.__class__.__name__, self.name, self.id)
+
+    def __repr__(self):
+        output = str(self) + '\n'
+        for k, v in self.__dict__.items():
+            output += '\t{}: {}\n'.format(k, v)
+        return output
 
 
 if __name__ == '__main__':

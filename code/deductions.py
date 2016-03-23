@@ -77,6 +77,37 @@ class Deductions(IO):
         return output
 
 
+class HTMLTable(Deductions):
+
+    def __repr__(self):
+        output = '<table>\n\t'
+        self.total = self.data[self.index]['actual']['pay']
+        if self.index in range(3):
+            self.data[self.index]['actual']['savings'] = -1 * round(self.total * .1, 2)
+        elif self.index == 3:
+            self.data[self.index]['actual']['savings'] = -1 * round(self.total * .15, 2)
+        else:
+            self.data[self.index]['actual']['savings'] = -1 * round(self.total * .2, 2)
+        self.max_len_names = max([len(k) for k in self.data[self.index]
+                                 ['actual'].keys()]) + 7
+
+        output += '<th>\n\t\t<tr>{}</tr>\n\t\t<tr>{}</tr>\n\t\t<tr>{}</tr>\n\t</th>\n\t'.format(
+            'Name', 'Amount', 'Balance')
+        for k, v in sorted(self.data[self.index]['actual'].items()):
+            output += '<tr>\n\t'
+            v = sum(v) if isinstance(v, list) else v
+            if k not in ('pay', 'date'):
+                output += '\t<td>{}</td>\n\t\t<td>${}</td>\n\t\t<td>${}</td>'.format(
+                    k,
+                    str(v),
+                    str(round(self.total, 2) + v))
+                self.total += v
+            output += '\n\t</tr>\n\t'
+        self.total = round(self.total, 2)
+        output += '\n</table>'
+        return output                                 
+
+
 class Upcoming(IO):
 
     def __init__(self):

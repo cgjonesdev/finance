@@ -213,7 +213,7 @@
                 "rent": -1166
             },
             "actual": {
-                "starting balance": [11.09, 168.17],
+                "starting balance": [168.17, 86.48],
                 "pay": 1522.71,
                 "rent": -1161.99,
                 "xfer from savings": [287.78, 211.72, 100],
@@ -226,6 +226,26 @@
                 "household": -64.37,
                 "groceries": -78.23,
                 "itunes": -1.07
+            }
+        },
+        {
+            "date": "4-8-16",
+            "estimated": {},
+            "actual": {}
+        },
+        {
+            "date": "4-15-16",
+            "estimated": {
+                "starting balance": [168.17, 258.30],
+                "pay": 1522.71,
+                "ford": -600
+            },
+            "actual": {
+                "starting balance": [168.17, 258.30],
+                "pay": 1522.72,
+                "ford": -600,
+                "probation": -182,
+                "gas": []
             }
         }
     ],

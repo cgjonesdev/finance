@@ -202,7 +202,7 @@
                 "groceries": [-49.17],
                 "sirius xm": -22.77,
                 "business": -26.82,
-                "dry cleaners": -73.11
+                "dry cleaning": -73.11
             }
         },
         {
@@ -216,7 +216,7 @@
                 "starting balance": [168.17, 86.48],
                 "pay": 1522.71,
                 "rent": -1161.99,
-                "xfer from savings": [287.78, 211.72, 100],
+                "xfer from savings": [287.78, 211.72, 100, 52.35],
                 "food": [-15.16, -19.34, -5.15, -7.07, -15.71, -9, -60.88, -5.28, -6, -4.06, -11.2, -10],
                 "snacks": [-1.83, -4.59, -7.66, -3.88, -4.28, -3.8, -8.5, -1.35, -5.14, -3.52],
                 "gas": [-21.71, -23.4],
@@ -225,13 +225,29 @@
                 "atm cash": -63.95,
                 "household": -64.37,
                 "groceries": -78.23,
-                "itunes": -1.07
+                "itunes": -1.07,
+                "savings withdrawal limit fee": [-5, -5, -5, -5]
             }
         },
         {
             "date": "4-8-16",
-            "estimated": {},
-            "actual": {}
+            "estimated": {
+                "starting balance": [],
+                "pay": 1522.71
+            },
+            "actual": {
+                "starting balance": [17.61],
+                "pay": 1522.71,
+                "gas": [-14.88, -30.72],
+                "food": [-12, -2.45, -6.04, -27.46, -3.45, -7.52, -9.5],
+                "snacks": [-1.5, -4.32, -1.5, 10.50, -5.67, -2.71, -3.88],
+                "groceries": [-75.23],
+                "gym membership": -27.05,
+                "chicago airbnb": -501,
+                "itunes": -2.15,
+                "business": -7.57,
+                "savings interest payment": 0.01
+            }
         },
         {
             "date": "4-15-16",
@@ -244,8 +260,15 @@
                 "starting balance": [168.17, 258.30],
                 "pay": 1522.72,
                 "ford": -600,
-                "probation": -182,
-                "gas": []
+                "probation": [-182, -5],
+                "gas": [-14.78, -27.89],
+                "food": [-8.65, -9.72, -12.13, -5.14, -7.08, -8.51, 9.5, -7.67, -9.74, -15.71, -11.5],
+                "snacks": [-2.76, -4.93, -24.49, -2.44, -2.6, -1.29, -2.8, -3.01, -5.41],
+                "business": [-20.57],
+                "groceries": [-31.39, -6.22, -145.89, -30.75],
+                "clothing": -477.24,
+                "dry cleaning": -82.03,
+                "xfer from savings": [125, 400]
             }
         }
     ],

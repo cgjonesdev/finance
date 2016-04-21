@@ -55,9 +55,8 @@ class Deductions(IO):
             self.data[self.index][key]['savings'] = -1 * round(self.total * .2, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
-        # if key == 'estimated':
-        #     self.data[self.index][key]['misc'] = -1 * round(
-        #         self.total * (100.0 / (self.data[self.index][key]['pay'] or 1.0)), 2)
+        if self.index > 10:
+            self.data[self.index][key]['upcoming_payments'] = -Upcoming().payments
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  +\
             'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'
@@ -105,7 +104,7 @@ class HTMLTable(Deductions):
             output += '\n\t</tr>\n\t'
         self.total = round(self.total, 2)
         output += '\n</table>'
-        return output                                 
+        return output
 
 
 class Upcoming(IO):
@@ -144,6 +143,14 @@ class Upcoming(IO):
     @property
     def sum(self):
         return sum(list(self.amounts))
+
+    @property
+    def payments(self):
+        self._payments = 0.0
+        for item in self:
+            self._payments += item['amount'] / 26.0
+        return round(self._payments, 2)
+
 
 
 class Reports(object):

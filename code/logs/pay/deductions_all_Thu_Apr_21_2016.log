@@ -373,20 +373,23 @@ Date: 4-15-16 | Pay: $1522.72 | ACTUAL
 
 Name                    Amount        Balance
 ----------------------------------------------
-business                $-20.57       $1502.15
-clothing                $-477.24      $1024.91
-dry cleaning            $-82.03       $942.88
-food                    $-86.35       $856.53
-ford                    $-600         $256.53
-gas                     $-42.67       $213.86
-groceries               $-214.25      $-0.39
-probation               $-187         $-187.39
-savings                 $-304.54      $-491.93
-snacks                  $-49.73       $-541.66
-starting balance        $426.47       $-115.19
-xfer from savings       $525          $409.81
+asset acceptance        $-75          $1447.72
+business                $-20.57       $1427.15
+clothing                $-477.24      $949.91
+credit cards            $-349         $600.91
+dry cleaning            $-82.03       $518.88
+food                    $-86.35       $432.53
+ford                    $-600         $-167.47
+gas                     $-42.67       $-210.14
+groceries               $-214.25      $-424.39
+nsf fee                 $-34          $-458.39
+probation               $-187         $-645.39
+savings                 $-304.54      $-949.93
+snacks                  $-49.73       $-999.66
+starting balance        $426.47       $-573.19
+xfer from savings       $525          $-48.19
 
-Total left: $409.81
+Total left: $-48.19
 
 ============================================================
 
@@ -403,9 +406,9 @@ travel                           $-371.32           $-371.32           -24.7
 chase overdraft                  $-322.18           $-322.18           -22.1
 chicago airbnb                   $-604.0            $-302.0            -20.4
 chase business overdraft         $-582.15           $-291.07           -19.4
+credit cards                     $-928.31           $-232.08           -15.6
 savings                          $-2450.66          $-222.79           -15.0
 grooming                         $-215.0            $-215.0            -14.3
-credit cards                     $-579.31           $-193.1            -12.9
 probation                        $-187.0            $-187.0            -12.6
 costco                           $-621.22           $-155.31           -10.5
 fedloan                          $-268.56           $-134.28           -9.2
@@ -417,7 +420,7 @@ premier bank card                $-97.0             $-97.0             -6.6
 groceries                        $-698.87           $-77.65            -5.2
 dry cleaning                     $-155.14           $-77.57            -5.2
 chase ink                        $-76.0             $-76.0             -5.2
-asset acceptance                 $-75.0             $-75.0             -5.1
+asset acceptance                 $-150.0            $-75.0             -5.1
 old debt                         $-75.0             $-75.0             -5.0
 cps energy                       $-64.47            $-64.47            -4.4
 atm cash                         $-63.95            $-63.95            -4.3
@@ -426,6 +429,7 @@ gas                              $-548.43           $-54.84            -3.7
 goodwill                         $-45.35            $-45.35            -3.1
 snacks                           $-422.98           $-38.45            -2.6
 household                        $-113.76           $-37.92            -2.6
+nsf fee                          $-34.0             $-34.0             -2.3
 creditrepair                     $-32.31            $-32.31            -2.2
 gym membership                   $-81.15            $-27.05            -1.8
 entertainment                    $-66.87            $-22.29            -1.5
@@ -444,4 +448,4 @@ starting balance                 $1306.3            $145.14            9.8
 xfer from savings                $2447.34           $349.62            23.6
 pay                              $16337.64          $1485.24           100.0
 
-Total Income: $20091.28 | Total Expenses: $-18010.71 | Balance: $2080.57
+Total Income: $20091.28 | Total Expenses: $-18468.71 | Balance: $1622.57

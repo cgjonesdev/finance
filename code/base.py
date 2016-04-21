@@ -8,7 +8,7 @@ class Base(IO):
     def __init__(self):
         self.filename = '../../data/{}.json'.format(str(self).lower()) if \
             str(self) == 'Accounts' else '../data/{}.json'.format(str(self).lower())
-        self.read()
+        self.read(self.filename)
         self.__dict__.update(self.data)
 
 

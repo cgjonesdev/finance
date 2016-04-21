@@ -268,7 +268,10 @@
                 "groceries": [-31.39, -6.22, -145.89, -30.75],
                 "clothing": -477.24,
                 "dry cleaning": -82.03,
-                "xfer from savings": [125, 400]
+                "xfer from savings": [125, 400],
+                "nsf fee": -34,
+                "asset acceptance": -75,
+                "credit cards": -349
             }
         }
     ],

@@ -56,7 +56,7 @@ class Deductions(IO):
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
         if self.index > 10:
-            self.data[self.index][key]['upcoming_payments'] = -Upcoming().payments
+            self.data[self.index][key]['upcoming payments'] = -Upcoming().payments
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  +\
             'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'

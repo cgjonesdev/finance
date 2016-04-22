@@ -273,6 +273,20 @@
                 "asset acceptance": -75,
                 "credit cards": -349
             }
+        },
+        {
+            "date": "4-22-16",
+            "estimated": {
+                "starting balance": [-108.65, 17.84],
+                "pay": 1522.72,
+                "rich dad education": -500
+            },
+            "actual": {
+                "starting balance": [-108.65, 17.84],
+                "pay": 1522.72,
+                "upcoming payments": -418.32,
+                "rich dad education": -500
+            }
         }
     ],
     "upcoming": [

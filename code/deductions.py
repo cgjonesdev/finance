@@ -55,8 +55,8 @@ class Deductions(IO):
             self.data[self.index][key]['savings'] = -1 * round(self.total * .2, 2)
         self.max_len_names = max([len(k) for k in self.data[self.index]
                                  [key].keys()]) + 7
-        if self.index > 10:
-            self.data[self.index][key]['upcoming payments'] = -Upcoming().payments
+        # if self.index > 10:
+        #     self.data[self.index][key]['upcoming payments'] = -Upcoming().payments
         output += 'Name'.ljust(self.max_len_names) + 'Amount'.ljust(14)  +\
             'Balance\n'
         output += '' + '-' * (self.max_len_names + 22) + '\n'
@@ -148,7 +148,7 @@ class Upcoming(IO):
     def payments(self):
         self._payments = 0.0
         for item in self:
-            self._payments += item['amount'] / 26.0
+            self._payments += item['amount'] / 39.0
         return round(self._payments, 2)
 
 
@@ -165,6 +165,7 @@ class Reports(object):
         averages = {}
         percentages = {}
         for actual in self:
+            del actual['starting balance']
             actual['savings'] = round(actual['pay'] * -1 * .15, 2)
             for k, v in actual.items():
                 items.add(k)

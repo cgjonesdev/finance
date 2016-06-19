@@ -1,1 +1,0 @@
-<center><h2>[Home](../index.html) | [Bank](bank/index.html) | [Credit Cards](credit_card/index.html) | [Investments](investment/index.html) | [Payable](payable/index.html) | [Receivable](receivable/index.html)</h2></center>

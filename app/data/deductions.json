@@ -1,0 +1,378 @@
+{
+    "items": [
+        {
+            "date": "2-5-16",
+            "estimated": {
+                "starting balance": 17.38,
+                "pay": 1460.01,
+                "ford": -462.08,
+                "chase overdraft": -322.18,
+                "credit cards": -97.0,
+                "chase ink": -76.00,
+                "gas": -75.00
+            },
+            "actual": {
+                "starting balance": 17.38,
+                "chase overdraft": -322.18,
+                "pay": 1460.01,
+                "ford": -462.08,
+                "gas": [-24.53, -15.81, -19.70, -22.77],
+                "car supplies": -14.05,
+                "snacks": [-3.83, -2.15, -4.20, -2.15, -2.71, -2],
+                "chase ink": -76.00,
+                "post office": -13.78,
+                "premier bank card": -97.0,
+                "costco": [-141.08, -125.59],
+                "itunes": -1.07,
+                "groceries": [-2.51, -1.44],
+                "food": [-2.79, -8, -5.57, -5.15, -10.5, -7.25, -9.53, -6.8, -39.23],
+                "gym membership": -27.05,
+                "xfer from savings": [80, 67.11]
+            }
+        },
+        {
+            "date": "2-12-16",
+            "estimated": {
+                "starting balance": 29.74,
+                "pay": 1460.01,
+                "rich dad education": -500.0,
+                "chase business overdraft": -232.15,
+                "at&t": -124.68,
+                "cps energy": -64.47,
+                "gas": -75,
+                "fedloan": -89.52,
+                "asset acceptance": -75
+            },
+            "actual": {
+                "starting balance": 29.74,
+                "pay": 1460.01,
+                "chase business overdraft": -232.15,
+                "rich dad education": -500,
+                "at&t": -124.68,
+                "food": [-11.89, -10.83, -7.42, -10.7, -11.88, -64.13, -13.88, -9.42, -12.67],
+                "gas": [-12.68, -14.44, -18.26],
+                "snacks": [-4.31, -6.35,  -3.29, -2.15, -1.5, -2.11, -2.10, -8.93, -5.36],
+                "tools": -17.28,
+                "business": -7.57,
+                "household": -4,
+                "cps energy": -64.47,
+                "groceries": -15.12,
+                "fedloan": -89.52,
+                "asset acceptance": -75,
+                "xfer from savings": 29.34
+            }
+        },
+        {
+            "date": "2-19-16",
+            "estimated": {
+                "pay": 1522.04,
+                "chase ink": -116.00,
+                "credit cards": -400,
+                "ford": -600,
+                "creditrepair.com": -33
+            },
+            "actual": {
+                "pay": 1522.04,
+                "food": [-7.25, -7.09],
+                "ford": -600,
+                "credit cards": -387.31,
+                "gas": [-19.36],
+                "snacks": [-27.73, -7.31],
+                "cash": -100,
+                "business": -60
+            }
+        },
+        {
+            "date": "2-26-16",
+            "estimated": {
+                "pay": 1522.72,
+                "rent": -1133
+            },
+            "actual": {
+                "pay": 1522.72,
+                "liquor": -57.34,
+                "food": [-25.96, -14.78, -18.48, -10, -4.24, -4.06, -7.09, -15.71],
+                "household": -45.39,
+                "sams": -147.40,
+                "snacks": [-5.36, -5.16, -7.09, -1.5, -2.8, -1.83, -1.5, -4.32, -2.15],
+                "business": [-26.82, -1.99, -4.99],
+                "gas": [-21.77, -22.12],
+                "sirius xm": -22.77,
+                "chicago flight": -567.20,
+                "chicago airbnb": -103,
+                "creditrepair": -32.31,
+                "groceries": [-8.13, -6.01]
+            }
+        },
+        {
+            "date": "3-4-16",
+            "estimated": {
+                "pay": 1522.72,
+                "toll bill": [-83.84, -37.41]
+            },
+            "actual": {
+                "starting balance": 244.98,
+                "pay": 1522.72,
+                "rent": -1166.36,
+                "food": [-7, -11.79, -6.77, -8, -41.64, -7.87, -29.84, -5.89, -10.23, -14.8, -8.66],
+                "snacks": [-1.83, -3.95, -3.24, -10.18, -9.09, -1.29, -1.5, -4.32, -2.15, -4.33, -1.29, -4.06, -6.8],
+                "groceries": [-2.62, -29.88],
+                "gas": [-21.05, -19.24, -15.54, -18.4],
+                "car wash": -13,
+                "xfer from savings": [200, 100],
+                "costco": -184.07,
+                "sams": -52.85,
+                "entertainment": [-9.50],
+                "landmark": [-3.33]
+            }
+        },
+        {
+            "date": "3-11-16",
+            "estimated": {
+                "pay": 1522.72,
+                "at&t": -128.73,
+                "travel": -200,
+                "credit cards": -200,
+                "ford": -600,
+                "gas": -50
+            },
+            "actual": {
+                "starting balance": 1.79,
+                "pay": 1522.72,
+                "at&t": -128.73,
+                "food": [-8, -5.62, -19.51, -27.90, -19.36, -10.05, -4.35, -5.9, -12.69, -18.95, -9.69],
+                "snacks": [-6.8, -2.1, -58.43, -1.25, -1.25, -1.25, -5.07, -6.47, -4.45, -1.29, -3.01],
+                "gym membership": -27.05,
+                "drinks": -16,
+                "business": -7.57,
+                "travel": [-6.75, -8, -25, -31.57, -300],
+                "grooming": -215,
+                "xfer from savings": [215, 350],
+                "chase business overdraft": -350,
+                "credit cards": [-100, -25],
+                "old debt": -75
+            }
+        },
+        {
+            "date": "3-18-16",
+            "estimated": {
+                "pay": 1236.56,
+                "ford": -600,
+                "probation": -120,
+                "spending": -100,
+                "gas": -75
+            },
+            "actual": {
+                "starting balance": [191.24, 52.98],
+                "pay": 1236.56,
+                "ford": -600,
+                "food": [-9.42, -11.63, -26.82, -37.15, -2.15, -1.29, -10.5, -15.52, -16.02, -11.75, -7.83, -6.5, -6.58],
+                "snacks": [-3.99, -4.49, -4.32, -1.29, -4.32, -2.15, -1.29],
+                "credit cards": [-30, -37],
+                "groceries": [-123.78, -50.68, -13.87, -27.95],
+                "gas": [-17.46, -23.88, -28.98],
+                "car wash": -10,
+                "costco": [-52.33, -76.38, -17.31],
+                "xfer from savings": [179.04, 40, 10],
+                "fedloan": -179.04,
+                "entertainment": -9.74,
+                "business": -9.95
+            }
+        },
+        {
+            "date": "3-25-16",
+            "estimated": {
+                "pay": 1522.72,
+                "rich dad education": -500,
+                "gas": -75,
+                "probation": -120,
+                "credit cards": -500
+            },
+            "actual": {
+                "starting balance": 69.46,
+                "pay": 1522.72,
+                "entertainment": -47.63,
+                "rich dad education": -500,
+                "food": [-7.58, -8.56, -21.53, -8.67, -10.79, -2.45, -21.49, -14.18, -7, -5.15, -19.34, -15.16, -7.07, -15.71],
+                "snacks": [-5.16, -1.5, -2.59, -1.83, -1, -2.44, -7.66, -1.83, -4.59, -3.88],
+                "drinks": [-7],
+                "car wash": -13,
+                "gas": [-23.92, -30.19, -24.95],
+                "goodwill": -45.35,
+                "groceries": [-49.17],
+                "sirius xm": -22.77,
+                "business": -26.82,
+                "dry cleaning": -73.11
+            }
+        },
+        {
+            "date": "4-1-16",
+            "estimated": {
+                "starting balance": [168.17, 86.48],
+                "pay": 1522.72,
+                "rent": -1166
+            },
+            "actual": {
+                "starting balance": [168.17, 86.48],
+                "pay": 1522.71,
+                "rent": -1161.99,
+                "xfer from savings": [287.78, 211.72, 100, 52.35],
+                "food": [-15.16, -19.34, -5.15, -7.07, -15.71, -9, -60.88, -5.28, -6, -4.06, -11.2, -10],
+                "snacks": [-1.83, -4.59, -7.66, -3.88, -4.28, -3.8, -8.5, -1.35, -5.14, -3.52],
+                "gas": [-21.71, -23.4],
+                "costco": [-24.46],
+                "chicago flight": -287.78,
+                "atm cash": -63.95,
+                "household": -64.37,
+                "groceries": -78.23,
+                "itunes": -1.07,
+                "savings withdrawal limit fee": [-5, -5, -5, -5]
+            }
+        },
+        {
+            "date": "4-8-16",
+            "estimated": {
+                "starting balance": [],
+                "pay": 1522.71
+            },
+            "actual": {
+                "starting balance": [17.61],
+                "pay": 1522.71,
+                "gas": [-14.88, -30.72],
+                "food": [-12, -2.45, -6.04, -27.46, -3.45, -7.52, -9.5],
+                "snacks": [-1.5, -4.32, -1.5, 10.50, -5.67, -2.71, -3.88],
+                "groceries": [-75.23],
+                "gym membership": -27.05,
+                "chicago airbnb": -501,
+                "itunes": -2.15,
+                "business": -7.57,
+                "savings interest payment": 0.01
+            }
+        },
+        {
+            "date": "4-15-16",
+            "estimated": {
+                "starting balance": [168.17, 258.30],
+                "pay": 1522.71,
+                "ford": -600
+            },
+            "actual": {
+                "starting balance": [168.17, 258.30],
+                "pay": 1522.72,
+                "ford": -600,
+                "probation": [-182, -5],
+                "gas": [-14.78, -27.89],
+                "food": [-8.65, -9.72, -12.13, -5.14, -7.08, -8.51, 9.5, -7.67, -9.74, -15.71, -11.5],
+                "snacks": [-2.76, -4.93, -24.49, -2.44, -2.6, -1.29, -2.8, -3.01, -5.41],
+                "business": [-20.57],
+                "groceries": [-31.39, -6.22, -145.89, -30.75],
+                "clothing": -477.24,
+                "dry cleaning": -82.03,
+                "xfer from savings": [125, 400],
+                "nsf fee": -34,
+                "asset acceptance": -75,
+                "credit cards": -349
+            }
+        },
+        {
+            "date": "4-22-16",
+            "estimated": {
+                "starting balance": [-108.65, 17.84],
+                "pay": 1522.72,
+                "rich dad education": -500
+            },
+            "actual": {
+                "starting balance": [-108.65, 17.84],
+                "pay": 1522.72,
+                "upcoming payments": -418.32,
+                "rich dad education": -500,
+                "snacks": [-4.51, -4.32, -4, -2.10, -4.75, -3, -4, -2.59, -2.10, -3.09, -2.16],
+                "food": [-8, -14.79, -5.72, -26.72, -20.95, -10.5, -9.53, -9.19, -9.27, -5.36],
+                "gas": [-29.29, -23.24, -22.04],
+                "drinks": [-12.83],
+                "business": [-10.81, -9.95],
+                "groceries": [-202.75, -17.87],
+                "car wash": -13,
+                "household": -9.74,
+                "amazon prime": -107.17,
+                "entertainment": -11.85,
+                "sirius xm": -22.77
+            }
+        },
+        {
+            "date": "4-29-16",
+            "estimated": {
+                "pay": 1522.72,
+                "starting balance": [325.27, 164.33]
+            },
+            "actual": {
+                "starting balance": [325.27, 164.33],
+                "pay": 1522.72,
+                "travel": [-25, -20, 200, -6, -12.75, -25, -39.99, -10],
+                "food": [-7.84, -13.53, -7.36, -23.63, -20.94, -23.19, -23.06, -25.80, -6.91, -16.27],
+                "drinks": [-5.58],
+                "snacks": [-3.99, -3.73, -1, -1.5, -4.63, -1.5, -1.5, -1.5, -2.71],
+                "gas": [-25.44],
+                "clothing": -102.04,
+                "business": -26.82,
+                "voxer": -32.46,
+                "groceries": [-40.08, -57.8],
+                "landmark": -0.96,
+                "cps energy": [-2.35, -211.27],
+                "atm cash": [-40, -1.50],
+                "credit cards": [-37.61, -39.12, -53.34, -130.24]
+            }
+        },
+                {
+            "date": "5-6-16",
+            "estimated": {
+                "pay": 1053.32
+            },
+            "actual": {
+                "pay": 0.0
+            }
+        },
+        {
+            "date": "5-13-16",
+            "estimated": {
+                "pay": 913.62
+            },
+            "actual": {
+                "pay": 943.41,
+                "ford": -600
+            }
+        },
+        {
+            "date": "5-20-16",
+            "estimated": {
+                "pay": 1522.72
+            },
+            "actual": {
+                "pay": 0.0
+            }
+        },
+        {
+            "date": "5-27-16",
+            "estimated": {
+                "pay": 1522.72
+            },
+            "actual": {
+                "pay": 0.0
+            }
+        }
+    ],
+    "upcoming": [
+        {"name": "dentist", "amount": 300},
+        {"name": "la ticket 1", "amount": 900},
+        {"name": "la ticket 2", "amount": 900},
+        {"name": "toll bill - CTRMA", "amount": 66.34},
+        {"name": "toll bill - MSB", "amount": 63.16},
+        {"name": "toll bill - TxTag", "amount": 367.94},
+        {"name": "chase ink credit card", "amount": 229},
+        {"name": "probation", "amount": 120},
+        {"name": "at&t uverse", "amount": 330},
+        {"name": "unemployment", "amount": 1000},
+        {"name": "rich dad education", "amount": 2600},
+        {"name": "2015 taxes", "amount": 4000}
+    ]
+}

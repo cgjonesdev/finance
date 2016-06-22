@@ -1,1 +1,699 @@
-{"Asset Acceptance": {"status": null, "due_date": "12-18-15", "last_payment_date": "11-18-15", "description": "Old Debt", "contact": {"website": {"home": "http://assetacceptance.com/", "payment": "https://collectpay.princetonecom.com/otp/loadFullHostLogin.do?id=550448"}, "phone": "(800) 545-9931", "username": null, "email": "", "address": "Asset Acceptance Capital Corp. P.O. Box 2036 Warren, MI 48090-2036"}, "account_number": "39705939", "amount_due": 75.0, "last_payment_amount": 75.0, "type": "payable", "id": "104bfef5-de76-4098-b497-c65f9c45b2e9", "cycle": "monthly"}, "AT&T Wireless": {"status": null, "due_date": "12-15-15", "last_payment_date": "11-16-15", "description": "Cellular Phone", "contact": {"website": "https://www.att.com/", "phone": "800.331.0500", "username": "7608458310", "email": "", "address": "PO Box 537104 Atlanta, GA 30353"}, "account_number": "7608458310", "amount_due": 129.46, "last_payment_amount": 124.45, "type": "payable", "id": "2a7d5d00-fd86-401d-832f-aa5d72ab7130", "cycle": "monthly"}, "Kforce": {"description": "Employment with Rackspace LTD.", "receivable_account_name": "Chase Personal Checking", "last_amount": 0.0, "amount": 0.0, "receivable_account_id": "915c511a-f2df-441d-b9ad-e76756c174ac", "type": "receivable", "id": "27afec33-52c6-4472-9f06-61c1968d1e92", "cycle": "weekly"}, "Chase Personal Savings": {"description": "", "type": "bank", "subtype": "savings", "contact": {"website": "https://chaseonline.chase.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "291882920", "balance": 0.0, "nickname": "savings", "id": "fd956cd7-d974-44ce-bb8b-511599c78498"}, "Fedloan Servicing": {"status": null, "due_date": "1-1-16", "last_payment_date": "12-1-16", "description": "Student Loans", "contact": {"website": "https://accountaccess.myfedloan.org/accountAccess/index.cfm?returnKey=ONLINE-PAYMENT", "username": "carygjones", "fax": "717-720-1628", "phone": "1-800-699-2908", "address": "Department of Education FedLoan Servicing P.O. Box 530210 Atlanta, GA 30353-0210", "email": "https://accountaccess.myfedloan.org/contactUs/index.cfm?event=sendUsAnEmail"}, "account_number": "7567730641", "amount_due": 89.52, "last_payment_amount": 89.52, "type": "payable", "id": "8bed925a-fc03-44cb-b0eb-0b056a292ddb", "cycle": "monthly"}, "AT&T Uverse": {"status": null, "due_date": "", "last_payment_date": "", "description": "Business Internet", "contact": {"website": "https://www.businessdirect.att.com/portal/smallbusiness/index.jsp", "phone": "1-877-503-2622", "username": "7608458310", "email": "", "address": ""}, "account_number": "137684091", "amount_due": 0.0, "last_payment_amount": 0.0, "type": "payable", "id": "8a2bb83a-0017-4ed5-b34a-40e2ef7eb4ef", "cycle": "monthly"}, "CashNetUSA": {"website": "https://www.cashnetusa.com/login", "status": null, "description": "", "limit": 0.0, "account_number": null, "balance": 0.0, "type": "payable", "id": "44373052-3833-405c-82d5-2eaffbc9b438"}, "CapitalOne Quicksilver": {"status": null, "description": "", "contact": {"website": "https://servicing.capitalone.com/c1/Login.aspx", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "5178059064521793", "balance": 0.0, "type": "payable", "id": "4f020e60-5208-4672-bb80-5149a6948246"}, "Twillio": {"status": null, "due_date": "", "account_balance": -18.93, "type": "payable", "description": "Text Message Sending", "test_auth_token": "df0cc4c203cb035aa2d41e6eb493906b", "auth_token": "9db585a0699ba5c37813474e3defa5fb", "account_sid": "AC02209efd09ecd86a36a01c102ee0abea", "contact": {"website": "https://www.twilio.com/", "username": "cgjonesdev@gmail.com", "fax": "", "phone": "", "address": "", "email": ""}, "id": "a5808feb-6375-488f-92b0-75ae873c7f77", "account_number": "", "amount_due": 0.0, "payable_account_name": "Chase Business Checking", "last_payment_amount": 0.0, "payable_account_id": "925396e8-5473-4570-96cd-27597473c00f", "test_account_sid": "ACf970e6c033a84a10a4d76c4906585746", "last_payment_date": "", "cycle": "monthly"}, "TxTag": {"status": null, "due_date": "1-3-16", "last_payment_date": "", "description": "Texas toll roads", "contact": {"website": "http://www.txtag.org", "username": "", "fax": "", "phone": "1-888-468-9824", "address": "TxTag P.O. Box 650749 Dallas, TX 75265-0749", "email": ""}, "account_number": "308606989", "amount_due": 304.8, "last_payment_amount": 0.0, "type": "payable", "id": "33e3249f-56ba-4791-9798-e4506a975ff9"}, "Texas Workforce Commission": {"status": null, "due_date": "", "last_payment_date": "", "description": "unemployment", "total_amount_due": 1046.0, "contact": {"website": "", "username": "", "fax": "", "phone": "", "address": "Benefit Overpayment Collections Texas Workforce Commission PO Box 149352 Austin, TX 78714-9940", "email": ""}, "account_number": "14-869565-2", "last_payment_amount": 0.0, "monthly_amount_due": 100.0, "type": "payable", "id": "c27f5d4b-1a53-46af-9bf9-3eca5cecbbaa", "cycle": "monthly"}, "MSB": {"status": null, "due_date": "1-3-16", "last_payment_date": "", "description": "Texas toll roads", "bill id": "13498307", "reference #": "EUO565", "contact": {"website": "http://www.paytexastoll.com", "username": "", "fax": "", "phone": "(512) 323-4204", "address": "CTRMA Processing PO Box 16777 Austin, TX 78761-6777", "email": ""}, "account_number": "", "amount_due": 22.41, "last_payment_amount": 0.0, "type": "payable", "id": "66683533-6f6f-420d-aa5b-07e4d954801f"}, "CPS Energy": {"status": null, "due_date": "?", "confirmation_number": "201602161140184400", "last_payment_date": "2-16-16", "description": "Electricity Bill", "contact": {"website": {"home": "https://www.cpsenergy.com/en.html", "service-requests": "https://www.cpsenergy.com/en/customer-support/my-home.html", "payment": "https://www.cpsenergy.com/en/customer-support/manage-my-account.html", "billing": "https://www.cpsenergy.com/en/customer-support/my-home-billing-acct.html"}, "phone": {"main": "(210) 353-2222", "payment": "877-257-1172"}, "username": null, "email": "feedback@cpsenergy.com", "address": "P.O. Box 2678 San Antonio, TX 78289"}, "account_number": "300-3613-361", "amount_due": 64.47, "last_payment_amount": 122.8, "type": "payable", "id": "073250c7-a66e-480b-8c4b-d1fb3ad6225d", "cycle": "monthly"}, "Lynd Properties": {"status": null, "due_date": "1-1-16", "last_payment_date": "11-16-15", "description": "1221 Broadway Rent", "contact": {"website": "https://1221broadway.residentportal.com", "phone": "(210) 354-1221", "username": "cknetaffiliate@gmail.com", "email": "1221@lyndworld.com", "address": "1221 Broadway St, San Antonio, TX 78215"}, "account_number": null, "amount_due": 211.0, "last_payment_amount": 575.0, "type": "payable", "id": "534875ad-bcfa-4479-95d5-6fb0c4d3539e", "cycle": "monthly"}, "Creditrepair.com": {"status": null, "due_date": "1-1-16", "last_payment_date": "12-1-16", "description": "Credit Repair", "contact": {"website": "https://members.creditrepair.com/", "phone": "1-800-232-6499", "username": "cary75", "email": "memberservices@creditrepair.com", "address": ""}, "account_number": "", "amount_due": 91.02, "last_payment_amount": 91.02, "type": "payable", "id": "a6e40a7c-a733-4e51-8907-72a3435f59a4", "cycle": "monthly"}, "Bank of America Personal Savings - Arizona": {"description": "", "subtype": "checking", "contact": {"website": "https://www.bankofamerica.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "457006424547", "balance": 0.04, "type": "bank", "id": "4fe2b2a8-9a4d-4d2f-bedc-c8a30e1cbb0b"}, "Atlassian": {"status": null, "due_date": "", "last_payment_date": "", "description": "Jira Project Management", "contact": {"website": "", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 0.0, "last_payment_amount": 0.0, "type": "payable", "id": "0bef9e70-3adb-413c-b284-4bb43ab41ca7", "cycle": "monthly"}, "Foremost": {"status": null, "due_date": "1-3-16", "last_payment_date": "1-3-16", "description": "Car Insurance", "policy_number": "G00-7359728-00", "contact": {"website": {"home": "http://foremost.com/", "policy_info": "https://www.bristolwest.com/Bristolwest/CustomerPortal/PolicyInfo.aspx", "payment": "https://www.bristolwest.com/bristolwest/login/login.aspx?Foremost=true", "agent": "http://agency.nationwide.com/agent/jay-a-harris-420011612-42001161200000", "claims": "http://foremost.com/claims/"}, "username": "cknetaffiliate@gmail.com", "fax": "(281) 565-3333", "phone": "281-565-2222", "address": "14140 Southwest Fwy Ste 150 Sugar Land, TX 77478-3759", "email": "feedback@cpsenergy.com"}, "amount_due": 257.89, "last_payment_amount": 257.89, "type": "payable", "id": "c6e9ab6f-af88-4afb-8fcf-caf0a0dd8851", "cycle": "monthly"}, "Github CGJonesDev": {"status": null, "due_date": "", "last_payment_date": "", "description": "CGJonesDev Code Repositories", "contact": {"website": "https://github.com/settings/billing", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 0.0, "last_payment_amount": 0.0, "plan": "Free - 0 private repositories", "type": "payable", "id": "3d4233d7-3523-4b2a-8518-248c711f795a", "cycle": "monthly"}, "Chase Business Checking": {"description": "", "type": "bank", "subtype": "business", "contact": {"website": "https://chaseonline.chase.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "657930280", "balance": 0.0, "nickname": null, "id": "925396e8-5473-4570-96cd-27597473c00f"}, "Premier Bankcard": {"status": null, "description": "", "contact": {"website": "https://www.mypremiercreditcard.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "5178006609504206", "balance": 0.0, "type": "payable", "id": "6132902e-0c01-42c5-b7d8-d3d7eb8a341a"}, "CreditOne": {"status": null, "description": "", "contact": {"website": "https://www.creditonebank.com/home.aspx", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "4447962278002948", "balance": 0.0, "type": "payable", "id": "55bb6d37-befa-4dc3-90d1-0f9aa9a2569f"}, "Plaid": {"status": null, "public_key": "2f2beddcdb65b88f01d717bbc13b68", "last_payment_date": "", "description": "Banking data API", "due_date": "", "total_items_created": 33, "monthly_items_created": 0, "secret": "d575f23781eb06347ae14b4cc48b1a", "contact": {"website": "", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "client_id": "555a566f3b5cadf40371c2e2", "amount_due": 0.0, "last_payment_amount": 0.0, "type": "payable", "id": "827646c3-cdfa-43f5-95fc-4bcc761160f1", "cycle": "monthly"}, "Bank of America Personal Checking": {"description": "", "subtype": "checking", "contact": {"website": "https://www.bankofamerica.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "0184108615", "balance": 0.0, "type": "bank", "id": "db65ebaf-8180-4027-957c-ee89b1b4c4d3"}, "Ford Credit": {"status": null, "due_date": "3-11-16", "last_payment_date": "2-22-15", "description": "2013 Ford Focus ST", "vin": "1FADP3L99DL324907", "contact": {"website": "http://credit.ford.com/", "phone": "1-800-727-7000", "username": "carygjones", "email": "https://www.securedcontact.com/contactus/ContactUs?lang=EN&brand=FC&region=US", "address": "PO Box 542000 Omaha, NE 68154-8000"}, "account_number": "48906777", "amount_due": 1166.44, "last_payment_amount": 600.0, "type": "payable", "id": "6c98f484-91da-4b4d-8267-17690afbcf87", "cycle": "monthly"}, "Scottrade": {"description": "", "contact": {"website": "https://www.scottrade.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": null, "balance": 0.0, "type": "receivable", "id": "ef959ccb-370f-4260-9ed4-c1b2e9b544dc"}, "Chase Ink Credit Card": {"minimum_payment": 114.0, "status": null, "description": "", "contact": {"website": "https://chaseonline.chase.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "5589671010749907", "balance": 2191.4, "type": "payable", "id": "be1dd654-b912-43e3-a8f2-ae2dfda1d2da"}, "Google Cloud": {"status": null, "due_date": "", "last_payment_date": "", "description": "Cloud Computing", "contact": {"website": "", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 0.0, "last_payment_amount": 0.0, "type": "payable", "id": "de61f045-04a3-44e3-90e8-f737410c60cc", "cycle": "monthly"}, "Sirius XM": {"status": null, "due_date": "", "last_payment_date": "", "description": "Satellite Radio", "vin": "1FADP3L99DL324907", "contact": {"website": "https://care.siriusxm.com/login_view.action", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 21.63, "last_payment_amount": 21.63, "type": "payable", "id": "ad167f65-5c33-4f2f-9de8-f6144dd1cd1f", "cycle": "monthly"}, "Itunes": {"status": null, "due_date": "", "last_payment_date": "", "description": "Internet Music", "contact": {"website": "", "username": "cknetaffiliate@gmail.com", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 0.0, "last_payment_amount": 0.0, "type": "payable", "id": "f7c8ba92-74f1-4197-9913-9156eec338dc", "cycle": "monthly"}, "Chase Personal Checking": {"description": "", "type": "bank", "subtype": "checking", "contact": {"website": "https://chaseonline.chase.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "423826556", "balance": 0.0, "nickname": "pay bills", "id": "9e05050e-d899-4522-b613-d3514104aa0d"}, "Pandora": {"status": null, "due_date": "1-7-16", "last_payment_date": "12-7-15", "description": "Internet Music", "contact": {"website": "http://www.pandora.com/account/info", "username": "cknetaffiliate@gmail.com", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 5.4, "last_payment_amount": 5.4, "type": "payable", "id": "77e586d7-1d2c-49db-a1cb-7e6faa8ded72", "cycle": "monthly"}, "CapitalOne Platinum": {"status": null, "description": "", "contact": {"website": "https://servicing.capitalone.com/c1/Login.aspx", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "5178059796604032", "balance": 0.0, "type": "payable", "id": "cfebc83a-a9bd-4f8a-b69e-fc36590baee4"}, "Total Visa": {"status": null, "description": "", "contact": {"website": "https://www.myccpay.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "limit": 0.0, "account_number": "4057310301902901", "balance": 0.0, "type": "payable", "id": "4e0c2648-10f0-4a9a-8620-e9bca321621f"}, "Github Spendsy": {"status": null, "due_date": "1-16-16", "last_payment_date": "12-16-15", "description": "Spendsy Code Repositories", "contact": {"website": "https://github.com/organizations/Spendsy/settings/billing", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": "", "amount_due": 25.0, "last_payment_amount": 50.0, "plan": "Silver \u2013 Using 14 of 20 private repositories", "type": "payable", "id": "136a8283-0206-4b81-98a8-fbfc3c8d106e", "cycle": "monthly"}, "BTCJam": {"description": "", "contact": {"website": "https://btcjam.com/", "username": "", "fax": "", "phone": "", "address": "", "email": ""}, "account_number": null, "balance": 0.0, "type": "receivable", "id": "0ce1538d-8e04-48e7-8080-01725b2f997a"}, "Veteran's Affairs": {"description": "Service-connected disability", "receivable_account_name": "Bank of America Personal Checking", "last_amount": 0.0, "amount": 0.0, "receivable_account_id": "db65ebaf-8180-4027-957c-ee89b1b4c4d", "type": "receivable", "id": "4d955740-7c4b-4b68-959b-44ebd15578a2", "cycle": "monthly"}}
+{
+  "Asset Acceptance": {
+    "status": null,
+    "due_date": "12-18-15",
+    "last_payment_date": "11-18-15",
+    "description": "Old Debt",
+    "contact": {
+      "website": {
+        "home": "http://assetacceptance.com/",
+        "payment": "https://collectpay.princetonecom.com/otp/loadFullHostLogin.do?id=550448"
+      },
+      "phone": "(800) 545-9931",
+      "username": null,
+      "email": "",
+      "address": "Asset Acceptance Capital Corp. P.O. Box 2036 Warren, MI 48090-2036"
+    },
+    "account_number": "39705939",
+    "last_payment_amount": 75,
+    "amount_due": 75,
+    "type": "payable",
+    "id": "104bfef5-de76-4098-b497-c65f9c45b2e9",
+    "cycle": "monthly"
+  },
+  "Pandora": {
+    "status": null,
+    "due_date": "1-7-16",
+    "last_payment_date": "12-7-15",
+    "description": "Internet Music",
+    "contact": {
+      "website": "http://www.pandora.com/account/info",
+      "username": "cknetaffiliate@gmail.com",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 5.4,
+    "amount_due": 5.4,
+    "type": "payable",
+    "id": "77e586d7-1d2c-49db-a1cb-7e6faa8ded72",
+    "cycle": "monthly"
+  },
+  "Kforce": {
+    "description": "Employment with Rackspace LTD.",
+    "receivable_account_name": "Chase Personal Checking",
+    "last_amount": 0,
+    "amount": 0,
+    "receivable_account_id": "915c511a-f2df-441d-b9ad-e76756c174ac",
+    "type": "receivable",
+    "id": "27afec33-52c6-4472-9f06-61c1968d1e92",
+    "cycle": "weekly"
+  },
+  "Chase Personal Savings": {
+    "description": "",
+    "nickname": "savings",
+    "subtype": "savings",
+    "contact": {
+      "website": "https://chaseonline.chase.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "291882920",
+    "balance": 0,
+    "type": "bank",
+    "id": "fd956cd7-d974-44ce-bb8b-511599c78498"
+  },
+  "Fedloan Servicing": {
+    "status": null,
+    "due_date": "1-1-16",
+    "last_payment_date": "12-1-16",
+    "description": "Student Loans",
+    "contact": {
+      "website": "https://accountaccess.myfedloan.org/accountAccess/index.cfm?returnKey=ONLINE-PAYMENT",
+      "username": "carygjones",
+      "fax": "717-720-1628",
+      "phone": "1-800-699-2908",
+      "address": "Department of Education FedLoan Servicing P.O. Box 530210 Atlanta, GA 30353-0210",
+      "email": "https://accountaccess.myfedloan.org/contactUs/index.cfm?event=sendUsAnEmail"
+    },
+    "account_number": "7567730641",
+    "last_payment_amount": 89.52,
+    "amount_due": 89.52,
+    "type": "payable",
+    "id": "8bed925a-fc03-44cb-b0eb-0b056a292ddb",
+    "cycle": "monthly"
+  },
+  "AT&T Uverse": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "Business Internet",
+    "contact": {
+      "website": "https://www.businessdirect.att.com/portal/smallbusiness/index.jsp",
+      "phone": "1-877-503-2622",
+      "username": "7608458310",
+      "email": "",
+      "address": ""
+    },
+    "account_number": "137684091",
+    "last_payment_amount": 0,
+    "amount_due": 0,
+    "type": "payable",
+    "id": "8a2bb83a-0017-4ed5-b34a-40e2ef7eb4ef",
+    "cycle": "monthly"
+  },
+  "Atlassian": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "Jira Project Management",
+    "contact": {
+      "website": "https://www.atlassian.com/software/jira",
+      "username": "",
+      "fax": "",
+      "phone": "+1 512 640 3000",
+      "address": "303 Colorado St Suite 1600 Austin TX 78701",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "amount_due": 0,
+    "type": "payable",
+    "id": "0bef9e70-3adb-413c-b284-4bb43ab41ca7",
+    "cycle": "monthly"
+  },
+  "CapitalOne Quicksilver": {
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://servicing.capitalone.com/c1/Login.aspx",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "5178059064521793",
+    "balance": 0,
+    "type": "payable",
+    "id": "4f020e60-5208-4672-bb80-5149a6948246"
+  },
+  "Plaid": {
+    "status": null,
+    "public_key": "2f2beddcdb65b88f01d717bbc13b68",
+    "last_payment_amount": 0,
+    "last_payment_date": "",
+    "description": "Banking data API",
+    "due_date": "",
+    "monthly_items_created": 0,
+    "secret": "d575f23781eb06347ae14b4cc48b1a",
+    "contact": {
+      "website": "",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "client_id": "555a566f3b5cadf40371c2e2",
+    "amount_due": 0,
+    "total_items_created": 33,
+    "type": "payable",
+    "id": "827646c3-cdfa-43f5-95fc-4bcc761160f1",
+    "cycle": "monthly"
+  },
+  "TxTag": {
+    "status": null,
+    "due_date": "1-3-16",
+    "last_payment_date": "",
+    "description": "Texas toll roads",
+    "contact": {
+      "website": "http://www.txtag.org",
+      "username": "",
+      "fax": "",
+      "phone": "1-888-468-9824",
+      "address": "TxTag P.O. Box 650749 Dallas, TX 75265-0749",
+      "email": ""
+    },
+    "account_number": "308606989",
+    "last_payment_amount": 0,
+    "amount_due": 304.8,
+    "type": "payable",
+    "id": "33e3249f-56ba-4791-9798-e4506a975ff9"
+  },
+  "Texas Workforce Commission": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "unemployment",
+    "total_amount_due": 1046,
+    "contact": {
+      "website": "",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "Benefit Overpayment Collections Texas Workforce Commission PO Box 149352 Austin, TX 78714-9940",
+      "email": ""
+    },
+    "account_number": "14-869565-2",
+    "last_payment_amount": 0,
+    "monthly_amount_due": 100,
+    "type": "payable",
+    "id": "c27f5d4b-1a53-46af-9bf9-3eca5cecbbaa",
+    "cycle": "monthly"
+  },
+  "MSB": {
+    "status": null,
+    "due_date": "1-3-16",
+    "last_payment_date": "",
+    "description": "Texas toll roads",
+    "bill id": "13498307",
+    "reference #": "EUO565",
+    "contact": {
+      "website": "http://www.paytexastoll.com",
+      "username": "",
+      "fax": "",
+      "phone": "(512) 323-4204",
+      "address": "CTRMA Processing PO Box 16777 Austin, TX 78761-6777",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "amount_due": 22.41,
+    "type": "payable",
+    "id": "66683533-6f6f-420d-aa5b-07e4d954801f"
+  },
+  "CPS Energy": {
+    "status": null,
+    "due_date": "?",
+    "confirmation_number": "201602161140184400",
+    "last_payment_date": "2-16-16",
+    "description": "Electricity Bill",
+    "contact": {
+      "website": {
+        "home": "https://www.cpsenergy.com/en.html",
+        "service-requests": "https://www.cpsenergy.com/en/customer-support/my-home.html",
+        "payment": "https://www.cpsenergy.com/en/customer-support/manage-my-account.html",
+        "billing": "https://www.cpsenergy.com/en/customer-support/my-home-billing-acct.html"
+      },
+      "phone": {
+        "main": "(210) 353-2222",
+        "payment": "877-257-1172"
+      },
+      "username": null,
+      "email": "feedback@cpsenergy.com",
+      "address": "P.O. Box 2678 San Antonio, TX 78289"
+    },
+    "account_number": "300-3613-361",
+    "last_payment_amount": 122.8,
+    "amount_due": 64.47,
+    "type": "payable",
+    "id": "073250c7-a66e-480b-8c4b-d1fb3ad6225d",
+    "cycle": "monthly"
+  },
+  "Ford Credit": {
+    "status": null,
+    "due_date": "3-11-16",
+    "last_payment_date": "2-22-15",
+    "description": "2013 Ford Focus ST",
+    "vin": "1FADP3L99DL324907",
+    "contact": {
+      "website": "http://credit.ford.com/",
+      "phone": "1-800-727-7000",
+      "username": "carygjones",
+      "email": "https://www.securedcontact.com/contactus/ContactUs?lang=EN&brand=FC&region=US",
+      "address": "PO Box 542000 Omaha, NE 68154-8000"
+    },
+    "account_number": "48906777",
+    "last_payment_amount": 600,
+    "amount_due": 1166.44,
+    "type": "payable",
+    "id": "6c98f484-91da-4b4d-8267-17690afbcf87",
+    "cycle": "monthly"
+  },
+  "Creditrepair.com": {
+    "status": null,
+    "due_date": "1-1-16",
+    "last_payment_date": "12-1-16",
+    "description": "Credit Repair",
+    "contact": {
+      "website": "https://members.creditrepair.com/",
+      "phone": "1-800-232-6499",
+      "username": "cary75",
+      "email": "memberservices@creditrepair.com",
+      "address": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 91.02,
+    "amount_due": 91.02,
+    "type": "payable",
+    "id": "a6e40a7c-a733-4e51-8907-72a3435f59a4",
+    "cycle": "monthly"
+  },
+  "Verizon": {
+    "id": "4c5f3aa8-b0c0-4254-962e-3064daa1442b"
+  },
+  "Bank of f Personal Savings - Arizona": {
+    "description": "",
+    "subtype": "checking",
+    "contact": {
+      "website": "https://www.bankofamerica.com/",
+      "username": "",
+      "fax": "",
+      "phone": "1 (800) 432-1000",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "457006424547",
+    "balance": 0.04,
+    "type": "bank",
+    "id": "4fe2b2a8-9a4d-4d2f-bedc-c8a30e1cbb0b"
+  },
+  "CashNetUSA": {
+    "website": "https://www.cashnetusa.com/login",
+    "status": null,
+    "description": "",
+    "limit": 0,
+    "account_number": null,
+    "balance": 0,
+    "type": "payable",
+    "id": "44373052-3833-405c-82d5-2eaffbc9b438"
+  },
+  "Foremost": {
+    "status": null,
+    "due_date": "1-3-16",
+    "last_payment_date": "1-3-16",
+    "description": "Car Insurance",
+    "policy_number": "G00-7359728-00",
+    "contact": {
+      "website": {
+        "home": "http://foremost.com/",
+        "policy_info": "https://www.bristolwest.com/Bristolwest/CustomerPortal/PolicyInfo.aspx",
+        "payment": "https://www.bristolwest.com/bristolwest/login/login.aspx?Foremost=true",
+        "agent": "http://agency.nationwide.com/agent/jay-a-harris-420011612-42001161200000",
+        "claims": "http://foremost.com/claims/"
+      },
+      "username": "cknetaffiliate@gmail.com",
+      "fax": "(281) 565-3333",
+      "phone": "281-565-2222",
+      "address": "14140 Southwest Fwy Ste 150 Sugar Land, TX 77478-3759",
+      "email": "feedback@cpsenergy.com"
+    },
+    "last_payment_amount": 257.89,
+    "amount_due": 257.89,
+    "type": "payable",
+    "id": "c6e9ab6f-af88-4afb-8fcf-caf0a0dd8851",
+    "cycle": "monthly"
+  },
+  "Github CGJonesDev": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "CGJonesDev Code Repositories",
+    "contact": {
+      "website": "https://github.com/settings/billing",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "amount_due": 0,
+    "cycle": "monthly",
+    "type": "payable",
+    "id": "3d4233d7-3523-4b2a-8518-248c711f795a",
+    "plan": "Free - 0 private repositories"
+  },
+  "Chase Business Checking": {
+    "description": "",
+    "nickname": null,
+    "subtype": "business",
+    "contact": {
+      "website": "https://chaseonline.chase.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "657930280",
+    "balance": 0,
+    "type": "bank",
+    "id": "925396e8-5473-4570-96cd-27597473c00f"
+  },
+  "Premier Bankcard": {
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://www.mypremiercreditcard.com/",
+      "username": "",
+      "fax": "",
+      "phone": "605-357-3110",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "5178006609504206",
+    "balance": 0,
+    "type": "payable",
+    "id": "6132902e-0c01-42c5-b7d8-d3d7eb8a341a"
+  },
+  "Github Spendsy": {
+    "status": null,
+    "due_date": "1-16-16",
+    "last_payment_date": "12-16-15",
+    "description": "Spendsy Code Repositories",
+    "contact": {
+      "website": "https://github.com/organizations/Spendsy/settings/billing",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 50,
+    "amount_due": 25,
+    "cycle": "monthly",
+    "type": "payable",
+    "id": "136a8283-0206-4b81-98a8-fbfc3c8d106e",
+    "plan": "Silver - Using 14 of 20 private repositories"
+  },
+  "CreditOne": {
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://www.creditonebank.com/home.aspx",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "4447962278002948",
+    "balance": 0,
+    "type": "payable",
+    "id": "55bb6d37-befa-4dc3-90d1-0f9aa9a2569f"
+  },
+  "Twillio": {
+    "status": null,
+    "due_date": "",
+    "account_balance": -18.93,
+    "description": "Text Message Sending",
+    "test_auth_token": "df0cc4c203cb035aa2d41e6eb493906b",
+    "auth_token": "9db585a0699ba5c37813474e3defa5fb",
+    "account_sid": "AC02209efd09ecd86a36a01c102ee0abea",
+    "payable_account_id": "925396e8-5473-4570-96cd-27597473c00f",
+    "contact": {
+      "website": "https://www.twilio.com/",
+      "username": "cgjonesdev@gmail.com",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "payable_account_name": "Chase Business Checking",
+    "amount_due": 0,
+    "test_account_sid": "ACf970e6c033a84a10a4d76c4906585746",
+    "type": "payable",
+    "id": "a5808feb-6375-488f-92b0-75ae873c7f77",
+    "last_payment_date": "",
+    "cycle": "monthly"
+  },
+  "Bank of America Personal Checking": {
+    "description": "",
+    "subtype": "checking",
+    "contact": {
+      "website": "https://www.bankofamerica.com/",
+      "username": "",
+      "fax": "",
+      "phone": "1 (800) 432-1000",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "0184108615",
+    "balance": 0,
+    "type": "bank",
+    "id": "db65ebaf-8180-4027-957c-ee89b1b4c4d3"
+  },
+  "Lynd Properties": {
+    "status": null,
+    "due_date": "1-1-16",
+    "last_payment_date": "11-16-15",
+    "description": "1221 Broadway Rent",
+    "contact": {
+      "website": "https://1221broadway.residentportal.com",
+      "phone": "(210) 354-1221",
+      "username": "cknetaffiliate@gmail.com",
+      "email": "1221@lyndworld.com",
+      "address": "1221 Broadway St, San Antonio, TX 78215"
+    },
+    "account_number": null,
+    "last_payment_amount": 575,
+    "amount_due": 211,
+    "type": "payable",
+    "id": "534875ad-bcfa-4479-95d5-6fb0c4d3539e",
+    "cycle": "monthly"
+  },
+  "Scottrade": {
+    "description": "",
+    "contact": {
+      "website": "https://www.scottrade.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": null,
+    "balance": 486.93,
+    "type": "receivable",
+    "id": "ef959ccb-370f-4260-9ed4-c1b2e9b544dc"
+  },
+  "Chase Ink Credit Card": {
+    "minimum_payment": 114,
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://chaseonline.chase.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "5589671010749907",
+    "balance": 2191.4,
+    "type": "payable",
+    "id": "be1dd654-b912-43e3-a8f2-ae2dfda1d2da"
+  },
+  "Google Cloud": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "Cloud Computing",
+    "contact": {
+      "website": "",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "amount_due": 0,
+    "type": "payable",
+    "id": "de61f045-04a3-44e3-90e8-f737410c60cc",
+    "cycle": "monthly"
+  },
+  "Itunes": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "Internet Music",
+    "contact": {
+      "website": "",
+      "username": "cknetaffiliate@gmail.com",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 0,
+    "amount_due": 0,
+    "type": "payable",
+    "id": "f7c8ba92-74f1-4197-9913-9156eec338dc",
+    "cycle": "monthly"
+  },
+  "Chase Personal Checking": {
+    "description": "",
+    "nickname": "pay bills",
+    "subtype": "checking",
+    "contact": {
+      "website": "https://chaseonline.chase.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "423826556",
+    "balance": 0,
+    "type": "bank",
+    "id": "9e05050e-d899-4522-b613-d3514104aa0d"
+  },
+  "AT&T Wireless": {
+    "status": null,
+    "due_date": "12-15-15",
+    "last_payment_date": "11-16-15",
+    "description": "Cellular Phone",
+    "contact": {
+      "website": "https://www.att.com/",
+      "phone": "800.331.0500",
+      "username": "7608458310",
+      "email": "",
+      "address": "PO Box 537104 Atlanta, GA 30353"
+    },
+    "account_number": "7608458310",
+    "last_payment_amount": 124.45,
+    "amount_due": 129.46,
+    "type": "payable",
+    "id": "2a7d5d00-fd86-401d-832f-aa5d72ab7130",
+    "cycle": "monthly"
+  },
+  "CapitalOne Platinum": {
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://servicing.capitalone.com/c1/Login.aspx",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "5178059796604032",
+    "balance": 0,
+    "type": "payable",
+    "id": "cfebc83a-a9bd-4f8a-b69e-fc36590baee4"
+  },
+  "Total Visa": {
+    "status": null,
+    "description": "",
+    "contact": {
+      "website": "https://www.myccpay.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "limit": 0,
+    "account_number": "4057310301902901",
+    "balance": 0,
+    "type": "payable",
+    "id": "4e0c2648-10f0-4a9a-8620-e9bca321621f"
+  },
+  "Sirius XM": {
+    "status": null,
+    "due_date": "",
+    "last_payment_date": "",
+    "description": "Satellite Radio",
+    "vin": "1FADP3L99DL324907",
+    "contact": {
+      "website": "https://care.siriusxm.com/login_view.action",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": "",
+    "last_payment_amount": 21.63,
+    "amount_due": 21.63,
+    "type": "payable",
+    "id": "ad167f65-5c33-4f2f-9de8-f6144dd1cd1f",
+    "cycle": "monthly"
+  },
+  "BTCJam": {
+    "description": "",
+    "contact": {
+      "website": "https://btcjam.com/",
+      "username": "",
+      "fax": "",
+      "phone": "",
+      "address": "",
+      "email": ""
+    },
+    "account_number": null,
+    "balance": 0,
+    "type": "receivable",
+    "id": "0ce1538d-8e04-48e7-8080-01725b2f997a"
+  },
+  "Veteran's Affairs": {
+    "description": "Service-connected disability",
+    "receivable_account_name": "Bank of America Personal Checking",
+    "last_amount": 0,
+    "amount": 0,
+    "receivable_account_id": "db65ebaf-8180-4027-957c-ee89b1b4c4d",
+    "type": "receivable",
+    "id": "4d955740-7c4b-4b68-959b-44ebd15578a2",
+    "cycle": "monthly"
+  }
+}

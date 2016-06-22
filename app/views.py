@@ -30,21 +30,22 @@ class IndexView(MethodView):
 class AccountsView(MethodView):
 
     def get(self, account_name=None):
-        account = None
-        if account_name:
-            account = base.Account(account_name).account
+        account = repr(base.Account(account_name))
         return render_template(
             'accounts/index.html',
-            accounts=sorted(base.Accounts()),
-            account_name=account_name,
-            account=account)
+            accounts=repr(base.Accounts()),
+            account=account,
+            account_name=account_name)
 
     def post(self, account_name=None):
-        account_name = request.form.get('account_name')
-        if account_name and account_name not in [account[0] for account in base.Accounts()]:
-            base.Accounts().add_account(account_name)
+        name = request.form.get('account_name')
+        if name and name not in [account[0] for account in base.Accounts()]:
+            base.Accounts().add_account(name)
             return render_template('accounts/index.html',
                                     accounts=sorted(base.Accounts()),
                                     account_name=None)
         else:
-            return redirect('/accounts')
+            if not account_name:
+                return redirect('/accounts')
+            else:
+                return redirect('/accounts/{}'.format(account_name))

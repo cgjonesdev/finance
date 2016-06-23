@@ -64,7 +64,7 @@ input[type=text] {
     border-radius: .2em;
     font-size: 1em;
     border: none;
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(0, 100, 200, .05);
     text-align: center;
     width: 150px;
 }
@@ -73,13 +73,16 @@ input[type=submit] {
     border: none;
     font-size: .95em;
     min-width: 75px;
-    background: linear-gradient(rgba(0,0,0,.025), rgba(0,0,0,.175));
+    background: linear-gradient(green, darkgreen);
+    color: white;
 }
 input[type=submit]:hover {
-    background: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.04));
+    background: linear-gradient(lightgreen, lightgreen);
+    color: black;
 }
 input[type=submit]:focus {
-    background: linear-gradient(rgba(0,0,0,.175), rgba(0,0,0,.025));
+    background: linear-gradient(darkgreen, green);
+    color: white;
 }
 button#delete {
     margin: 1em 0 -2em 1em;
@@ -99,8 +102,8 @@ button#delete:focus {
 }
 textarea {
     border: none;
-    background-color: rgb(240, 240, 240);
-    border-radius: .2em;
+    background-color: rgba(0, 100, 200, .05);
+    border-radius: .3em;
     margin: 0 .5em -1.3em 0;
     width: 55%;
     height: 50px;
@@ -110,7 +113,7 @@ select {
     border: none;
     outline: 0;
     margin: 0 1em 1em .5em;
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(0, 100, 200, .05);
     border-radius: .2em;
     font-size: 1.1em;
 }

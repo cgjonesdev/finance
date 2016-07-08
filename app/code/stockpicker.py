@@ -9,7 +9,10 @@ url = ('https://www.google.com/finance?start=0&num=5000&q=%5B(exchange%20%3D'
 
 driver.get(url.format('NYSE'))
 nyse = (elem.text for elem in driver.find_elements_by_class_name('symbol'))
+driver.get('https://www.google.com/finance?q=NYSE%3A{}'.format(list(nyse)[0]))
+print driver.find_element_by_class_name('pr').text
 
-driver.get(url.format('NASDAQ'))
-nasdaq = (elem.text for elem in driver.find_elements_by_class_name('symbol'))
-print '\n'.join(list(nasdaq))
+
+# driver.get(url.format('NASDAQ'))
+# nasdaq = (elem.text for elem in driver.find_elements_by_class_name('symbol'))
+# print '\n'.join(list(nasdaq))

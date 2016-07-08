@@ -9,3 +9,12 @@
     <h1><a href="/accounts">Accounts</a></h1>
     {{account|safe}}
 {% endif %}
+
+<script>
+    var _delete = function() {
+        console.log({{account[0]}});
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/accounts/{{account[0]}}", true);
+        ajax.send();
+    }
+</script>

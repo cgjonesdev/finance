@@ -2,6 +2,7 @@ import os
 import logging
 import time
 import re
+from pprint import pprint, pformat
 from datetime import timedelta
 from operator import itemgetter
 from flask import (
@@ -15,7 +16,7 @@ from flask import (
     abort
 )
 from flask.views import MethodView
-from code.accounts import base
+from code.accounts import accounts
 
 
 app = Flask(__name__)
@@ -30,20 +31,28 @@ class IndexView(MethodView):
 class AccountsView(MethodView):
 
     def get(self, account_name=None):
-        account = repr(base.Account(account_name))
+        account = repr(accounts.Account(account_name))
         return render_template(
             'accounts/index.html',
-            accounts=repr(base.Accounts()),
+            accounts=repr(accounts.Accounts()),
             account=account,
             account_name=account_name)
 
     def post(self, account_name=None):
-        name = request.form.get('account_name')
-        if name and name not in [account[0] for account in base.Accounts()]:
-            base.Accounts().add_account(name)
-            return render_template('accounts/index.html',
-                                    accounts=sorted(base.Accounts()),
-                                    account_name=None)
+        data = dict(request.form)
+        pprint(data)
+        if data['method'] == 'delete':
+            accounts.Account(account_name).delete()
+            return redirect('/accounts')
+        elif data['method'] == 'update':
+            if account_name not in [account[0] for account in accounts.Accounts()]:
+                accounts.Accounts().add(name)
+                return render_template('accounts/index.html',
+                                        accounts=repr(accounts.Accounts()),
+                                        account_name=None)
+        elif data and 'name' not in data:
+            accounts.Account(account_name).update(data)
+            return redirect('/accounts/{}'.format(account_name))
         else:
             if not account_name:
                 return redirect('/accounts')

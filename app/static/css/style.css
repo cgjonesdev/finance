@@ -69,11 +69,11 @@ input[type=text] {
     width: 150px;
 }
 input[type=submit] {
-    margin: 1em 0 -2em 1em;
+    margin: 0 0 -2em 1em;
     border: none;
     font-size: .95em;
     min-width: 75px;
-    background: linear-gradient(green, darkgreen);
+    background: linear-gradient(rgb(95,205,85), rgb(40,120,25));
     color: white;
 }
 input[type=submit]:hover {
@@ -81,22 +81,22 @@ input[type=submit]:hover {
     color: black;
 }
 input[type=submit]:focus {
-    background: linear-gradient(darkgreen, green);
+    background: linear-gradient(rgb(40,120,25), rgb(95,205,85));
     color: white;
 }
-button#delete {
-    margin: 1em 0 -2em 1em;
+input#delete {
+    margin: 0 0 -2em 1em;
     border: none;
     font-size: .95em;
     min-width: 75px;
     background: linear-gradient(red, darkred);
     color: white;
 }
-button#delete:hover {
+input#delete:hover {
     background: linear-gradient(pink, pink);
     color: black;
 }
-button#delete:focus {
+input#delete:focus {
     background: linear-gradient(darkred, red);
     color: white;
 }

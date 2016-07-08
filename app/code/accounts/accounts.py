@@ -39,7 +39,7 @@ class Accounts(object):
             if account[0].lower() == ' '.join(item.split('_')):
                 return account
 
-    def add_account(self, account_name):
+    def add(self, account_name):
         data[account_name] = {'id': str(uuid4())}
         with open('./data/accounts.json', 'w') as _:
             _.write(json.dumps(data))
@@ -48,6 +48,7 @@ class Accounts(object):
 class Account(object):
 
     def __init__(self, name):
+        self.name = name
         accounts = Accounts()
         try:
             self.account = accounts[name]
@@ -67,7 +68,7 @@ class Account(object):
             if any([link for link in ('http', 'https') if link in str(v)]):
                 v = wlink(v)
             elif '@' in str(v):
-                v = elink(v)                
+                v = elink(v)
             elif k.lower() == 'phone' or l.lower() == 'phone':
                 v = plink(v)
             elif k.lower() == 'address' or l.lower() == 'address':
@@ -75,22 +76,25 @@ class Account(object):
             return v
         if self.account:
             html = '<h3>Update {}</h3>'.format(self.account[0])
-            form = '<center><form class="account" method="POST" action="/accounts/{}">'.format(ks(self.account[0]))
-            _input = '<input type="text" name="aname" placeholder="Name"/>'
-            _input += '<input type="text" name="balance" placeholder="Balance"/>'
-            _input += '<input type="text" name="due_date" placeholder="Due Date"/>'
-            _input += '<input type="text" name="account_no" placeholder="Account Number"/>'
+            form = '<center><form id="account_update" class="account" method="POST" action="/accounts/{}">'.format(ks(self.account[0]))
+            _input = '<input type="text" name="balance" value="{}" placeholder="Balance"/>'.format(self.account[1]['balance'])
+            _input += '<input type="text" name="due_date" value="{}" placeholder="Due Date"/>'.format(self.account[1]['due_date'])
+            _input += '<input type="text" name="account_no" value="{}" placeholder="Account Number"/>'.format(self.account[1]['account_no'])
+            _input += '<input type="text" name="description" value="{}" placeholder="Description"/>'.format(self.account[1]['description'])
+            _input += '<input type="hidden" name="method" value="update"/>'
             select = '<select name="status">'
             select += '<option value="default" selected disabled>Status</option>'
             select += '<option value="paid">Paid</option>'
             select += '<option value="late">Late</option>'
             select += '<option value="pending">Pending</option>'
             _input += select
-            _input += '<br><textarea placeholder="Description"></textarea>'
             _input += '<input type="submit" value="   Add/Update   "/>'
-            _input += '<button id="delete">Delete</button>'
             form += _input + '</form></center><br>'
-            html += form            
+            form = '<form name="account_delete" method="POST" action="/accounts/{}">'.format(ks(self.account[0]))
+            form += '<input type="hidden" name="method" value="delete"/>'
+            form += '<input id="delete" type="submit" value="Delete"/>'
+            form += '</form>'            
+            html += form
             html += '<h3>{} details</h3>'.format(self.account[0])
             for k, v in self.account[1].items():
                 if isinstance(v, dict):
@@ -105,6 +109,25 @@ class Account(object):
                 else:
                     html += '<div id="account-detail"><b>{}</b>: {}</div>'.format(sk(k), test_for_link(k, k, cv(v)))
         return html + '<br><br><br>'
+
+    def update(self, account_data):
+        sk = lambda k: ' '.join(k.split('_')).title()
+        for k, v in account_data.items():
+            if v[0].isdigit():
+                account_data[k] = float(v[0])
+            else:
+                account_data[k] = v[0]
+        data[sk(self.name)].update(account_data)
+        self.save()
+
+    def delete(self):
+        sk = lambda k: ' '.join(k.split('_')).title()
+        del data[sk(self.name)]
+        self.save()
+
+    def save(self):
+        with open('./data/accounts.json', 'w') as _:
+            _.write(json.dumps(data))
 
 
 

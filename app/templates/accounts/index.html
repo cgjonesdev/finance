@@ -1,17 +1,23 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head>
     <body>
         <p><center><h2><a href="/">Home</a></h2></center></p>
-<p>{% if not account_name %}
-    <title>Accounts</title>
-    <h1>Accounts</h1>
-    {{accounts|safe}}
-{% else %}
-    <title>Accounts | {{account_name}}</title>
-    <h1><a href="/accounts">Accounts</a></h1>
-    {{account|safe}}
-{% endif %}</p>
+        {% if not account_name %}
+            <title>Accounts</title>
+            <h1>Accounts</h1>
+            {{accounts|safe}}
+        {% else %}
+            <title>Accounts | {{account_name}}</title>
+            <h1><a href="/accounts">Accounts</a></h1>
+            {{account|safe}}
+        {% endif %}
     </body>
+    <script>
+        var _delete = function(account_name) {
+            console.log(account_name);
+            var ajax = new XMLHttpRequest();
+            ajax.open("DELETE", "/accounts/" + account_name, true); }
+    </script>    
 </html>

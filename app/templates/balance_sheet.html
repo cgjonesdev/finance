@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <style>
+            body {
+                width: 90%;
+            }
+            h3 {
+                border-bottom: 6px solid rgba(0,0,0,.1);
+            }
+            #main {
+                font-size: 1.15em;
+                text-align: center;
+            }
+            #assets {
+                float: left;
+                width: 30%;
+                padding: 0 1.5% 0 1.5%;
+            }
+            #liabilities {
+                float: left;
+                width: 30%;
+                padding: 0 1.5% 0 1.5%;
+            }
+            #equity {
+                float: left;
+                width: 30%;
+                padding: 0 1.5% 0 1.5%;
+            }
+            #items {
+                text-align: left;
+            }
+            #amount {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="monthHeading">Monthly Balance Sheet</h1>
+        <div id="main">
+            <div id="assets">
+                <h3 title="Click to add an asset">Assets</h3>
+                <span style="float:left">Job</span><span class="assets" style="float:right">$5000</span><br>
+                <span style="float:left">Investments</span><span class="assets" style="float:right">$2000</span><br><hr>
+                <b><span style="float:left">Total</span><span id="assetsTotal" style="float:right"></span><br></b>
+            </div>
+            <div id="liabilities">
+                <h3>Liabilities</h3>
+                <span style="float:left">Mortgage/Rent</span><span class="liabilities" style="float:right">$1500</span><br>
+                <span style="float:left">Car</span><span class="liabilities" style="float:right">$400</span><br>
+                <span style="float:left">Phone</span><span class="liabilities" style="float:right">$100</span><br>
+                <span style="float:left">Utilities</span><span class="liabilities" style="float:right">$250</span><br><hr>
+                <b><span style="float:left"><b>Total</b></span><span id="liabilitiesTotal" style="float:right"></span><br></b>
+            </div>
+            <div id="equity">
+               <h3>Equity</h3>
+                <span style="float:left">Assets</span><span class="equityAssets equity" style="float:right"></span><br>
+                <span style="float:left">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span><br><hr>
+                <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right"></span><br></b>
+            </div>
+        </div>
+    </body>
+    <script>
+         var total = 0;
+         var calcTotal = function() {
+            assets = document.getElementsByClassName("assets");
+            for (var i=0; i<assets.length; i++) {
+               total += parseFloat(assets[i].innerHTML.slice(1, assets[i].innerHTML.length));
+               document.getElementById("assetsTotal").innerHTML = "$" + total;
+               document.getElementsByClassName("equityAssets")[0].innerHTML = "$" + total;
+            }
+            total = 0;
+            liabilities = document.getElementsByClassName("liabilities");
+            for (var i=0; i<liabilities.length; i++) {
+               total += parseFloat(liabilities[i].innerHTML.slice(1, liabilities[i].innerHTML.length));
+               document.getElementById("liabilitiesTotal").innerHTML = "$" + -total;
+               document.getElementsByClassName("equityLiabilities")[0].innerHTML = "$" + -total;
+            }
+            total = 0;
+            equity = document.getElementsByClassName("equity");
+            for (var i=0; i<equity.length; i++) {
+               total += parseFloat(equity[i].innerHTML.slice(1, equity[i].innerHTML.length));
+               document.getElementById("equityTotal").innerHTML = "$" + total;
+            }
+         };
+	 calcTotal();
+
+         var monthNames = ["January", "February", "March", "April", "May", "June",
+           "July", "August", "September", "October", "November", "December"
+         ];
+         var date = new Date();
+         dateVal = monthNames[date.getMonth()] + " " + date.getFullYear() + " Balance Sheet"
+         document.getElementById("monthHeading").innerHTML = dateVal;
+         document.title = dateVal;
+    </script>
+</html>

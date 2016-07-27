@@ -58,3 +58,8 @@ class AccountsView(MethodView):
                 return redirect('/accounts')
             else:
                 return redirect('/accounts/{}'.format(account_name))
+
+class BalanceSheetView(MethodView):
+
+    def get(self):
+        return render_template('balance_sheet.html')

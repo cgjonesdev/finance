@@ -8,6 +8,9 @@
             h3 {
                 border-bottom: 6px solid rgba(0,0,0,.1);
             }
+            form {
+                margin-bottom: 2em;
+            }
             #main {
                 font-size: 1.15em;
                 text-align: center;
@@ -16,16 +19,19 @@
                 float: left;
                 width: 30%;
                 padding: 0 1.5% 0 1.5%;
+                color: darkgreen;
             }
             #liabilities {
                 float: left;
                 width: 30%;
                 padding: 0 1.5% 0 1.5%;
+                color: darkred;
             }
             #equity {
                 float: left;
                 width: 30%;
                 padding: 0 1.5% 0 1.5%;
+                color: darkblue;
             }
             #items {
                 text-align: left;
@@ -39,13 +45,25 @@
         <h1 id="monthHeading">Monthly Balance Sheet</h1>
         <div id="main">
             <div id="assets">
-                <h3 title="Click to add an asset">Assets</h3>
+                <h3>Assets</h3>
+                <form id="addAssetForm" name="addAsset" method="POST" hidden>
+                    <input id="addAssetInput" type="text" placeholder="Asset name">
+                    <input type="text" placeholder="Assset amount">
+                    <input type="submit" value="Add"/>
+                </form>
+                <span style="float:left"><button style="font-weight:bold" id="addAssetButton" onclick="showAddForm('asset')">+</button></span><br>
                 <span style="float:left">Job</span><span class="assets" style="float:right">$5000</span><br>
                 <span style="float:left">Investments</span><span class="assets" style="float:right">$2000</span><br><hr>
                 <b><span style="float:left">Total</span><span id="assetsTotal" style="float:right"></span><br></b>
             </div>
             <div id="liabilities">
                 <h3>Liabilities</h3>
+                <form id="addLiabilityForm" name="addLiability" method="POST" hidden>
+                    <input id="addLiabilityInput" type="text" placeholder="Liability name">
+                    <input type="text" placeholder="Liability amount">
+                    <input type="submit" value="Add"/>
+                </form>
+                <span style="float:left"><button style="font-weight:bold" id="addLiabilityButton" onclick="showAddForm('liability')">+</button></span><br>
                 <span style="float:left">Mortgage/Rent</span><span class="liabilities" style="float:right">$1500</span><br>
                 <span style="float:left">Car</span><span class="liabilities" style="float:right">$400</span><br>
                 <span style="float:left">Phone</span><span class="liabilities" style="float:right">$100</span><br>
@@ -54,6 +72,12 @@
             </div>
             <div id="equity">
                <h3>Equity</h3>
+                <form id="addEquityForm" name="addEquity" method="POST" hidden>
+                    <input id="addEquityInput" type="text" placeholder="Equity name">
+                    <input type="text" placeholder="Equity amount">
+                    <input type="submit" value="Add"/>
+                </form>
+                <span style="float:left"><button style="font-weight:bold" id="addEquityButton" onclick="showAddForm('equity')">+</button></span><br>
                 <span style="float:left">Assets</span><span class="equityAssets equity" style="float:right"></span><br>
                 <span style="float:left">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span><br><hr>
                 <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right"></span><br></b>
@@ -83,7 +107,7 @@
                document.getElementById("equityTotal").innerHTML = "$" + total;
             }
          };
-	 calcTotal();
+     calcTotal();
 
          var monthNames = ["January", "February", "March", "April", "May", "June",
            "July", "August", "September", "October", "November", "December"
@@ -92,5 +116,38 @@
          dateVal = monthNames[date.getMonth()] + " " + date.getFullYear() + " Balance Sheet"
          document.getElementById("monthHeading").innerHTML = dateVal;
          document.title = dateVal;
+
+         var showAddForm = function(name) {
+             buttons = document.getElementsByTagName("button")
+             inputs = document.getElementsByTagName("input")
+             console.log(name, buttons[0].innerHTML);
+             if (name == "asset") {
+                 buttons[0].innerHTML = "-";
+             }
+             else if (name == "liability") {
+                 buttons[1].innerHTML = "-";
+             }
+             else if (name == "equity") {
+                 buttons[2].innerHTML = "-";
+             }
+             if (name == "asset") {
+                 document.getElementById("addAssetForm").hidden = !document.getElementById("addAssetForm").hidden
+                 if (document.getElementById("addAssetForm").hidden) {
+                     buttons[0].innerHTML = "+";
+                 }
+             }
+             else if (name == "liability") {
+                 document.getElementById("addLiabilityForm").hidden = !document.getElementById("addLiabilityForm").hidden
+                 if (document.getElementById("addLiabilityForm").hidden) {
+                     buttons[1].innerHTML = "+";
+                 }
+             }
+             else if (name == "equity") {
+                 document.getElementById("addEquityForm").hidden = !document.getElementById("addEquityForm").hidden
+                 if (document.getElementById("addEquityForm").hidden) {
+                     buttons[2].innerHTML = "+";
+                 }
+             }
+         }
     </script>
 </html>

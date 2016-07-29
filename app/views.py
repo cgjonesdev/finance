@@ -16,8 +16,8 @@ from flask import (
     abort
 )
 from flask.views import MethodView
-from code.accounts import accounts
 
+from code.accounts import accounts
 
 app = Flask(__name__)
 
@@ -61,5 +61,12 @@ class AccountsView(MethodView):
 
 class BalanceSheetView(MethodView):
 
-    def get(self):
+    def get(self, name=None):
+        if request.endpoint == 'balance_sheet-create':
+            print request.endpoint
+        if name:
+            self.post(name, request.endpoint)
+        return render_template('balance_sheet.html')
+
+    def post(self, name=None, endpoint=None):
         return render_template('balance_sheet.html')

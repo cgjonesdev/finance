@@ -38,7 +38,7 @@ var showAddForm = function(name) {
     submitLiability.value = "Add";
     submitLiability.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
     submitEquity.value = "Add";
-    submitEquity.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";        
+    submitEquity.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
     if (name == "asset") {
         addSymbols[0].src = "/static/assets/minus.png";
     }
@@ -48,21 +48,24 @@ var showAddForm = function(name) {
     else if (name == "equity") {
         addSymbols[2].src = "/static/assets/minus.png";
     }
+    var form = document.getElementById("addEditAssetForm");
     if (name == "asset") {
-        document.getElementById("addEditAssetForm").hidden = !document.getElementById("addEditAssetForm").hidden
-        if (document.getElementById("addEditAssetForm").hidden) {
+        form.hidden = !form.hidden
+        if (form.hidden) {
             addSymbols[0].src = "/static/assets/add.png";
         }
     }
-    else if (name == "liability") {
-        document.getElementById("addEditLiabilityForm").hidden = !document.getElementById("addEditLiabilityForm").hidden
-        if (document.getElementById("addEditLiabilityForm").hidden) {
+    form = document.getElementById("addEditLiabilityForm");
+    if (name == "liability") {
+        form.hidden = !form.hidden
+        if (form.hidden) {
             addSymbols[1].src = "/static/assets/add.png";
         }
     }
-    else if (name == "equity") {
-        document.getElementById("addEditEquityForm").hidden = !document.getElementById("addEditEquityForm").hidden
-        if (document.getElementById("addEditEquityForm").hidden) {
+    form = document.getElementById("addEditEquityForm");
+    if (name == "equity") {
+        form.hidden = !form.hidden
+        if (form.hidden) {
             addSymbols[2].src = "/static/assets/add.png";
         }
     }

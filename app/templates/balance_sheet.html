@@ -7,10 +7,11 @@
         <div id="main">
             <div id="assets">
                 <h3>Assets</h3>
-                <form id="addEditAssetForm" name="addAsset" method="POST" hidden>
-                    <input id="addAssetInput" type="text" placeholder="Asset name">
-                    <input type="text" placeholder="Assset amount">
+                <form id="addEditAssetForm" name="addAsset" method="POST" action="/balance_sheet" hidden>
+                    <input id="addAssetInput" name="asset_name" type="text" placeholder="Asset name">
+                    <input type="text" name="asset_amount" placeholder="Assset amount">
                     <input id="submitAsset" type="submit" value="Add">
+                    <input type="hidden" name="assets_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
                 <div onmouseover="showPencil('Job')" onmouseout="hidePencil('Job')"><img class="edit" name="Job" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="Job" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span id="itemName" style="float:left">Job</span><span class="assets" style="float:right">$5000</span></div><br>
@@ -19,10 +20,11 @@
             </div>
             <div id="liabilities">
                 <h3>Liabilities</h3>
-                <form id="addEditLiabilityForm" name="addLiability" method="POST" hidden>
-                    <input id="addLiabilityInput" type="text" placeholder="Liability name">
-                    <input type="text" placeholder="Liability amount">
+                <form id="addEditLiabilityForm" name="addLiability" method="POST" action="/balance_sheet" hidden>
+                    <input id="addLiabilityInput" name="liability_name" type="text" placeholder="Liability name">
+                    <input type="text" name="liability_amount" placeholder="Liability amount">
                     <input id="submitLiability" type="submit" value="Add"/>
+                    <input type="hidden" name="liablities_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
                 <div onmouseover="showPencil('Mortgage-Rent')" onmouseout="hidePencil('Mortgage-Rent')"><img class="edit" name="Mortgage-Rent" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Mortgage-Rent" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Mortgage-Rent</span><span class="liabilities" style="float:right">$1500</span></div><br>
@@ -33,10 +35,11 @@
             </div>
             <div id="equity">
                <h3>Equity</h3>
-                <form id="addEditEquityForm" name="addEquity" method="POST" hidden>
-                    <input id="addEquityInput" type="text" placeholder="Equity name">
-                    <input type="text" placeholder="Equity amount">
+                <form id="addEditEquityForm" name="addEquity" method="POST" action="/balance_sheet" hidden>
+                    <input id="addEquityInput" name="equity_name" type="text" placeholder="Equity name">
+                    <input type="text" name="equity_amount" placeholder="Equity amount">
                     <input id="submitEquity" type="submit" value="Add"/>
+                    <input type="hidden" name="equities_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
                 <div onmouseover="showPencil('Assets')" onmouseout="hidePencil('Assets')"><img class="edit" name="Assets" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="Assets" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">Assets</span><span class="equityAssets equity" style="float:right"></span></div><br>

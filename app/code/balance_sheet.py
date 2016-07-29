@@ -1,10 +1,8 @@
-from data import DataConnector as DC
+from data import DataConnector
 
 
 class Base(object):
-
-    def __str__(self):
-        return self.__class.__.__name__
+    _dataconnector = DataConnector('finance', 'balance_sheet')
 
 
 class BalanceSheet(object):
@@ -19,22 +17,13 @@ class BalanceSheet(object):
     def __add__(self, object):
         if isinstance(object, Assets):
             self.assets.extend(object)
-        else:
-            raise TypeError(
-                'object must be Assets type, you supplied: {}'.format(
-                    type(object)))
 
-    def __sub__(self, object):
         if isinstance(object, Liabilities):
-            self.assets.extend(object)
-        else:
-            raise TypeError(
-                'object must be Liabilities type, you supplied: {}'.format(
-                    type(object)))
+            self.liabilities.extend(object)
 
 
 class Multi(Base):
-    
+
     def __init__(self):
         self.items = []
         self._total = 0.0
@@ -51,21 +40,31 @@ class Multi(Base):
         except:
             raise IndexError('{} is not in the list'.format(other))
 
+    def sum(self):
+        return sum(item.amount for item in self)
+
     @property
     def total(self):
         return sum(x.amount for x in self)
 
+    def save(self):
+        for item in self:
+            self._dataconnector + vars(item)
+
 
 class Singleton(Base):
-    
+
     def __init__(self, name, amount):
         self.name = name
         self.amount = amount
 
+    def save(self):
+        self._dataconnector + vars(self)
+
 
 
 class Assets(Multi):
-    pass 
+    pass
 
 
 class Asset(Singleton):
@@ -77,6 +76,10 @@ class Liabilities(Multi):
 
 
 class Liability(Singleton):
+    pass
+
+
+class Equities(Multi):
     pass
 
 
@@ -98,6 +101,16 @@ if __name__ == '__main__':
 
     balance_sheet = BalanceSheet()
     balance_sheet + assets
-    balance_sheet - liabilities
+    balance_sheet + liabilities
     pprint(vars(balance_sheet))
     pprint(list(balance_sheet))
+
+    equities = Equities()
+    equities + assets
+    print str(assets)
+    print str(liabilities)
+    pprint(list(equities))
+    equities + liabilities
+
+    assets.save()
+    liabilities.save()

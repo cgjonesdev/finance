@@ -54,6 +54,65 @@ code {
     border: 1px solid rgb(235,235,235);
     color: darkred;
 }
+input[type=text] {
+    padding: .25em;
+    margin: 0 .25em 1em;
+    border-radius: .2em;
+    font-size: .85em;
+    border: none;
+    background-color: rgba(0, 100, 200, .05);
+    text-align: center;
+    width: 150px;
+}
+input[type=submit] {
+    margin: 0 0 -2em 1em;
+    border: none;
+    font-size: .95em;
+    min-width: 75px;
+    background: linear-gradient(rgb(95,205,85), rgb(40,120,25));
+    color: white;
+}
+input[type=submit]:hover {
+    background: linear-gradient(lightgreen, lightgreen);
+    color: black;
+}
+input[type=submit]:focus {
+    background: linear-gradient(rgb(40,120,25), rgb(95,205,85));
+    color: white;
+}
+input#delete {
+    margin: 0 0 -2em 1em;
+    border: none;
+    font-size: .95em;
+    min-width: 75px;
+    background: linear-gradient(red, darkred);
+    color: white;
+}
+input#delete:hover {
+    background: linear-gradient(pink, pink);
+    color: black;
+}
+input#delete:focus {
+    background: linear-gradient(darkred, red);
+    color: white;
+}
+textarea {
+    border: none;
+    background-color: rgba(0, 100, 200, .05);
+    border-radius: .3em;
+    margin: 0 .5em -1.3em 0;
+    width: 55%;
+    height: 50px;
+    font-size: 1em;
+}
+select {
+    border: none;
+    outline: 0;
+    margin: 0 1em 1em .5em;
+    background-color: rgba(0, 100, 200, .05);
+    border-radius: .2em;
+    font-size: 1.1em;
+}
 th {
     font-size: 1.15em;
     background-color: rgb(225, 225, 225);
@@ -64,6 +123,7 @@ td {
     padding: .25em;
     max-width: 200px;
 }
+
 #td-center {
     background-color: rgb(250, 245, 235);
     padding: .25em;

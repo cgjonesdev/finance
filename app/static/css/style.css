@@ -1,6 +1,43 @@
 @import url(http://fonts.googleapis.com/css?family=Hind|Oxygen|Raleway|Josefin+Sans|Indie+Flower|Cabin|Play|Roboto|Dancing+Script);
 @import "base.css";
 
+body {
+    width: 90%;
+}
+h3 {
+    border-bottom: 6px solid rgba(0,0,0,.1);
+}
+form {
+    margin-bottom: 2em;
+}
+#main {
+    font-size: 1.15em;
+    text-align: center;
+}
+#assets {
+    float: left;
+    width: 30%;
+    padding: 0 1.5% 0 1.5%;
+    color: darkgreen;
+}
+#liabilities {
+    float: left;
+    width: 30%;
+    padding: 0 1.5% 0 1.5%;
+    color: darkred;
+}
+#equity {
+    float: left;
+    width: 30%;
+    padding: 0 1.5% 0 1.5%;
+    color: darkblue;
+}
+#items {
+    text-align: left;
+}
+#amount {
+    text-align: right;
+}
 #td-center {
     background-color: rgb(250, 245, 235);
     padding: .25em;
@@ -23,4 +60,11 @@
     margin: .25em 0 0 7em;
     background-color: rgba(0, 100, 200, .05);
 }
-
+.edit {
+    display: none;
+    float: left;
+    opacity: .6;
+}
+img.edit {
+    padding: 0 .2em 0 .2em;
+}

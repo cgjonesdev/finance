@@ -7,40 +7,40 @@
         <div id="main">
             <div id="assets">
                 <h3>Assets</h3>
-                <form id="addAssetForm" name="addAsset" method="POST" hidden>
+                <form id="addEditAssetForm" name="addAsset" method="POST" hidden>
                     <input id="addAssetInput" type="text" placeholder="Asset name">
                     <input type="text" placeholder="Assset amount">
-                    <input type="submit" value="Add"/>
+                    <input id="submitAsset" type="submit" value="Add">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
-                <img class="edit" name="Job" src="/static/assets/pencil.png" width="24"><img class="edit" name="Job" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Job')" onmouseout="hidePencil('Job')">Job</span><span class="assets" style="float:right">$5000</span><br>
-                <img class="edit" name = "Investments" src="/static/assets/pencil.png" width="24"><img class="edit" name="Investments" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Investments')" onmouseout="hidePencil('Investments')">Investments</span><span class="assets" style="float:right">$2000</span><br><hr>
+                <div onmouseover="showPencil('Job')" onmouseout="hidePencil('Job')"><img class="edit" name="Job" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="Job" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span id="itemName" style="float:left">Job</span><span class="assets" style="float:right">$5000</span></div><br>
+                <div onmouseover="showPencil('Investments')" onmouseout="hidePencil('Investments')"><img class="edit" name="Investments" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="Investments" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span style="float:left" >Investments</span><span class="assets" style="float:right">$2000</span></div><br><hr>
                 <b><span style="float:left">Total</span><span id="assetsTotal" style="float:right"></span><br></b>
             </div>
             <div id="liabilities">
                 <h3>Liabilities</h3>
-                <form id="addLiabilityForm" name="addLiability" method="POST" hidden>
+                <form id="addEditLiabilityForm" name="addLiability" method="POST" hidden>
                     <input id="addLiabilityInput" type="text" placeholder="Liability name">
                     <input type="text" placeholder="Liability amount">
-                    <input type="submit" value="Add"/>
+                    <input id="submitLiability" type="submit" value="Add"/>
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
-                <img class="edit" name="Mortgage/Rent" src="/static/assets/pencil.png" width="24"><img class="edit" name="Mortgage/Rent" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Mortgage/Rent')" onmouseout="hidePencil('Mortgage/Rent')">Mortgage/Rent</span><span class="liabilities" style="float:right">$1500</span><br>
-                <img class="edit" name="Car" src="/static/assets/pencil.png" width="24"><img class="edit" name="Car" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Car')" onmouseout="hidePencil('Car')">Car</span><span class="liabilities" style="float:right">$400</span><br>
-                <img class="edit" name="Phone" src="/static/assets/pencil.png" width="24"><img class="edit" name="Phone" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Phone')" onmouseout="hidePencil('Phone')">Phone</span><span class="liabilities" style="float:right">$100</span><br>
-                <img class="edit" name="Utilities" src="/static/assets/pencil.png" width="24"><img class="edit" name="Utilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Utilities')" onmouseout="hidePencil('Utilities')">Utilities</span><span class="liabilities" style="float:right">$250</span><br><hr>
+                <div onmouseover="showPencil('Mortgage-Rent')" onmouseout="hidePencil('Mortgage-Rent')"><img class="edit" name="Mortgage-Rent" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Mortgage-Rent" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Mortgage-Rent</span><span class="liabilities" style="float:right">$1500</span></div><br>
+                <div onmouseover="showPencil('Car')" onmouseout="hidePencil('Car')"><img class="edit" name="Car" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Car" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Car</span><span class="liabilities" style="float:right">$400</span></div><br>
+                <div onmouseover="showPencil('Phone')" onmouseout="hidePencil('Phone')"><img class="edit" name="Phone" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Phone" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Phone</span><span class="liabilities" style="float:right">$100</span></div><br>
+                <div onmouseover="showPencil('Utilities')" onmouseout="hidePencil('Utilities')"><img class="edit" name="Utilities" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Utilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Utilities</span><span class="liabilities" style="float:right">$250</span></div><br><hr>
                 <b><span style="float:left"><b>Total</b></span><span id="liabilitiesTotal" style="float:right"></span><br></b>
             </div>
             <div id="equity">
                <h3>Equity</h3>
-                <form id="addEquityForm" name="addEquity" method="POST" hidden>
+                <form id="addEditEquityForm" name="addEquity" method="POST" hidden>
                     <input id="addEquityInput" type="text" placeholder="Equity name">
                     <input type="text" placeholder="Equity amount">
-                    <input type="submit" value="Add"/>
+                    <input id="submitEquity" type="submit" value="Add"/>
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
-                <img class="edit" name="Assets" src="/static/assets/pencil.png" width="24"><img class="edit" name="Assets" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Assets')" onmouseout="hidePencil('Assets')">Assets</span><span class="equityAssets equity" style="float:right"></span><br>
-                <img class="edit" name="Liabilities" src="/static/assets/pencil.png" width="24"><img class="edit" name="Liabilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Liabilities')" onmouseout="hidePencil('Liabilities')">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span><br><hr>
+                <div onmouseover="showPencil('Assets')" onmouseout="hidePencil('Assets')"><img class="edit" name="Assets" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="Assets" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">Assets</span><span class="equityAssets equity" style="float:right"></span></div><br>
+                <div onmouseover="showPencil('Liabilities')" onmouseout="hidePencil('Liabilities')"><img class="edit" name="Liabilities" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="Liabilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span></div><br><hr>
                 <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right"></span><br></b>
             </div>
         </div>

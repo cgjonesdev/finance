@@ -12,7 +12,7 @@
                     <input type="text" placeholder="Assset amount">
                     <input type="submit" value="Add"/>
                 </form>
-                <span style="float:left"><button style="font-weight:bold" id="addAssetButton" onclick="showAddForm('asset')">+</button></span><br>
+                <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
                 <img class="edit" name="Job" src="/static/assets/pencil.png" width="24"><img class="edit" name="Job" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Job')" onmouseout="hidePencil('Job')">Job</span><span class="assets" style="float:right">$5000</span><br>
                 <img class="edit" name = "Investments" src="/static/assets/pencil.png" width="24"><img class="edit" name="Investments" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Investments')" onmouseout="hidePencil('Investments')">Investments</span><span class="assets" style="float:right">$2000</span><br><hr>
                 <b><span style="float:left">Total</span><span id="assetsTotal" style="float:right"></span><br></b>
@@ -24,7 +24,7 @@
                     <input type="text" placeholder="Liability amount">
                     <input type="submit" value="Add"/>
                 </form>
-                <span style="float:left"><button style="font-weight:bold" id="addLiabilityButton" onclick="showAddForm('liability')">+</button></span><br>
+                <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
                 <img class="edit" name="Mortgage/Rent" src="/static/assets/pencil.png" width="24"><img class="edit" name="Mortgage/Rent" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Mortgage/Rent')" onmouseout="hidePencil('Mortgage/Rent')">Mortgage/Rent</span><span class="liabilities" style="float:right">$1500</span><br>
                 <img class="edit" name="Car" src="/static/assets/pencil.png" width="24"><img class="edit" name="Car" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Car')" onmouseout="hidePencil('Car')">Car</span><span class="liabilities" style="float:right">$400</span><br>
                 <img class="edit" name="Phone" src="/static/assets/pencil.png" width="24"><img class="edit" name="Phone" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Phone')" onmouseout="hidePencil('Phone')">Phone</span><span class="liabilities" style="float:right">$100</span><br>
@@ -38,7 +38,7 @@
                     <input type="text" placeholder="Equity amount">
                     <input type="submit" value="Add"/>
                 </form>
-                <span style="float:left"><button style="font-weight:bold" id="addEquityButton" onclick="showAddForm('equity')">+</button></span><br>
+                <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
                 <img class="edit" name="Assets" src="/static/assets/pencil.png" width="24"><img class="edit" name="Assets" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Assets')" onmouseout="hidePencil('Assets')">Assets</span><span class="equityAssets equity" style="float:right"></span><br>
                 <img class="edit" name="Liabilities" src="/static/assets/pencil.png" width="24"><img class="edit" name="Liabilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15"><span style="float:left" onmouseover="showPencil('Liabilities')" onmouseout="hidePencil('Liabilities')">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span><br><hr>
                 <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right"></span><br></b>
@@ -76,35 +76,35 @@
         dateVal = monthNames[date.getMonth()] + " " + date.getFullYear() + " Balance Sheet"
         document.getElementById("monthHeading").innerHTML = dateVal;
         document.title = dateVal;
+
         var showAddForm = function(name) {
-            buttons = document.getElementsByTagName("button")
-            inputs = document.getElementsByTagName("input")
-            console.log(name, buttons[0].innerHTML);
+            addSymbols = document.getElementsByClassName("addSymbol");
+            inputs = document.getElementsByTagName("input");
             if (name == "asset") {
-                buttons[0].innerHTML = "-";
+                addSymbols[0].src = "/static/assets/minus.png";
             }
             else if (name == "liability") {
-                buttons[1].innerHTML = "-";
+                addSymbols[1].src = "/static/assets/minus.png";
             }
             else if (name == "equity") {
-                buttons[2].innerHTML = "-";
+                addSymbols[2].src = "/static/assets/minus.png";
             }
             if (name == "asset") {
                 document.getElementById("addAssetForm").hidden = !document.getElementById("addAssetForm").hidden
                 if (document.getElementById("addAssetForm").hidden) {
-                    buttons[0].innerHTML = "+";
+                    addSymbols[0].src = "/static/assets/add.png";
                 }
             }
             else if (name == "liability") {
                 document.getElementById("addLiabilityForm").hidden = !document.getElementById("addLiabilityForm").hidden
                 if (document.getElementById("addLiabilityForm").hidden) {
-                    buttons[1].innerHTML = "+";
+                    addSymbols[1].src = "/static/assets/add.png";
                 }
             }
             else if (name == "equity") {
                 document.getElementById("addEquityForm").hidden = !document.getElementById("addEquityForm").hidden
                 if (document.getElementById("addEquityForm").hidden) {
-                    buttons[2].innerHTML = "+";
+                    addSymbols[2].src = "/static/assets/add.png";
                 }
             }
         }

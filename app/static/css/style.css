@@ -67,5 +67,8 @@ form {
     opacity: .6;
 }
 img.edit {
-    padding: 0 .2em 0 .2em;
+    padding-right: .4em;
+}
+#item {
+    padding-left: 2em;
 }

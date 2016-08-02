@@ -81,6 +81,8 @@ class BalanceSheetView(MethodView):
                 liabilities + data
             elif any([key for key in data if 'equities_form' in key]):
                 equities + data
+        assets, liabilities, equities = controllers.BalanceSheetController()\
+            .refresh()
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,

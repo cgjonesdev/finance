@@ -49,20 +49,23 @@ var showAddForm = function(name) {
         addSymbols[2].src = "/static/assets/minus.png";
     }
     var form = document.getElementById("addEditAssetForm");
+    form.reset();
     if (name == "asset") {
         form.hidden = !form.hidden
         if (form.hidden) {
             addSymbols[0].src = "/static/assets/add.png";
         }
     }
-    form = document.getElementById("addEditLiabilityForm");
+    var form = document.getElementById("addEditLiabilityForm");
+    form.reset();
     if (name == "liability") {
         form.hidden = !form.hidden
         if (form.hidden) {
             addSymbols[1].src = "/static/assets/add.png";
         }
     }
-    form = document.getElementById("addEditEquityForm");
+    var form = document.getElementById("addEditEquityForm");
+    form.reset();
     if (name == "equity") {
         form.hidden = !form.hidden
         if (form.hidden) {

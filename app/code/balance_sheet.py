@@ -14,6 +14,22 @@ class Base(object):
             [vars(item) for item in self.items])\
             if hasattr(self, 'items') else pformat(vars(self))
 
+    def _strip_key(self, data):
+        # Strip identifier key and extranoues text from other keys coming from
+        # form data
+
+        for k, v in data.items():
+            if 'form' in k:
+                del data[k]
+            else:
+                del data[k]
+                data[k.split('_')[-1]] = v
+            try:
+                data[k.split('_')[-1]] = float(v)
+            except:
+                pass
+        return type(str(self), (Singleton,), data)
+
 
 class Multi(Base):
 
@@ -21,24 +37,8 @@ class Multi(Base):
         return (item for item in self.items)
 
     def __add__(self, other):
-        print other
-
-        # Strip identifier key and extranoues text from other keys coming from
-        # form data
-        if isinstance(other, dict):
-            for k, v in other.items():
-                if 'form' in k:
-                    del other[k]
-                else:
-                    del other[k]
-                    other[k.split('_')[-1]] = v
-                try:
-                    other[k.split('_')[-1]] = float(v)
-                except:
-                    pass
-            pprint(other)
-            other = type(str(self), (Singleton,), other)
-
+        if isinstance(data, dict):
+            other = self._strip_key(other)
         self.items.append(other)
         self._dataconnector + {k: v for k, v in vars(other).items()
                                if k not in ('_id', '__doc__', '__module__')}
@@ -51,10 +51,7 @@ class Multi(Base):
         return self
 
     def __iadd__(self, others):
-        self.items.extend(others.items)
-        for other in others:
-            self._dataconnector + {k: v for k, v in vars(other).items() if
-                                   k not in ('_id', '__doc__', '__module__')}
+
         return self
 
     def __isub__(self, others):
@@ -80,6 +77,10 @@ class Singleton(Base):
         self._id = str(_id)
         self.name = name
         self.amount = amount
+
+    def __iadd__(self, other):
+        self.__dict__.update(other)
+        self._dataconnector += other
 
 
 class Assets(Multi):

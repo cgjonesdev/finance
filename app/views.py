@@ -63,7 +63,7 @@ class BalanceSheetView(MethodView):
 
     def get(self, name=None):
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .refresh()
+            .get()
         return render_template(
             'balance_sheet.html',
             assets=assets,
@@ -72,7 +72,7 @@ class BalanceSheetView(MethodView):
 
     def post(self, name=None, endpoint=None):
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .refresh()
+            .get()
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':
             if any([key for key in data if 'assets_form' in key]):
@@ -81,8 +81,15 @@ class BalanceSheetView(MethodView):
                 liabilities + data
             elif any([key for key in data if 'equities_form' in key]):
                 equities + data
+        elif request.endpoint == 'balance-sheet-update':
+            if any([key for key in data if 'assets_form' in key]):
+                assets += data
+            elif any([key for key in data if 'liablities_form' in key]):
+                liabilities += data
+            elif any([key for key in data if 'equities_form' in key]):
+                equities += data
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .refresh()
+            .get()
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,

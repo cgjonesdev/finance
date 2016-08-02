@@ -9,7 +9,7 @@ class IndexController(object):
 
 class BalanceSheetController(object):
 
-    def refresh(self):
+    def get(self):
         assets = Assets()
         liabilities = Liabilities()
         equities = Equities(assets, liabilities)

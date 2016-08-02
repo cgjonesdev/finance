@@ -5,9 +5,9 @@ from pymongo import MongoClient
 
 class DataConnector(object):
 
-    def __init__(self, db_name, collection_name):
+    def __init__(self, collection_name):
         client = MongoClient()
-        db = client[db_name]
+        db = client['finance']
         self.collection = db[collection_name]
 
     def __iter__(self):
@@ -33,4 +33,6 @@ class DataConnector(object):
 
 
 if __name__ == '__main__':
-    dc = DataConnector('finance', 'balance_sheet')
+    dc = DataConnector('balance_sheet')
+    pprint(list(dc))
+    dc.clear()

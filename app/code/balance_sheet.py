@@ -1,70 +1,72 @@
-from data import DataConnector
+from pprint import pprint, pformat
+
+from data import DataConnector as DC
 
 
 class Base(object):
-    _dataconnector = DataConnector('finance', 'balance_sheet')
 
+    def __str__(self):
+        return self.__class__.__name__
 
-class BalanceSheet(object):
-
-    def __init__(self):
-        self.assets = []
-        self.liabilities = []
-
-    def __iter__(self):
-        return (x for x in self.assets + self.liabilities)
-
-    def __add__(self, object):
-        if isinstance(object, Assets):
-            self.assets.extend(object)
-
-        if isinstance(object, Liabilities):
-            self.liabilities.extend(object)
+    def __repr__(self):
+        return pformat(
+            [vars(item) for item in self.items])\
+            if hasattr(self, 'items') else pformat(vars(self))
 
 
 class Multi(Base):
 
-    def __init__(self):
-        self.items = []
-        self._total = 0.0
-
     def __iter__(self):
-        return (x for x in self.items)
+        return (item for item in self.items)
 
     def __add__(self, other):
         self.items.append(other)
+        self._dataconnector + {k: v for k, v in vars(other).items() if k != '_id'}
+        return self
 
     def __sub__(self, other):
-        try:
+        if other in self:
             self.items.remove(other)
-        except:
-            raise IndexError('{} is not in the list'.format(other))
+            self._dataconnector - vars(other)
+        return self
 
-    def sum(self):
-        return sum(item.amount for item in self)
+    def __iadd__(self, others):
+        self.items.extend(others.items)
+        for other in others:
+            self._dataconnector + {k: v for k, v in vars(other).items() if
+                                   k != '_id'}
+        return self
+
+    def __isub__(self, others):
+        for other in others:
+            if other in self:
+                self.items.remove(other)
+                self._dataconnector - vars(other)
 
     @property
     def total(self):
-        return sum(x.amount for x in self)
+        if isinstance(self, Liabilities):
+            return sum(-item.amount for item in self)
+        else:
+            return sum(item.amount for item in self)
 
-    def save(self):
-        for item in self:
-            self._dataconnector + vars(item)
+    def clear(self):
+        self._dataconnector.clear()
 
 
 class Singleton(Base):
 
-    def __init__(self, name, amount):
+    def __init__(self, _id=None, name='', amount=0.0):
+        self._id = str(_id)
         self.name = name
         self.amount = amount
 
-    def save(self):
-        self._dataconnector + vars(self)
-
-
 
 class Assets(Multi):
-    pass
+    _dataconnector = DC('assets')
+
+    def __init__(self):
+        self.items = [Asset(**item) for item in list(self._dataconnector)]
 
 
 class Asset(Singleton):
@@ -72,15 +74,24 @@ class Asset(Singleton):
 
 
 class Liabilities(Multi):
-    pass
+    _dataconnector = DC('liabilities')
+
+    def __init__(self):
+        self.items = [Liability(**item) for item in list(self._dataconnector)]
 
 
 class Liability(Singleton):
-    pass
+
+    def __init__(self, _id=None, name='', amount=0.0):
+        self.name = name
+        self.amount = -amount
 
 
 class Equities(Multi):
-    pass
+    _dataconnector = DC('equities')
+
+    def __init__(self):
+        self.items = [Equity(**item) for item in list(self._dataconnector)]
 
 
 class Equity(Singleton):
@@ -89,28 +100,20 @@ class Equity(Singleton):
 
 if __name__ == '__main__':
     assets = Assets()
-    assets + Asset('job', 5000.0)
-    assets + Asset('investments', 200.0)
-    print assets.total
-    liabilities = Liabilities()
-    liabilities + Liability('rent', 0.0)
-    print liabilities.total
-    from pprint import pprint
-    pprint(vars(assets))
-    pprint(vars(liabilities))
+    # assets.clear()
+    job = Asset(**{'name': 'job', 'amount': 5000.0})
+    assets + job
+    print 'assets.total: {}'.format(assets.total)
 
-    balance_sheet = BalanceSheet()
-    balance_sheet + assets
-    balance_sheet + liabilities
-    pprint(vars(balance_sheet))
-    pprint(list(balance_sheet))
+    liabilities = Liabilities()
+    # liabilities.clear()
+    rent = Liability(**{'name': 'rent', 'amount': 1000.0})
+    liabilities + rent
+    print 'liabilities.total: {}'.format(liabilities.total)
 
     equities = Equities()
-    equities + assets
-    print str(assets)
-    print str(liabilities)
-    pprint(list(equities))
-    equities + liabilities
+    # equities.clear()
+    equities += assets
+    equities += liabilities
 
-    assets.save()
-    liabilities.save()
+    print 'equities.total: {}'.format(equities.total)

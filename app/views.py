@@ -17,7 +17,7 @@ from flask import (
 )
 from flask.views import MethodView
 
-from code.accounts import accounts
+import controllers
 
 app = Flask(__name__)
 
@@ -62,11 +62,26 @@ class AccountsView(MethodView):
 class BalanceSheetView(MethodView):
 
     def get(self, name=None):
-        if request.endpoint == 'balance_sheet-create':
-            print request.endpoint
-        if name:
-            self.post(name, request.endpoint)
-        return render_template('balance_sheet.html')
+        assets, liabilities, equities = controllers.BalanceSheetController()\
+            .refresh()
+        return render_template(
+            'balance_sheet.html',
+            assets=assets,
+            liabilities=liabilities,
+            equities=equities)
 
     def post(self, name=None, endpoint=None):
-        return render_template('balance_sheet.html')
+        assets, liabilities, equities = controllers.BalanceSheetController()\
+            .refresh()
+        data = dict(request.form.items())
+        if request.endpoint == 'balance_sheet':
+            if any([key for key in data if 'assets_form' in key]):
+                assets + data
+            elif any([key for key in data if 'liablities_form' in key]):
+                liabilities + data
+            elif any([key for key in data if 'equities_form' in key]):
+                equities + data
+        return render_template('balance_sheet.html',
+            assets=assets,
+            liabilities=liabilities,
+            equities=equities)

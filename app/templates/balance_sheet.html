@@ -9,13 +9,15 @@
                 <h3>Assets</h3>
                 <form id="addEditAssetForm" name="addAsset" method="POST" action="/balance_sheet" hidden>
                     <input id="addAssetInput" name="asset_name" type="text" placeholder="Asset name">
-                    <input type="text" name="asset_amount" placeholder="Assset amount">
+                    <input type="text" name="asset_amount" placeholder="Asset amount">
                     <input id="submitAsset" type="submit" value="Add">
                     <input type="hidden" name="assets_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
-                <div onmouseover="showPencil('Job')" onmouseout="hidePencil('Job')"><img class="edit" name="Job" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="Job" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span style="float:left">Job</span><span class="assets" style="float:right">$5000</span></div><br>
-                <div onmouseover="showPencil('Investments')" onmouseout="hidePencil('Investments')"><img class="edit" name="Investments" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="Investments" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span style="float:left" >Investments</span><span class="assets" style="float:right">$2000</span></div><br><hr>
+                {% for asset in assets %}
+                    <div onmouseover="showPencil('{{asset.name}}')" onmouseout="hidePencil('{{asset.name}}')"><img class="edit" name="{{asset.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset')"><img class="edit" name="{{asset.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset')"><span style="float:left">{{asset.name}}</span><span class="assets" style="float:right">${{asset.amount}}</span></div><br>
+                {% endfor %}
+                <hr>
                 <b><span style="float:left">Total</span><span id="assetsTotal" style="float:right"></span><br></b>
             </div>
             <div id="liabilities">
@@ -27,10 +29,10 @@
                     <input type="hidden" name="liablities_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
-                <div onmouseover="showPencil('Mortgage-Rent')" onmouseout="hidePencil('Mortgage-Rent')"><img class="edit" name="Mortgage-Rent" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Mortgage-Rent" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Mortgage-Rent</span><span class="liabilities" style="float:right">$1500</span></div><br>
-                <div onmouseover="showPencil('Car')" onmouseout="hidePencil('Car')"><img class="edit" name="Car" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Car" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Car</span><span class="liabilities" style="float:right">$400</span></div><br>
-                <div onmouseover="showPencil('Phone')" onmouseout="hidePencil('Phone')"><img class="edit" name="Phone" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Phone" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Phone</span><span class="liabilities" style="float:right">$100</span></div><br>
-                <div onmouseover="showPencil('Utilities')" onmouseout="hidePencil('Utilities')"><img class="edit" name="Utilities" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="Utilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">Utilities</span><span class="liabilities" style="float:right">$250</span></div><br><hr>
+                {% for liability in liabilities %}
+                    <div onmouseover="showPencil('{{liability.name}}')" onmouseout="hidePencil('{{liability.name}}')"><img class="edit" name="{{liability.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability')"><img class="edit" name="{{liability.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability')"><span style="float:left">{{liability.name}}</span><span class="liabilities" style="float:right">${{liability.amount}}</span></div><br>
+                {% endfor %}
+                <hr>
                 <b><span style="float:left"><b>Total</b></span><span id="liabilitiesTotal" style="float:right"></span><br></b>
             </div>
             <div id="equity">
@@ -42,9 +44,11 @@
                     <input type="hidden" name="equities_form">
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
-                <div onmouseover="showPencil('Assets')" onmouseout="hidePencil('Assets')"><img class="edit" name="Assets" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="Assets" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">Assets</span><span class="equityAssets equity" style="float:right"></span></div><br>
-                <div onmouseover="showPencil('Liabilities')" onmouseout="hidePencil('Liabilities')"><img class="edit" name="Liabilities" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="Liabilities" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">Liabilities</span><span class="equityLiabilities equity" style="float:right"></span></div><br><hr>
-                <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right"></span><br></b>
+                {% for equity in equities %}
+                    <div onmouseover="showPencil('{{equity.name}}')" onmouseout="hidePencil('{{equity.name}}')"><img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity')"><img class="edit" name="{{equity.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity')"><span style="float:left">{{equity.name}}</span><span class="equityAssets equity" style="float:right">${{equity.amount}}</span></div><br>
+                {% endfor %}
+                <hr>
+                <b><span style="float:left"><b>Total</b></span><span id="equityTotal" style="float:right">${{equities.total}}</span><br></b>
             </div>
         </div>
     <script type="text/javascript" src="/static/js/script.js"></script>

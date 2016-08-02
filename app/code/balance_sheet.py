@@ -1,3 +1,4 @@
+import sys
 from pprint import pprint, pformat
 
 from data import DataConnector as DC
@@ -20,8 +21,27 @@ class Multi(Base):
         return (item for item in self.items)
 
     def __add__(self, other):
+        print other
+
+        # Strip identifier key and extranoues text from other keys coming from
+        # form data
+        if isinstance(other, dict):
+            for k, v in other.items():
+                if 'form' in k:
+                    del other[k]
+                else:
+                    del other[k]
+                    other[k.split('_')[-1]] = v
+                try:
+                    other[k.split('_')[-1]] = float(v)
+                except:
+                    pass
+            pprint(other)
+            other = type(str(self), (Singleton,), other)
+
         self.items.append(other)
-        self._dataconnector + {k: v for k, v in vars(other).items() if k != '_id'}
+        self._dataconnector + {k: v for k, v in vars(other).items()
+                               if k not in ('_id', '__doc__', '__module__')}
         return self
 
     def __sub__(self, other):
@@ -34,7 +54,7 @@ class Multi(Base):
         self.items.extend(others.items)
         for other in others:
             self._dataconnector + {k: v for k, v in vars(other).items() if
-                                   k != '_id'}
+                                   k not in ('_id', '__doc__', '__module__')}
         return self
 
     def __isub__(self, others):
@@ -46,9 +66,9 @@ class Multi(Base):
     @property
     def total(self):
         if isinstance(self, Liabilities):
-            return sum(-item.amount for item in self)
+            return round(sum(-item.amount for item in self), 2)
         else:
-            return sum(item.amount for item in self)
+            return round(sum(item.amount for item in self), 2)
 
     def clear(self):
         self._dataconnector.clear()
@@ -90,8 +110,14 @@ class Liability(Singleton):
 class Equities(Multi):
     _dataconnector = DC('equities')
 
-    def __init__(self):
+    def __init__(self, assets=None, liabilities=None):
         self.items = [Equity(**item) for item in list(self._dataconnector)]
+        if assets:
+            self.items.append(
+                Equity(**{'name': 'Assets', 'amount': assets.total}))
+        if liabilities:
+            self.items.append(
+                Equity(**{'name': 'Liabilities', 'amount': -liabilities.total}))
 
 
 class Equity(Singleton):

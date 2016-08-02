@@ -30,7 +30,7 @@ simplegeneric==0.8.1
 singledispatch==3.4.0.3
 six==1.10.0
 smtpapi==0.2.0
+stripe==1.37.0
 tornado==4.3
 traitlets==4.0.0
 wsgiref==0.1.2
-

@@ -75,14 +75,17 @@ document.addEventListener('mousemove', function(e) {
     activeElement = document.elementFromPoint(e.pageX, e.pageY);
 });
 
-var showEditForm = function(name) {
+var showEditForm = function(name, amount) {
     addSymbols = document.getElementsByClassName("addSymbol");
-    console.log(name);
     if (name == "asset") {
         var form = document.getElementById("addEditAssetForm");
         form.hidden = !form.hidden
         var submitAsset = document.getElementById("submitAsset");
         submitAsset.value = "Edit";
+        var assetName = document.getElementById("addAssetName");
+        assetName.value = activeElement.name;
+        var assetAmount = document.getElementById("addAssetAmount");
+        assetAmount.value = parseFloat(amount);
         submitAsset.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[0].src = "/static/assets/add.png";
         form.action = "/balance_sheet/" + activeElement.name + "/update";
@@ -92,6 +95,10 @@ var showEditForm = function(name) {
         form.hidden = !form.hidden
         var submitLiability = document.getElementById("submitLiability");
         submitLiability.value = "Edit";
+        var liabilityName = document.getElementById("addLiabilityName");
+        liabilityName.value = activeElement.name;
+        var liabilityAmount = document.getElementById("addLiabilityAmount");
+        liabilityAmount.value = parseFloat(amount);
         submitLiability.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[1].src = "/static/assets/add.png";
         form.action = "/balance_sheet/" + activeElement.name + "/update";
@@ -101,6 +108,10 @@ var showEditForm = function(name) {
         form.hidden = !form.hidden
         var submitEquity = document.getElementById("submitEquity");
         submitEquity.value = "Edit";
+        var equityName = document.getElementById("addEquityName");
+        equityName.value = activeElement.name;
+        var equityAmount = document.getElementById("addEquityAmount");
+        equityAmount.value = parseFloat(amount);
         submitEquity.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[2].src = "/static/assets/add.png";
         form.action = "/balance_sheet/" + activeElement.name + "/update";

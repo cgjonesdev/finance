@@ -40,45 +40,65 @@ var showAddForm = function(name) {
     submitEquity.value = "Add";
     submitEquity.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
     if (name == "asset") {
-        addSymbols[0].src = "/static/assets/minus.png";
+        addSymbols[0].style.display = "none";
     }
     else if (name == "liability") {
-        addSymbols[1].src = "/static/assets/minus.png";
+        addSymbols[1].style.display = "none";
     }
     else if (name == "equity") {
-        addSymbols[2].src = "/static/assets/minus.png";
+        addSymbols[2].style.display = "none";
     }
-    var form = document.getElementById("addEditAssetForm");
-    form.reset();
     if (name == "asset") {
+        var form = document.getElementById("addEditAssetForm");
+        form.reset();
         form.hidden = !form.hidden
         if (form.hidden) {
             addSymbols[0].src = "/static/assets/add.png";
         }
     }
-    var form = document.getElementById("addEditLiabilityForm");
-    form.reset();
     if (name == "liability") {
+        var form = document.getElementById("addEditLiabilityForm");
+        form.reset();
         form.hidden = !form.hidden
         if (form.hidden) {
             addSymbols[1].src = "/static/assets/add.png";
         }
     }
-    var form = document.getElementById("addEditEquityForm");
-    form.reset();
     if (name == "equity") {
+        var form = document.getElementById("addEditEquityForm");
+        form.reset();
         form.hidden = !form.hidden
         if (form.hidden) {
             addSymbols[2].src = "/static/assets/add.png";
         }
     }
+    form.style.display = "inline";
+    form.style.marginBottom = "1em";
+}
+
+var cancelAddEdit = function(name) {
+    var addSymbols = document.getElementsByClassName("addSymbol");
+    if (name == "asset") {
+        var form = document.getElementById("addEditAssetForm");
+        addSymbols[0].style.display = "inline";
+    }
+    else if (name == "liability") {
+        var form = document.getElementById("addEditLiabilityForm");
+        addSymbols[1].style.display = "inline";
+    }
+    else if (name == "equity") {
+        var form = document.getElementById("addEditEquityForm");
+        addSymbols[2].style.display = "inline";
+    }
+    form.style.display = "none";
+    form.style.marginBottom = "1em";
 }
 
 document.addEventListener('mousemove', function(e) {
     activeElement = document.elementFromPoint(e.pageX, e.pageY);
 });
 
-var showEditForm = function(name, amount) {
+var showEditForm = function(name, _id, amount) {
     addSymbols = document.getElementsByClassName("addSymbol");
     if (name == "asset") {
         var form = document.getElementById("addEditAssetForm");
@@ -88,10 +108,9 @@ var showEditForm = function(name, amount) {
         var assetName = document.getElementById("addAssetName");
         assetName.value = activeElement.name;
         var assetAmount = document.getElementById("addAssetAmount");
-        assetAmount.value = parseFloat(amount);
+        assetAmount.value = amount;
         submitAsset.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
-        addSymbols[0].src = "/static/assets/add.png";
-        form.action = "/balance_sheet/" + activeElement.name + "/update";
+        addSymbols[0].style.display = "none";
     }
     if (name == "liability") {
         var form = document.getElementById("addEditLiabilityForm");
@@ -101,10 +120,9 @@ var showEditForm = function(name, amount) {
         var liabilityName = document.getElementById("addLiabilityName");
         liabilityName.value = activeElement.name;
         var liabilityAmount = document.getElementById("addLiabilityAmount");
-        liabilityAmount.value = parseFloat(amount);
+        liabilityAmount.value = -amount;
         submitLiability.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
-        addSymbols[1].src = "/static/assets/add.png";
-        form.action = "/balance_sheet/" + activeElement.name + "/update";
+        addSymbols[1].style.display = "none";
     }
     if (name == "equity") {
         var form = document.getElementById("addEditEquityForm");
@@ -114,17 +132,19 @@ var showEditForm = function(name, amount) {
         var equityName = document.getElementById("addEquityName");
         equityName.value = activeElement.name;
         var equityAmount = document.getElementById("addEquityAmount");
-        equityAmount.value = parseFloat(amount);
+        equityAmount.value = amount;
         submitEquity.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
-        addSymbols[2].src = "/static/assets/add.png";
-        form.action = "/balance_sheet/" + activeElement.name + "/update";
+        addSymbols[2].style.display = "none";
     }
+    form.action = "/balance_sheet/" + _id + "/update";
+    form.style.display = "inline";
+    form.style.marginBottom = "1em";
 }
 
-var showDelete = function(name) {
+var showDelete = function(name, _id) {
     var answer = confirm("Are you sure you want to delete " + activeElement.name + "?");
     if (answer) {
-        window.location = "/balance_sheet/" + activeElement.name + "/delete";
+        window.location = "/balance_sheet/" + _id + "/delete";
     }
 }
 

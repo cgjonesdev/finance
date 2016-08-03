@@ -14,8 +14,8 @@ class Base(object):
             [vars(item) for item in self.items])\
             if hasattr(self, 'items') else pformat(vars(self))
 
-    def _strip_key(self, data):
-        # Strip identifier key and extranoues text from other keys coming from
+    def _strip_keys(self, data):
+        # Strip identifier key and extranoues text from data keys coming from
         # form data
 
         for k, v in data.items():
@@ -25,7 +25,7 @@ class Base(object):
                 del data[k]
                 data[k.split('_')[-1]] = v
             try:
-                data[k.split('_')[-1]] = float(v)
+                data[k.split('_')[-1]] = abs(float(v))
             except:
                 pass
         return type(str(self), (Singleton,), data)
@@ -36,36 +36,39 @@ class Multi(Base):
     def __iter__(self):
         return (item for item in self.items)
 
-    def __add__(self, other):
+    def __contains__(self, _id):
+        return any(_id == item._id for item in self)
+
+    def __add__(self, data):
         if isinstance(data, dict):
-            other = self._strip_key(other)
-        self.items.append(other)
-        self._dataconnector + {k: v for k, v in vars(other).items()
+            obj = self._strip_keys(data)
+        self.items.append(obj)
+        self._dataconnector + {k: v for k, v in vars(obj).items()
                                if k not in ('_id', '__doc__', '__module__')}
         return self
 
-    def __sub__(self, other):
-        if other in self:
-            self.items.remove(other)
-            self._dataconnector - vars(other)
+    def __sub__(self, _id):
+        data = self._dataconnector[_id]
+        obj = self._strip_keys(data)
+        if _id in self:
+            self._dataconnector - _id
         return self
 
-    def __iadd__(self, others):
-
+    def __iadd__(self, update_info):
+        _id, data = update_info
+        obj = self._strip_keys(data)
+        self.__dict__.update(vars(obj))
+        self._dataconnector += (_id,
+                                {k: v for k, v in vars(obj).items() if k not
+                                 in ('_id', '__doc__', '__module__')})
         return self
-
-    def __isub__(self, others):
-        for other in others:
-            if other in self:
-                self.items.remove(other)
-                self._dataconnector - vars(other)
 
     @property
     def total(self):
         if isinstance(self, Liabilities):
-            return round(sum(-item.amount for item in self), 2)
+            return sum(-item.amount for item in self)
         else:
-            return round(sum(item.amount for item in self), 2)
+            return sum(item.amount for item in self)
 
     def clear(self):
         self._dataconnector.clear()
@@ -75,12 +78,12 @@ class Singleton(Base):
 
     def __init__(self, _id=None, name='', amount=0.0):
         self._id = str(_id)
-        self.name = name
-        self.amount = amount
+        self.name = name if name else 'Unknown'
+        self.amount = amount if amount else 0.0
 
-    def __iadd__(self, other):
-        self.__dict__.update(other)
-        self._dataconnector += other
+    def __iadd__(self, data):
+        self.__dict__.update(data)
+        self._dataconnector += data
 
 
 class Assets(Multi):
@@ -104,8 +107,9 @@ class Liabilities(Multi):
 class Liability(Singleton):
 
     def __init__(self, _id=None, name='', amount=0.0):
-        self.name = name
-        self.amount = -amount
+        self._id = str(_id)
+        self.name = name if name else 'Unknown'
+        self.amount = -amount if amount else 0.0
 
 
 class Equities(Multi):

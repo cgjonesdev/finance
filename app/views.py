@@ -61,7 +61,10 @@ class AccountsView(MethodView):
 
 class BalanceSheetView(MethodView):
 
-    def get(self, name=None):
+    def get(self, _id=None):
+        if request.endpoint == 'balance_sheet-delete':
+            self.post(_id)
+
         assets, liabilities, equities = controllers.BalanceSheetController()\
             .get()
         return render_template(
@@ -70,9 +73,10 @@ class BalanceSheetView(MethodView):
             liabilities=liabilities,
             equities=equities)
 
-    def post(self, name=None, endpoint=None):
+    def post(self, _id=None):
         assets, liabilities, equities = controllers.BalanceSheetController()\
             .get()
+
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':
             if any([key for key in data if 'assets_form' in key]):
@@ -81,13 +85,21 @@ class BalanceSheetView(MethodView):
                 liabilities + data
             elif any([key for key in data if 'equities_form' in key]):
                 equities + data
-        elif request.endpoint == 'balance-sheet-update':
+        elif request.endpoint == 'balance_sheet-update':
             if any([key for key in data if 'assets_form' in key]):
-                assets += data
+                assets += (_id, data)
             elif any([key for key in data if 'liablities_form' in key]):
-                liabilities += data
+                liabilities += (_id, data)
             elif any([key for key in data if 'equities_form' in key]):
-                equities += data
+                equities += (_id, data)
+        elif request.endpoint == 'balance_sheet-delete':
+            if _id in assets:
+                assets - _id
+            elif _id in liabilities:
+                liabilities - _id
+            elif _id in equities:
+                equities - _id
+
         assets, liabilities, equities = controllers.BalanceSheetController()\
             .get()
         return render_template('balance_sheet.html',

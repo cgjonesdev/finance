@@ -67,9 +67,17 @@ input[type=text] {
 input[type=submit] {
     margin: 0 0 -2em 1em;
     border: none;
-    font-size: .95em;
+    font-size: .75em;
     min-width: 75px;
     background: linear-gradient(rgb(95,205,85), rgb(40,120,25));
+    color: white;
+}
+input[type=button] {
+    margin: 0 .5em 0;
+    border: none;
+    font-size: .75em;
+    min-width: 75px;
+    /*background: linear-gradient(rgb(95,205,85), rgb(40,120,25));*/
     color: white;
 }
 input[type=submit]:hover {

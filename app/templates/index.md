@@ -1,4 +1,4 @@
-<center><h2>[Accounts](/accounts)</h2></center>
+<center><h2>[Balance Sheet](/balance_sheet)</h2></center>
 
 # Spendsy
 

@@ -66,9 +66,9 @@ class Multi(Base):
     @property
     def total(self):
         if isinstance(self, Liabilities):
-            return sum(-item.amount for item in self)
+            return round(sum(-item.amount for item in self), 2)
         else:
-            return sum(item.amount for item in self)
+            return round(sum(item.amount for item in self), 2)
 
     def clear(self):
         self._dataconnector.clear()

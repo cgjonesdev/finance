@@ -1,26 +1,3 @@
-var total = 0;
-var calcTotal = function() {
-    var assets = document.getElementsByClassName("assets");
-    for (var i=0; i<assets.length; i++) {
-       total += parseFloat(assets[i].innerHTML.slice(1, assets[i].innerHTML.length));
-       document.getElementById("assetsTotal").innerHTML = "$" + total;
-       // document.getElementsByClassName("equityAssets")[0].innerHTML = "$" + total;
-    }
-    total = 0;
-    var liabilities = document.getElementsByClassName("liabilities");
-    for (var i=0; i<liabilities.length; i++) {
-       total += parseFloat(liabilities[i].innerHTML.slice(1, liabilities[i].innerHTML.length));
-       document.getElementById("liabilitiesTotal").innerHTML = "$" + -total;
-       // document.getElementsByClassName("equityLiabilities")[0].innerHTML = "$" + -total;
-    }
-    total = 0;
-    var equity = document.getElementsByClassName("equity");
-    for (var i=0; i<equity.length; i++) {
-       total += parseFloat(equity[i].innerHTML.slice(1, equity[i].innerHTML.length));
-       // document.getElementById("equityTotal").innerHTML = "$" + total;
-    }
-};
-calcTotal();
 var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
@@ -33,19 +10,19 @@ var showAddForm = function(name) {
     var addSymbols = document.getElementsByClassName("addSymbol");
     var inputs = document.getElementsByTagName("input");
     var submitAsset = document.getElementById("submitAsset");
-    submitAsset.value = "Add";
-    submitAsset.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
-    submitLiability.value = "Add";
-    submitLiability.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
-    submitEquity.value = "Add";
-    submitEquity.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
     if (name == "asset") {
+        submitAsset.value = "Add";
+        submitAsset.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
         addSymbols[0].style.display = "none";
     }
     else if (name == "liability") {
+        submitLiability.value = "Add";
+        submitLiability.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
         addSymbols[1].style.display = "none";
     }
     else if (name == "equity") {
+        submitEquity.value = "Add";
+        submitEquity.style.background = "linear-gradient(rgb(95,205,85), rgb(40,120,25))";
         addSymbols[2].style.display = "none";
     }
     if (name == "asset") {
@@ -98,6 +75,8 @@ var cancelAddEdit = function(name) {
 document.addEventListener('mousemove', function(e) {
     activeElement = document.elementFromPoint(e.pageX, e.pageY);
 });
+
+// console.log(activeElement.name);
 
 var showEditForm = function(name, _id, amount) {
     addSymbols = document.getElementsByClassName("addSymbol");

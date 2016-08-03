@@ -77,7 +77,7 @@ input[type=button] {
     border: none;
     font-size: .75em;
     min-width: 75px;
-    /*background: linear-gradient(rgb(95,205,85), rgb(40,120,25));*/
+    background: linear-gradient(silver, gray);
     color: white;
 }
 input[type=submit]:hover {

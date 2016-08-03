@@ -90,6 +90,7 @@ var cancelAddEdit = function(name) {
         var form = document.getElementById("addEditEquityForm");
         addSymbols[2].style.display = "inline";
     }
+    form.action = "/balance_sheet";
     form.style.display = "none";
     form.style.marginBottom = "1em";
 }
@@ -111,6 +112,7 @@ var showEditForm = function(name, _id, amount) {
         assetAmount.value = amount;
         submitAsset.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[0].style.display = "none";
+        form.action = "/balance_sheet/" + _id + "/update";
     }
     if (name == "liability") {
         var form = document.getElementById("addEditLiabilityForm");
@@ -123,6 +125,7 @@ var showEditForm = function(name, _id, amount) {
         liabilityAmount.value = -amount;
         submitLiability.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[1].style.display = "none";
+        form.action = "/balance_sheet/" + _id + "/update";
     }
     if (name == "equity") {
         var form = document.getElementById("addEditEquityForm");
@@ -135,8 +138,8 @@ var showEditForm = function(name, _id, amount) {
         equityAmount.value = amount;
         submitEquity.style.background = "linear-gradient(rgb(245,229,10), rgb(165,160,60))";
         addSymbols[2].style.display = "none";
+        form.action = "/balance_sheet/" + _id + "/update";
     }
-    form.action = "/balance_sheet/" + _id + "/update";
     form.style.display = "inline";
     form.style.marginBottom = "1em";
 }

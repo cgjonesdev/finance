@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <title>Spendsy</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            #message {
+                text-align: center;
+                width: 50%;
+                margin: 2em auto;
+                font-size: 1.25em;
+            }
+            #creds {
+                margin-top: 3em;
+                font-size: 1.25em;
+            }
+            input[type=text], input[type=password] {
+                background-color: rgb(245, 245, 245);
+                min-width: 200px;
+            }
+            input[type=submit] {
+                margin-top: .3em;
+                font-size: .9em;
+                min-width: 125px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2><a href="/">Home</a></h2>
+        <h1>Login to Spendsy</h1>
+        <div id="message">{{message}}</div>
+        <div id="creds">
+            <form name="login" method="POST" action="/login">
+                <input type="text" name="username" placeholder="Username"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>

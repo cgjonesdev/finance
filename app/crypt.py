@@ -1,0 +1,11 @@
+import hmac
+from config import Config
+
+cfg = Config('app.cfg')
+
+
+def make_digest(*args):
+	digest_maker = hmac.new(cfg['SECRET_KEY'])
+	for arg in args:
+		digest_maker.update(arg)
+	return digest_maker.hexdigest()

@@ -2,6 +2,7 @@ import os
 import logging
 import time
 import re
+import hmac
 from pprint import pprint, pformat
 from datetime import timedelta
 from operator import itemgetter
@@ -16,16 +17,51 @@ from flask import (
     abort
 )
 from flask.views import MethodView
-
 import controllers
+from config import Config
+from crypt import make_digest
 
+cfg = Config('app.cfg')
 app = Flask(__name__)
+
+
+def login_required(func):
+    def inner(*args, **kwargs):
+        login_data = dict(request.form.items())
+        user_digest = make_digest(
+            login_data['username'], login_data['password'])
+        login_controller = controllers.LoginController()
+        session['user_digest'] = user_digest
+        if session['user_digest'] == login_controller.validate_user_digest(
+            login_data['username'], user_digest):
+            return func(message='You have successfully logged in', *args, **kwargs)
+        else:
+            return func(message='Could not log in', *args, **kwargs)
+    return inner
 
 
 class IndexView(MethodView):
 
     def get(self):
         return render_template('index.html')
+
+
+class LoginView(MethodView):
+
+    def get(self):
+        return render_template('login.html')
+
+    @login_required
+    def post(self, message=''):
+        data = dict(request.form.items())
+        message = 'Username: {}, Password: {}'.format(data['username'], data['password'])
+        assets, liabilities, equities = controllers.BalanceSheetController()\
+            .get()
+        print assets, liabilities, equities        
+        return render_template('balance_sheet.html',
+            assets=assets,
+            liabilities=liabilities,
+            equities=equities)
 
 
 class AccountsView(MethodView):

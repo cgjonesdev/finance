@@ -4,6 +4,9 @@ body {
     width: 90%;
     height: 100%;
 }
+h1 {
+    width: 55%;
+}
 h3 {
     border-bottom: 6px solid rgba(0,0,0,.1);
     width: 100%;

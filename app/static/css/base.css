@@ -53,7 +53,7 @@ code {
     border: 1px solid rgb(235,235,235);
     color: darkred;
 }
-input[type=text] {
+input[type=text], input[type=password] {
     padding: .25em;
     margin: 0 .25em 1em;
     border-radius: .2em;

@@ -30,8 +30,13 @@ class DataConnector(object):
 
     def clear(self):
         for document in self:
-            self - document
+            self - document[_id]
         return list(self)
+
+    def get_by_name(self, name):
+        for item in self:
+            if name in item.values():
+                return item
 
 
 if __name__ == '__main__':

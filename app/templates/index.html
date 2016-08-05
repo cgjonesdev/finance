@@ -6,6 +6,10 @@
             h1 {
                 margin-top: 2.5em;
             }
+            h2 {
+                width: 50%;
+                margin: auto;
+            }
             #main-heading {
                 text-align: center;
             }
@@ -23,12 +27,12 @@
     <body>
         {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div>{% endif %}
         {% if logged_in %}
-            <center><h2><a href="/balance_sheet">Balance Sheet</a></h2></center>
+            <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a></h2></center><br>
             <div class="admin-links"><a href="/logout">Logout</a></div>
         {% endif %}
         <h1>Spendsy</h1>
         <div id="main">
-            <p><h2 id="main-heading" style="border-bottom: none">Personal Finance and Budgeting</h2></p><br>
+            <p><h2 id="main-heading">Personal Finance and Budgeting</h2></p><br>
             <p>Managing your finances can be tricky business. Knowing what to do with the money you've earned each time you get paid isn't as straighforward as it seems.</p>
             <p>Spendsy helps you navigate the difficult waters of budgeting with a simple, elegant solution to the questions, "How do I stay of top of my money", "How do I get out of living paycheck to paycheck", and "What's the best way to save for the future"?</p>
         </div>

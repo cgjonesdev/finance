@@ -14,8 +14,7 @@ from flask import (
     make_response,
     redirect,
     url_for,
-    abort
-)
+    abort)
 from flask.views import MethodView
 import controllers
 from config import Config
@@ -30,9 +29,9 @@ def login_required(func):
         login_data = dict(request.form.items())
         user_digest = make_digest(
             login_data['username'], login_data['password'])
-        login_controller = controllers.LoginController()
+        login_controller = controllers.LoginController(login_data['username'])
         session['user_digest'] = user_digest
-        if session['user_digest'] == login_controller.validate_user_digest(
+        if session['user_digest'] == login_controller.get_user_digest(
             login_data['username'], user_digest):
             session['logged_in'] = True
             return func(message='You have successfully logged in', *args, **kwargs)
@@ -58,9 +57,10 @@ class LoginView(MethodView):
     @login_required
     def post(self, message=''):
         logged_in = session['logged_in']
-        data = dict(request.form.items())
+        login_data = dict(request.form.items())
+        user_data = controllers.LoginController(login_data['username']).user
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get()
+            .get(user_data['_id'])
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,
@@ -86,8 +86,7 @@ class AccountsView(MethodView):
             account_name=account_name)
 
     def post(self, account_name=None):
-        data = dict(request.form)
-        pprint(data)
+        data = dict(request.form.items())
         if data['method'] == 'delete':
             accounts.Account(account_name).delete()
             return redirect('/accounts')
@@ -113,8 +112,9 @@ class BalanceSheetView(MethodView):
         if request.endpoint == 'balance_sheet-delete':
             self.post(_id)
 
+        user_data = controllers.LoginController(login_data['username']).user
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get()
+            .get(user_data['_id'])
         return render_template(
             'balance_sheet.html',
             assets=assets,
@@ -123,8 +123,9 @@ class BalanceSheetView(MethodView):
             logged_in=logged_in)
 
     def post(self, _id=None):
+        user_data = controllers.LoginController(login_data['username']).user
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get()
+            .get(user_data['_id'])
 
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':
@@ -149,8 +150,9 @@ class BalanceSheetView(MethodView):
             elif _id in equities:
                 equities - _id
 
+        user_data = controllers.LoginController(login_data['username']).user
         assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get()
+            .get(user_data['_id'])
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,

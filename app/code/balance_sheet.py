@@ -33,6 +33,9 @@ class Base(object):
 
 class Multi(Base):
 
+    def __init__(self, user_id):
+        self.user_id = user_id
+
     def __iter__(self):
         return (item for item in self.items)
 
@@ -42,8 +45,8 @@ class Multi(Base):
     def __add__(self, data):
         if isinstance(data, dict):
             obj = self._strip_keys(data)
-        self.items.append(obj)
-        self._dataconnector + {k: v for k, v in vars(obj).items()
+            self.items.append(obj)
+            self._dataconnector + {k: v for k, v in vars(obj).items()
                                if k not in ('_id', '__doc__', '__module__')}
         return self
 
@@ -57,7 +60,6 @@ class Multi(Base):
     def __iadd__(self, update_info):
         _id, data = update_info
         obj = self._strip_keys(data)
-        self.__dict__.update(vars(obj))
         self._dataconnector += (_id,
                                 {k: v for k, v in vars(obj).items() if k not
                                  in ('_id', '__doc__', '__module__')})
@@ -76,7 +78,8 @@ class Multi(Base):
 
 class Singleton(Base):
 
-    def __init__(self, _id=None, name='', amount=0.0):
+    def __init__(self, user_id, _id=None, name='', amount=0.0):
+        self.user_id = user_id
         self._id = str(_id)
         self.name = name if name else 'Unknown'
         self.amount = amount if amount else 0.0
@@ -106,7 +109,8 @@ class Liabilities(Multi):
 
 class Liability(Singleton):
 
-    def __init__(self, _id=None, name='', amount=0.0):
+    def __init__(self, user_id, _id=None, name='', amount=0.0):
+        self.user_id = user_id
         self._id = str(_id)
         self.name = name if name else 'Unknown'
         self.amount = -amount if amount else 0.0
@@ -115,14 +119,20 @@ class Liability(Singleton):
 class Equities(Multi):
     _dataconnector = DC('equities')
 
-    def __init__(self, assets=None, liabilities=None):
+    def __init__(self, user_id, assets=None, liabilities=None):
         self.items = [Equity(**item) for item in list(self._dataconnector)]
         if assets:
             self.items.append(
-                Equity(**{'name': 'Assets', 'amount': assets.total}))
+                Equity(
+                    **{'user_id': assets.user_id,
+                       'name': 'Assets',
+                       'amount': assets.total}))
         if liabilities:
             self.items.append(
-                Equity(**{'name': 'Liabilities', 'amount': -liabilities.total}))
+                Equity(
+                    **{'user_id': liabilities.user_id,
+                       'name': 'Liabilities',
+                       'amount': -liabilities.total}))
 
 
 class Equity(Singleton):
@@ -132,7 +142,7 @@ class Equity(Singleton):
 if __name__ == '__main__':
     assets = Assets()
     # assets.clear()
-    job = Asset(**{'name': 'job', 'amount': 5000.0})
+    job = Asset(**{'user_id': 'name': 'job', 'amount': 5000.0})
     assets + job
     print 'assets.total: {}'.format(assets.total)
 

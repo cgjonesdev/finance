@@ -17,6 +17,7 @@
             <div id="assets">
                 <h3>Assets</h3>
                 <form id="addEditAssetForm" name="addAsset" method="POST" action="/balance_sheet" hidden>
+                    <input type="hidden" name="user_id" value="{{asset.user_id}}">{{asset.user_id}}
                     <input id="addAssetName" name="asset_name" type="text" placeholder="Asset name" tabindex="1">
                     <input id="addAssetAmount" type="text" name="asset_amount" amount="" placeholder="Asset amount" tabindex="2"><br>
                     <input type="button" onclick="cancelAddEdit('asset')" value="Cancel" tabindex="4">
@@ -33,6 +34,7 @@
             <div id="liabilities">
                 <h3>Liabilities</h3>
                 <form id="addEditLiabilityForm" name="addLiability" method="POST" action="/balance_sheet" hidden>
+                    <input type="hidden" name="user_id" value="{{liability.user_id}}">{{liability.user_id}}
                     <input id="addLiabilityName" name="liability_name" type="text" placeholder="Liability name" tabindex="5">
                     <input id="addLiabilityAmount" type="text" name="liability_amount" placeholder="Liability amount" tabindex="6"><br>
                     <input type="button" onclick="cancelAddEdit('liability')" value="Cancel" tabindex="8">
@@ -49,6 +51,7 @@
             <div id="equity">
                <h3>Equity</h3>
                 <form id="addEditEquityForm" name="addEquity" method="POST" action="/balance_sheet" hidden>
+                    <input type="hidden" name="user_id" value="{{equity.user_id}}">{{equity.user_id}}
                     <input id="addEquityName" name="equity_name" type="text" placeholder="Equity name" tabindex="9">
                     <input id="addEquityAmount" type="text" name="equity_amount" placeholder="Equity amount" tabindex="10"><br>
                     <input type="button" onclick="cancelAddEdit('equity')" value="Cancel" tabindex="12">

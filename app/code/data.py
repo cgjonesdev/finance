@@ -27,6 +27,7 @@ class DataConnector(object):
     def __iadd__(self, udpate_info):
         _id, data = udpate_info
         self.collection.replace_one({'_id': ObjectId(_id)}, data)
+        return self
 
     def clear(self):
         for document in self:

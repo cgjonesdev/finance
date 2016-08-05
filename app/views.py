@@ -34,6 +34,7 @@ def login_required(func):
         session['user_digest'] = user_digest
         if session['user_digest'] == login_controller.validate_user_digest(
             login_data['username'], user_digest):
+            session['logged_in'] = True
             return func(message='You have successfully logged in', *args, **kwargs)
         else:
             return func(message='Could not log in', *args, **kwargs)
@@ -43,7 +44,10 @@ def login_required(func):
 class IndexView(MethodView):
 
     def get(self):
-        return render_template('index.html')
+        if not 'logged_in' in session:
+            session['logged_in'] = False
+        logged_in = session['logged_in']
+        return render_template('index.html', logged_in=logged_in)
 
 
 class LoginView(MethodView):
@@ -53,15 +57,22 @@ class LoginView(MethodView):
 
     @login_required
     def post(self, message=''):
+        logged_in = session['logged_in']
         data = dict(request.form.items())
-        message = 'Username: {}, Password: {}'.format(data['username'], data['password'])
         assets, liabilities, equities = controllers.BalanceSheetController()\
             .get()
-        print assets, liabilities, equities        
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,
-            equities=equities)
+            equities=equities,
+            logged_in=logged_in)
+
+
+class LogoutView(MethodView):
+
+    def get(self):
+        session.clear()
+        return render_template('index.html')
 
 
 class AccountsView(MethodView):
@@ -98,6 +109,7 @@ class AccountsView(MethodView):
 class BalanceSheetView(MethodView):
 
     def get(self, _id=None):
+        logged_in = session['logged_in']
         if request.endpoint == 'balance_sheet-delete':
             self.post(_id)
 
@@ -107,7 +119,8 @@ class BalanceSheetView(MethodView):
             'balance_sheet.html',
             assets=assets,
             liabilities=liabilities,
-            equities=equities)
+            equities=equities,
+            logged_in=logged_in)
 
     def post(self, _id=None):
         assets, liabilities, equities = controllers.BalanceSheetController()\
@@ -141,4 +154,5 @@ class BalanceSheetView(MethodView):
         return render_template('balance_sheet.html',
             assets=assets,
             liabilities=liabilities,
-            equities=equities)
+            equities=equities,
+            logged_in=logged_in)

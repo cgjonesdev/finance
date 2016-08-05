@@ -78,3 +78,7 @@ img.edit {
 input[type=submit] {
     margin: auto;
 }
+.admin-links {
+    float: right;
+    padding-right: 1em;
+}

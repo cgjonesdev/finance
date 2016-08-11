@@ -29,9 +29,9 @@ def login_required(func):
     def inner(*args, **kwargs):
         session['referrer'] = request.url
         if 'user_digest' in session:
-            return func(*args, **kwargs)
-        else:
-            return redirect('/login')
+            user_is_valid = controllers.LoginController(session['user_digest'])
+            return func(*args, **kwargs) if user_is_valid else redirect('/login')
+        return redirect('/login')
     return inner
 
 
@@ -53,7 +53,6 @@ class SignupView(MethodView):
     def post(self):
         users = controllers.SignupController().users
         signup_data = dict(request.form.items())
-        logger.debug(signup_data)
         user_digest = make_digest(
             signup_data['username'], signup_data['password'])
         signup_data['name'] = signup_data['username']
@@ -67,11 +66,12 @@ class SignupView(MethodView):
 class WelcomeView(MethodView):
 
     def get(self):
-        user = controllers.WelcomeController(session.get('user_digest')).user
+        user = controllers.user
         return render_template('welcome.html', user=user)
 
 
 class LoginView(MethodView):
+    context = {'message': '', 'color': 'black'}
 
     def get(self):
         if 'user_digest' in session:
@@ -84,14 +84,19 @@ class LoginView(MethodView):
         login_data = dict(request.form.items())
         user_digest = make_digest(
             login_data['username'], login_data['password'])
-        login_controller = controllers.LoginController(user_digest)
-        session['user_digest'], session['logged_in'] = user_digest, True
-        referrer = session.get('referrer') if not any(
-            item for item in ('None', 'logout') if item in
-            str(session.get('referrer'))) else '/'
-        if 'referrer' in session:
-            del session['referrer']
-        return redirect(referrer)
+        if controllers.LoginController(user_digest):
+            session['user_digest'], session['logged_in'] = user_digest, True
+            referrer = session.get('referrer') if not any(
+                item for item in ('None', 'logout') if item in
+                str(session.get('referrer'))) else '/'
+            if 'referrer' in session:
+                del session['referrer']
+            return redirect(referrer)
+        else:
+            self.context.update(
+                {'message': 'The login credentials you provided are not correct. Please try again',
+                 'color': 'red'})
+            return render_template('login.html', **self.context)
 
 
 class LogoutView(MethodView):
@@ -151,6 +156,7 @@ class BalanceSheetView(MethodView):
             equities=self.equities,
             logged_in=session.get('logged_in'))
 
+    @login_required
     def post(self, _id=None):
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':

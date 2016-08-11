@@ -9,23 +9,20 @@ class IndexController(object):
 
 
 class SignupController(object):
-
-    def __init__(self):
-        self.users = Users()
+    pass
 
 
 class WelcomeController(object):
-
-    def __init__(self, user_digest):
-        self.users = Users()
-        self.user = self.users.get_by_digest(user_digest)
+    pass
 
 
 class LoginController(object):
 
     def __init__(self, user_digest):
-        self.users = Users()
-        self.user = self.users.get_by_digest(user_digest)
+        self.user = Users().get_by_digest(user_digest)
+
+    def __nonzero__(self):
+        return bool(self.user)
 
 
 class BalanceSheetController(object):

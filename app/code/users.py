@@ -1,4 +1,5 @@
 from base import *
+from finance.app.crypt import validate_digest
 
 
 class Users(Multi):
@@ -8,18 +9,25 @@ class Users(Multi):
         self.items = [User(**item) for item in list(self._dataconnector)]
 
     def get_by_name(self, name):
-        users = [item for item in self if item.name == name]
-        return users[0] if len(users) == 1 else users
+        for user in self:
+            if user.name == name:
+                return user
 
     def get_by_digest(self, user_digest):
-        user = [item for item in self.items if item.user_digest == user_digest]
-        return user[0] if user else None
+        for user in self:
+            user.validate(user_digest)
+            if user:
+                return user
 
 
 class User(Singleton):
+    _validated = False
 
-    def validate_login(self, user_digest):
-        return self.user_digest == user_digest
+    def validate(self, user_digest):
+        self._validated = validate_digest(self.user_digest, user_digest)
+
+    def __nonzero__(self):
+        return self._validated
 
 
 if __name__ == '__main__':

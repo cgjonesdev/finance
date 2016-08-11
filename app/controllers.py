@@ -1,20 +1,31 @@
-from code.balance_sheet import *
+from code.users import Users, User
+from code.balance_sheet import Assets, Liabilities, Equities
 from code.data import DataConnector
+from logger import logger
 
 
 class IndexController(object):
     pass
 
 
+class SignupController(object):
+
+    def __init__(self):
+        self.users = Users()
+
+
+class WelcomeController(object):
+
+    def __init__(self, user_digest):
+        self.users = Users()
+        self.user = self.users.get_by_digest(user_digest)
+
+
 class LoginController(object):
-    dc = DataConnector('users')
 
-    def __init__(self, username):
-        self.user = self.dc.get_by_name(username)
-
-    def get_user_digest(self, username, user_digest):
-        if self.user:
-            return self.user['user_digest']
+    def __init__(self, user_digest):
+        self.users = Users()
+        self.user = self.users.get_by_digest(user_digest)
 
 
 class BalanceSheetController(object):

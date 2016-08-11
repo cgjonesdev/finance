@@ -65,6 +65,7 @@ input[type=text], input[type=password] {
 }
 input[type=submit] {
     margin: 0 0 -2em 1em;
+    padding: .25em;
     border: none;
     font-size: .75em;
     min-width: 75px;

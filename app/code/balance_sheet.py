@@ -1,99 +1,14 @@
-import sys
-from pprint import pprint, pformat
-
-from data import DataConnector as DC
-
-
-class Base(object):
-
-    def __str__(self):
-        return self.__class__.__name__
-
-    def __repr__(self):
-        return pformat(
-            [vars(item) for item in self.items])\
-            if hasattr(self, 'items') else pformat(vars(self))
-
-    def _strip_keys(self, data):
-        # Strip identifier key and extranoues text from data keys coming from
-        # form data
-
-        for k, v in data.items():
-            if 'form' in k:
-                del data[k]
-            else:
-                del data[k]
-                data[k.split('_')[-1]] = v
-            try:
-                data[k.split('_')[-1]] = abs(float(v))
-            except:
-                pass
-        return type(str(self), (Singleton,), data)
-
-
-class Multi(Base):
-
-    def __init__(self, user_id):
-        self.user_id = user_id
-
-    def __iter__(self):
-        return (item for item in self.items)
-
-    def __contains__(self, _id):
-        return any(_id == item._id for item in self)
-
-    def __add__(self, data):
-        if isinstance(data, dict):
-            obj = self._strip_keys(data)
-            self.items.append(obj)
-            self._dataconnector + {k: v for k, v in vars(obj).items()
-                               if k not in ('_id', '__doc__', '__module__')}
-        return self
-
-    def __sub__(self, _id):
-        data = self._dataconnector[_id]
-        obj = self._strip_keys(data)
-        if _id in self:
-            self._dataconnector - _id
-        return self
-
-    def __iadd__(self, update_info):
-        _id, data = update_info
-        obj = self._strip_keys(data)
-        self._dataconnector += (_id,
-                                {k: v for k, v in vars(obj).items() if k not
-                                 in ('_id', '__doc__', '__module__')})
-        return self
-
-    @property
-    def total(self):
-        if isinstance(self, Liabilities):
-            return round(sum(-item.amount for item in self), 2)
-        else:
-            return round(sum(item.amount for item in self), 2)
-
-    def clear(self):
-        self._dataconnector.clear()
-
-
-class Singleton(Base):
-
-    def __init__(self, user_id, _id=None, name='', amount=0.0):
-        self.user_id = user_id
-        self._id = str(_id)
-        self.name = name if name else 'Unknown'
-        self.amount = amount if amount else 0.0
-
-    def __iadd__(self, data):
-        self.__dict__.update(data)
-        self._dataconnector += data
+from base import *
 
 
 class Assets(Multi):
-    _dataconnector = DC('assets')
+    _dataconnector = DataConnector('assets')
 
-    def __init__(self):
-        self.items = [Asset(**item) for item in list(self._dataconnector)]
+    def __init__(self, user_id):
+        self.user_id = user_id
+        self.items = [Asset(**item) for item in
+                      self._dataconnector.collection.find(
+                          {'user_id': self.user_id})]
 
 
 class Asset(Singleton):
@@ -101,26 +16,27 @@ class Asset(Singleton):
 
 
 class Liabilities(Multi):
-    _dataconnector = DC('liabilities')
+    _dataconnector = DataConnector('liabilities')
 
-    def __init__(self):
-        self.items = [Liability(**item) for item in list(self._dataconnector)]
+    def __init__(self, user_id):
+        self.user_id = user_id
+        self.items = [Liability(**item) for item in
+                      self._dataconnector.collection.find(
+                          {'user_id': self.user_id})]
 
 
 class Liability(Singleton):
-
-    def __init__(self, user_id, _id=None, name='', amount=0.0):
-        self.user_id = user_id
-        self._id = str(_id)
-        self.name = name if name else 'Unknown'
-        self.amount = -amount if amount else 0.0
+    pass
 
 
 class Equities(Multi):
-    _dataconnector = DC('equities')
+    _dataconnector = DataConnector('equities')
 
     def __init__(self, user_id, assets=None, liabilities=None):
-        self.items = [Equity(**item) for item in list(self._dataconnector)]
+        self.user_id = user_id
+        self.items = [Equity(**item) for item in
+                      self._dataconnector.collection.find(
+                          {'user_id': self.user_id})]
         if assets:
             self.items.append(
                 Equity(
@@ -136,13 +52,13 @@ class Equities(Multi):
 
 
 class Equity(Singleton):
-    pass
+    _id = None
 
 
 if __name__ == '__main__':
-    assets = Assets()
+    assets = Assets('57a3c6a9acf6088060156578')
     # assets.clear()
-    job = Asset(**{'user_id': 'name': 'job', 'amount': 5000.0})
+    job = Asset(**{'user_id': assets.user_id, 'name': 'job', 'amount': 5000.0})
     assets + job
     print 'assets.total: {}'.format(assets.total)
 

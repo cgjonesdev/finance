@@ -19,6 +19,7 @@ from flask.views import MethodView
 import controllers
 from config import Config
 from crypt import make_digest
+from logger import logger
 
 cfg = Config('app.cfg')
 app = Flask(__name__)
@@ -26,46 +27,71 @@ app = Flask(__name__)
 
 def login_required(func):
     def inner(*args, **kwargs):
-        login_data = dict(request.form.items())
-        user_digest = make_digest(
-            login_data['username'], login_data['password'])
-        login_controller = controllers.LoginController(login_data['username'])
-        session['user_digest'] = user_digest
-        if session['user_digest'] == login_controller.get_user_digest(
-            login_data['username'], user_digest):
-            session['logged_in'] = True
-            return func(message='You have successfully logged in', *args, **kwargs)
+        session['referrer'] = request.url
+        if 'user_digest' in session:
+            return func(*args, **kwargs)
         else:
-            return func(message='Could not log in', *args, **kwargs)
+            return redirect('/login')
     return inner
 
 
 class IndexView(MethodView):
 
     def get(self):
-        if not 'logged_in' in session:
-            session['logged_in'] = False
-        logged_in = session['logged_in']
-        return render_template('index.html', logged_in=logged_in)
+        return render_template(
+            'index.html', logged_in=session.get('logged_in'))
+
+
+class SignupView(MethodView):
+
+    def get(self):
+        return render_template(
+            'signup.html',
+            message='Enter an email address to receive a verification email or '
+            'phone # to receive a verification text to activate your account')
+
+    def post(self):
+        users = controllers.SignupController().users
+        signup_data = dict(request.form.items())
+        logger.debug(signup_data)
+        user_digest = make_digest(
+            signup_data['username'], signup_data['password'])
+        signup_data['name'] = signup_data['username']
+        del signup_data['username'], signup_data['password']
+        signup_data['user_digest'] = user_digest
+        users + signup_data
+        session['user_digest'], session['logged_in'] = user_digest, True
+        return render_template('signup.html', signup_data=signup_data)
+
+
+class WelcomeView(MethodView):
+
+    def get(self):
+        user = controllers.WelcomeController(session.get('user_digest')).user
+        return render_template('welcome.html', user=user)
 
 
 class LoginView(MethodView):
 
     def get(self):
+        if 'user_digest' in session:
+            return redirect(request.referrer)
+        if not 'referrer' in session:
+            session['referrer'] = request.referrer
         return render_template('login.html')
 
-    @login_required
     def post(self, message=''):
-        logged_in = session['logged_in']
         login_data = dict(request.form.items())
-        user_data = controllers.LoginController(login_data['username']).user
-        assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get(user_data['_id'])
-        return render_template('balance_sheet.html',
-            assets=assets,
-            liabilities=liabilities,
-            equities=equities,
-            logged_in=logged_in)
+        user_digest = make_digest(
+            login_data['username'], login_data['password'])
+        login_controller = controllers.LoginController(user_digest)
+        session['user_digest'], session['logged_in'] = user_digest, True
+        referrer = session.get('referrer') if not any(
+            item for item in ('None', 'logout') if item in
+            str(session.get('referrer'))) else '/'
+        if 'referrer' in session:
+            del session['referrer']
+        return redirect(referrer)
 
 
 class LogoutView(MethodView):
@@ -107,54 +133,49 @@ class AccountsView(MethodView):
 
 class BalanceSheetView(MethodView):
 
+    def __init__(self, *args, **kwargs):
+        MethodView.__init__(self, *args, **kwargs)
+        self.user = controllers.LoginController(session['user_digest']).user
+        self.assets, self.liabilities, self.equities = controllers.BalanceSheetController()\
+            .get(str(self.user._id))
+
+    @login_required
     def get(self, _id=None):
-        logged_in = session['logged_in']
         if request.endpoint == 'balance_sheet-delete':
             self.post(_id)
 
-        user_data = controllers.LoginController(login_data['username']).user
-        assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get(user_data['_id'])
         return render_template(
             'balance_sheet.html',
-            assets=assets,
-            liabilities=liabilities,
-            equities=equities,
-            logged_in=logged_in)
+            assets=self.assets,
+            liabilities=self.liabilities,
+            equities=self.equities,
+            logged_in=session.get('logged_in'))
 
     def post(self, _id=None):
-        user_data = controllers.LoginController(login_data['username']).user
-        assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get(user_data['_id'])
-
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':
             if any([key for key in data if 'assets_form' in key]):
-                assets + data
+                self.assets + data
             elif any([key for key in data if 'liablities_form' in key]):
-                liabilities + data
+                self.liabilities + data
             elif any([key for key in data if 'equities_form' in key]):
-                equities + data
+                self.equities + data
         elif request.endpoint == 'balance_sheet-update':
             if any([key for key in data if 'assets_form' in key]):
-                assets += (_id, data)
+                self.assets += (_id, data)
             elif any([key for key in data if 'liablities_form' in key]):
-                liabilities += (_id, data)
+                self.liabilities += (_id, data)
             elif any([key for key in data if 'equities_form' in key]):
-                equities += (_id, data)
+                self.equities += (_id, data)
         elif request.endpoint == 'balance_sheet-delete':
             if _id in assets:
-                assets - _id
+                self.assets - _id
             elif _id in liabilities:
-                liabilities - _id
+                self.liabilities - _id
             elif _id in equities:
-                equities - _id
-
-        user_data = controllers.LoginController(login_data['username']).user
-        assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get(user_data['_id'])
+                self.equities - _id
         return render_template('balance_sheet.html',
-            assets=assets,
-            liabilities=liabilities,
-            equities=equities,
-            logged_in=logged_in)
+            assets=self.assets,
+            liabilities=self.liabilities,
+            equities=self.equities,
+            logged_in=session.get('logged_in'))

@@ -29,14 +29,7 @@
     </head>
     <body>
         <h2><a href="/">Home</a></h2>
-        <h1>Login to Spendsy</h1>
-        <div id="message">{{message}}</div>
-        <div id="creds">
-            <form name="login" method="POST" action="/login">
-                <input type="text" name="username" placeholder="Username" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
-                <input type="submit" value="Login">
-            </form>
-        </div>
+        <h1>Welcome to Spendsy</h1>
+        <div id="message">Hi <b>{{user.name|title}}</b>, and welcome to Spendsy. Let's get you started on your journey toward financial freedom and empowerment!</div>
     </body>
 </html>

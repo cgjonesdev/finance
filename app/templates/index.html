@@ -25,7 +25,7 @@
         </style>
     </head>
     <body>
-        {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div>{% endif %}
+        {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div><div class="admin-links"><a href="/signup">Signup</a></div>{% endif %}
         {% if logged_in %}
             <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a></h2></center><br>
             <div class="admin-links"><a href="/logout">Logout</a></div>

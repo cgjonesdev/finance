@@ -3,6 +3,7 @@ from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from tornado import autoreload
 from urls import app
+from logger import logger
 
 
 if __name__ == '__main__':

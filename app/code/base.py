@@ -1,92 +1,96 @@
-import sys
-from mixins import *
+from pprint import pprint, pformat
+from data import DataConnector
+from finance.app.logger import logger
 
 
-class Base(IO):
-    update_attrs = []
+class Base(object):
 
-    def __init__(self):
-        self.filename = '../../data/{}.json'.format(str(self).lower()) if \
-            str(self) == 'Accounts' else '../data/{}.json'.format(str(self).lower())
-        self.read(self.filename)
-        self.__dict__.update(self.data)
-
-
-class BaseMany(Base):
+    def __str__(self):
+        return self.__class__.__name__
 
     def __repr__(self):
-        return '\n'.join(repr(item) for item in self)
+        return pformat(
+            [vars(item) for item in self.items])\
+            if hasattr(self, 'items') else pformat(vars(self))
+
+    def _strip_keys(self, data):
+        # Strip identifier key and extranoues text from data keys coming from
+        # form data
+
+        data = vars(data) if not isinstance(data, dict) else data
+
+        for k, v in data.items():
+            if 'form' in k:
+                del data[k]
+                try:
+                    data[k.split('_')[-1]] = abs(float(v))
+                except:
+                    data[k.split('_')[-1]] = v
+        return type(str(self), (Singleton,), data)
+
+
+class Multi(Base):
+
+    def __init__(self, user_id=None):
+        if user_id:
+            self.user_id = user_id
 
     def __iter__(self):
         return (item for item in self.items)
 
-    def __getitem__(self, item):
-        if item in self:
-            return item
+    def __contains__(self, _id):
+        return any(_id == item._id for item in self)
 
-    def __add__(self, item):
-        if item not in self.items:
-            self.items.append(item)
-        else:
-            raise AttributeError('{} is aready in self'.format(item))
+    def __getitem__(self, _id):
+        item = [i for i in self.items if i._id == _id]
+        return item[0] if item else None
+
+    def __add__(self, data):
+        data = vars(data) if not isinstance(data, dict) else data
+
+        obj = self._strip_keys(data)
+        self.items.append(obj)
+        self._dataconnector + {k: v for k, v in vars(obj).items()
+                               if k not in ('_id', '__doc__', '__module__')}
+        return self
+
+    def __sub__(self, _id):
+        data = self._dataconnector[_id]
+        obj = self._strip_keys(data)
+        if _id in self:
+            self._dataconnector - _id
+        return self
 
     def __iadd__(self, update_info):
-        if isinstance(update_info, tuple):
-            _id, data = update_info
-            self[item].__dict__.update(data)
+        _id, data = update_info
+        obj = self._strip_keys(data)
+        self._dataconnector += (_id,
+                                {k: v for k, v in vars(obj).items() if k not
+                                 in ('_id', '__doc__', '__module__')})
+        return self
+
+    @property
+    def total(self):
+        if str(self) == 'Liabilities':
+            return round(sum(-item.amount for item in self), 2)
         else:
-            raise TypeError('{} is not a tuple'.format(update_info))
+            return round(sum(item.amount for item in self), 2)
 
-    def __sub__(self, item):
-        if item in self:
-            self.items.remove(item)
-        else:
-            raise AttributeError('{} not in self'.format(item))
+    def clear(self):
+        self._dataconnector.clear()
 
 
-class BaseSingleton(Base, Add, Subtract, Multiply, Divide):
-    update_attrs = ['balance', 'amount', 'limit']
+class Singleton(Base):
 
-    def __init__(self, data):
+    def __init__(self, **kwargs):
+        for k, v in kwargs.items():
+            if str(self) == 'Liability' and k == 'amount':
+                self.__dict__[k] = -float(v)
+            elif k == 'amount':
+                self.__dict__[k] = float(v)
+            else:
+                self.__dict__[k] = v
+
+    def __iadd__(self, data):
         self.__dict__.update(data)
-
-    def __str__(self):
-        return '{}: {} | {}'.format(self.__class__.__name__, self.name, self.id)
-
-    def __repr__(self):
-        output = str(self) + '\n'
-        for k, v in self.__dict__.items():
-            output += '\t{}: {}\n'.format(k, v)
-        return output
-
-
-if __name__ == '__main__':
-    data = {
-        'balance': 500.0,
-        'amount': 100.0,
-        'limit': 1000.0
-    }
-    tb1, tb2 = [BaseSingleton(data)] * 2
-    print (tb1 + tb2).__dict__
-    tb1, tb2 = [BaseSingleton(data)] * 2
-    print (tb1 - tb2).__dict__
-    tb1, tb2 = [BaseSingleton(data)] * 2
-    print (tb1 * tb2).__dict__
-    tb1, tb2 = [BaseSingleton(data)] * 2
-    print (tb1 / tb2).__dict__
-    tb1 = BaseSingleton(data)
-    print (tb1 + 5).__dict__
-    tb1 = BaseSingleton(data)
-    print (tb1 - 5).__dict__
-    tb1 = BaseSingleton(data)
-    print (tb1 * 5).__dict__
-    tb1 = BaseSingleton(data)
-    print (tb1 / 5).__dict__
-    tb1 = BaseSingleton(data)
-    print (5 + tb1).__dict__
-    tb1 = BaseSingleton(data)
-    print (5 - tb1).__dict__
-    tb1 = BaseSingleton(data)
-    print (5 * tb1).__dict__
-    tb1 = BaseSingleton(data)
-    print (5 / tb1).__dict__
+        self._dataconnector += data

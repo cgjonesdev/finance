@@ -21,7 +21,7 @@ from config import Config
 from crypt import make_digest
 from logger import logger
 
-cfg = Config('app.cfg')
+cfg = Config('configs/app.cfg')
 app = Flask(__name__)
 
 
@@ -55,18 +55,17 @@ class SignupView(MethodView):
         signup_data = dict(request.form.items())
         user_digest = make_digest(
             signup_data['username'], signup_data['password'])
-        signup_data['name'] = signup_data['username']
-        del signup_data['username'], signup_data['password']
+        del signup_data['password']
         signup_data['user_digest'] = user_digest
         users + signup_data
         session['user_digest'], session['logged_in'] = user_digest, True
-        return render_template('signup.html', signup_data=signup_data)
+        return redirect('/welcome')
 
 
 class WelcomeView(MethodView):
 
     def get(self):
-        user = controllers.user
+        user = controllers.WelcomeController(session['user_digest']).user
         return render_template('welcome.html', user=user)
 
 
@@ -74,17 +73,16 @@ class LoginView(MethodView):
     context = {'message': '', 'color': 'black'}
 
     def get(self):
-        if 'user_digest' in session:
-            return redirect(request.referrer)
-        if not 'referrer' in session:
-            session['referrer'] = request.referrer
+        session.clear()
+        session['referrer'] = request.referrer
         return render_template('login.html')
 
     def post(self, message=''):
         login_data = dict(request.form.items())
         user_digest = make_digest(
             login_data['username'], login_data['password'])
-        if controllers.LoginController(user_digest):
+        logger.debug(user_digest)
+        if controllers.LoginController(user_digest).user:
             session['user_digest'], session['logged_in'] = user_digest, True
             referrer = session.get('referrer') if not any(
                 item for item in ('None', 'logout') if item in
@@ -94,7 +92,8 @@ class LoginView(MethodView):
             return redirect(referrer)
         else:
             self.context.update(
-                {'message': 'The login credentials you provided are not correct. Please try again',
+                {'message': 'The login credentials you provided are not '
+                 'correct. Please try again',
                  'color': 'red'})
             return render_template('login.html', **self.context)
 
@@ -137,51 +136,63 @@ class AccountsView(MethodView):
                 return redirect('/accounts/{}'.format(account_name))
 
 class BalanceSheetView(MethodView):
+    context = {
+        'user': None,
+        'assets': [],
+        'liabilities': [],
+        'equities': [],
+        'logged_in': False}
 
     def __init__(self, *args, **kwargs):
         MethodView.__init__(self, *args, **kwargs)
-        self.user = controllers.LoginController(session['user_digest']).user
-        self.assets, self.liabilities, self.equities = controllers.BalanceSheetController()\
-            .get(str(self.user._id))
+        self.retrieve_data()
+
+    def retrieve_data(self):
+        user = controllers.LoginController(session['user_digest']).user
+        assets, liabilities, equities = controllers.BalanceSheetController()\
+            .get(str(user._id))
+        self.update_context(
+            user=user,
+            assets=assets,
+            liabilities=liabilities,
+            equities=equities,
+            logged_in=session.get('logged_in'))
+        self.__dict__.update(self.context)
+
+    def update_context(self, **kwargs):
+        self.context.update(kwargs)
 
     @login_required
     def get(self, _id=None):
         if request.endpoint == 'balance_sheet-delete':
             self.post(_id)
-
-        return render_template(
-            'balance_sheet.html',
-            assets=self.assets,
-            liabilities=self.liabilities,
-            equities=self.equities,
-            logged_in=session.get('logged_in'))
+        return render_template('balance_sheet.html', **self.context)
 
     @login_required
     def post(self, _id=None):
+        self.__dict__.update(self.context)
         data = dict(request.form.items())
         if request.endpoint == 'balance_sheet':
             if any([key for key in data if 'assets_form' in key]):
                 self.assets + data
-            elif any([key for key in data if 'liablities_form' in key]):
+            elif any([key for key in data if 'liabilities_form' in key]):
                 self.liabilities + data
             elif any([key for key in data if 'equities_form' in key]):
                 self.equities + data
         elif request.endpoint == 'balance_sheet-update':
             if any([key for key in data if 'assets_form' in key]):
                 self.assets += (_id, data)
-            elif any([key for key in data if 'liablities_form' in key]):
+            elif any([key for key in data if 'liabilities_form' in key]):
                 self.liabilities += (_id, data)
             elif any([key for key in data if 'equities_form' in key]):
                 self.equities += (_id, data)
         elif request.endpoint == 'balance_sheet-delete':
-            if _id in assets:
+            if _id in self.assets:
                 self.assets - _id
-            elif _id in liabilities:
+            elif _id in self.liabilities:
                 self.liabilities - _id
-            elif _id in equities:
+            elif _id in self.equities:
                 self.equities - _id
-        return render_template('balance_sheet.html',
-            assets=self.assets,
-            liabilities=self.liabilities,
-            equities=self.equities,
-            logged_in=session.get('logged_in'))
+        self.retrieve_data()
+        self.update_context(**self.__dict__)
+        return render_template('balance_sheet.html', **self.context)

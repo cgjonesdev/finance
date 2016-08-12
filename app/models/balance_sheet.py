@@ -3,6 +3,7 @@ from base import *
 
 class Assets(Multi):
     _dataconnector = DataConnector('assets')
+    form = Form('BALANCE_SHEET')
 
     def __init__(self, user_id):
         self.user_id = user_id
@@ -17,6 +18,7 @@ class Asset(Singleton):
 
 class Liabilities(Multi):
     _dataconnector = DataConnector('liabilities')
+    form = Form('BALANCE_SHEET')
 
     def __init__(self, user_id):
         self.user_id = user_id
@@ -26,11 +28,16 @@ class Liabilities(Multi):
 
 
 class Liability(Singleton):
-    pass
+
+    def __init__(self, **kwargs):
+        kwargs['amount'] = -kwargs['amount']
+        logger.debug(kwargs)
+        self.__dict__.update(kwargs)
 
 
 class Equities(Multi):
     _dataconnector = DataConnector('equities')
+    form = Form('BALANCE_SHEET')
 
     def __init__(self, user_id, assets=None, liabilities=None):
         self.user_id = user_id
@@ -62,9 +69,9 @@ if __name__ == '__main__':
     assets + job
     print 'assets.total: {}'.format(assets.total)
 
-    liabilities = Liabilities()
+    liabilities = Liabilities('57a3c6a9acf6088060156578')
     # liabilities.clear()
-    rent = Liability(**{'name': 'rent', 'amount': 1000.0})
+    rent = Liability(**{'user_id': assets.user_id, 'name': 'rent', 'amount': 1000.0})
     liabilities + rent
     print 'liabilities.total: {}'.format(liabilities.total)
 

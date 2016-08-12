@@ -2,7 +2,7 @@ import hmac
 from config import Config
 from logger import logger
 
-cfg = Config('app.cfg')
+cfg = Config('configs/app.cfg')
 
 
 def make_digest(*args):

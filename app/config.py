@@ -29,6 +29,6 @@ class Config(ConfigParser):
 
 
 if __name__ == '__main__':
-    cfg = config('app.cfg')
+    cfg = config('configs/app.cfg')
     cfg['TEST'] = 'alsdjfkalsdjfk'
     print list(cfg)

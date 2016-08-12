@@ -6,6 +6,9 @@
                 float: right;
                 padding-right: 1em;
             }
+            input[type=submit],input[type=button] {
+                padding: .2em;
+            }
         </style>
     </head>
     <body>
@@ -17,7 +20,7 @@
             <div id="assets">
                 <h3>Assets</h3>
                 <form id="addEditAssetForm" name="addAsset" method="POST" action="/balance_sheet" hidden>
-                    <input type="hidden" name="user_id" value="{{assets[0].user_id}}">{{assets[0].user_id}}
+                    <input type="hidden" name="user_id" value="{{user._id}}">
                     <input id="addAssetName" name="asset_name" type="text" placeholder="Asset name" tabindex="1">
                     <input id="addAssetAmount" type="text" name="asset_amount" amount="" placeholder="Asset amount" tabindex="2"><br>
                     <input type="button" onclick="cancelAddEdit('asset')" value="Cancel" tabindex="4">
@@ -34,12 +37,12 @@
             <div id="liabilities">
                 <h3>Liabilities</h3>
                 <form id="addEditLiabilityForm" name="addLiability" method="POST" action="/balance_sheet" hidden>
-                    <input type="hidden" name="user_id" value="{{liabilities[0].user_id}}">{{liabilities[0].user_id}}
+                    <input type="hidden" name="user_id" value="{{user._id}}">
                     <input id="addLiabilityName" name="liability_name" type="text" placeholder="Liability name" tabindex="5">
                     <input id="addLiabilityAmount" type="text" name="liability_amount" placeholder="Liability amount" tabindex="6"><br>
                     <input type="button" onclick="cancelAddEdit('liability')" value="Cancel" tabindex="8">
                     <input id="submitLiability" type="submit" value="Add"/ tabindex="7">
-                    <input type="hidden" name="liablities_form"><br>
+                    <input type="hidden" name="liabilities_form"><br>
                 </form>
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
                 {% for liability in liabilities %}
@@ -51,7 +54,7 @@
             <div id="equity">
                <h3>Equity</h3>
                 <form id="addEditEquityForm" name="addEquity" method="POST" action="/balance_sheet" hidden>
-                    <input type="hidden" name="user_id" value="{{equities[0].user_id}}">{{equities[0].user_id}}
+                    <input type="hidden" name="user_id" value="{{user._id}}">
                     <input id="addEquityName" name="equity_name" type="text" placeholder="Equity name" tabindex="9">
                     <input id="addEquityAmount" type="text" name="equity_amount" placeholder="Equity amount" tabindex="10"><br>
                     <input type="button" onclick="cancelAddEdit('equity')" value="Cancel" tabindex="12">

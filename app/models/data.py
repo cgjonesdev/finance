@@ -1,13 +1,16 @@
 from pprint import pprint
 from pymongo import MongoClient
 from bson import ObjectId
+from finance.app.config import Config
+cfg = Config('configs/app.cfg')
+from finance.app.logger import logger
 
 
 class DataConnector(object):
 
     def __init__(self, collection_name):
         client = MongoClient()
-        db = client['finance']
+        db = client[cfg['DB_NAME']]
         self.collection = db[collection_name]
 
     def __iter__(self):

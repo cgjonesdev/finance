@@ -1,6 +1,5 @@
-from code.users import Users, User
-from code.balance_sheet import Assets, Liabilities, Equities
-from code.data import DataConnector
+from models.users import Users, User
+from models.balance_sheet import Assets, Liabilities, Equities
 from logger import logger
 
 
@@ -9,11 +8,13 @@ class IndexController(object):
 
 
 class SignupController(object):
-    pass
+    users = Users()
 
 
 class WelcomeController(object):
-    pass
+
+    def __init__(self, user_digest):
+        self.user = Users().get_by_digest(user_digest)
 
 
 class LoginController(object):

@@ -4,6 +4,7 @@ from finance.app.crypt import validate_digest
 
 class Users(Multi):
     _dataconnector = DataConnector('users')
+    form = Form('USER')
 
     def __init__(self):
         self.items = [User(**item) for item in list(self._dataconnector)]
@@ -32,5 +33,8 @@ class User(Singleton):
 
 if __name__ == '__main__':
     users = Users()
+    test = User(**{{'username': u'test', 'phone': u'555-1212', 'email': u'test@gmail.com', 'user_digest': '1b82612f41b68dc8b2ecde8e0b4ee0ec'}       })
+    print list(users)
     print vars(users['57a3c6a9acf6088060156578'])
     print vars(users['57a5107b8922811039056a7e'])
+    print vars(users['57acd862acf6081516112db2'])

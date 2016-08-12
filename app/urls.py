@@ -3,7 +3,7 @@ from flask import Flask, session
 import views
 from config import Config
 
-cfg = Config('app.cfg')
+cfg = Config('configs/app.cfg')
 
 
 app = Flask(__name__)

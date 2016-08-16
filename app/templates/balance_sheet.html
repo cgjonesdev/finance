@@ -24,8 +24,8 @@
                 <h3>Assets</h3>
                 <form id="addEditAssetForm" name="addAsset" method="POST" action="/balance_sheet" hidden>
                     <input type="hidden" name="user_id" value="{{user._id}}">
-                    <input id="addAssetName" name="asset_name" type="text" placeholder="Asset name" tabindex="1" required>
-                    <input id="addAssetAmount" type="text" name="asset_amount" amount="" placeholder="Asset amount" tabindex="2" required><br>
+                    <input id="addAssetName" name="name" type="text" placeholder="Asset name" tabindex="1" required>
+                    <input id="addAssetAmount" type="text" name="amount" amount="" placeholder="Asset amount" tabindex="2" required><br>
                     <input type="button" onclick="cancelAddEdit('asset')" value="Cancel" tabindex="4">
                     <input id="submitAsset" type="submit" value="Add" tabindex="3">
                     <input type="hidden" name="assets_form"><br>
@@ -33,8 +33,8 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
                 {% for asset in assets %}
                     <div onmouseover="showPencil('{{asset.name}}')" onmouseout="hidePencil('{{asset.name}}')">
-                        <img class="edit" name="{{asset.name}}" src="/static/assets/eye.png" width="24" onclick="showDetailPage('asset', '{{asset._id}}')">
-                        <img class="edit" name="{{asset.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset', '{{asset._id}}', '{{asset.amount}}')">
+                        <img class="edit" name="{{asset.name}}" src="/static/assets/pencil.png" width="24" onclick="showDetailPage('asset', '{{asset._id}}')">
+                        <!-- <img class="edit" name="{{asset.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset', '{{asset._id}}', '{{asset.amount}}')"> -->
                         <img class="edit" name="{{asset.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset', '{{asset._id}}')"><span style="float:left">{{asset.name}}</span><span class="assets" style="float:right">${{asset.amount}}</span>
                     </div><br>
                 {% endfor %}
@@ -45,8 +45,8 @@
                 <h3>Liabilities</h3>
                 <form id="addEditLiabilityForm" name="addLiability" method="POST" action="/balance_sheet" hidden>
                     <input type="hidden" name="user_id" value="{{user._id}}">
-                    <input id="addLiabilityName" name="liability_name" type="text" placeholder="Liability name" tabindex="5" required>
-                    <input id="addLiabilityAmount" type="text" name="liability_amount" placeholder="Liability amount" tabindex="6" required><br>
+                    <input id="addLiabilityName" name="name" type="text" placeholder="Liability name" tabindex="5" required>
+                    <input id="addLiabilityAmount" type="text" name="amount" placeholder="Liability amount" tabindex="6" required><br>
                     <input type="button" onclick="cancelAddEdit('liability')" value="Cancel" tabindex="8">
                     <input id="submitLiability" type="submit" value="Add"/ tabindex="7">
                     <input type="hidden" name="liabilities_form"><br>
@@ -54,8 +54,8 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
                 {% for liability in liabilities %}
                     <div onmouseover="showPencil('{{liability.name}}')" onmouseout="hidePencil('{{liability.name}}')">
-                        <img class="edit" name="{{liability.name}}" src="/static/assets/eye.png" width="24" onclick="showDetailPage('liability', '{{liability._id}}')">
-                        <img class="edit" name="{{liability.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability', '{{liability._id}}', '{{liability.amount}}')">
+                        <img class="edit" name="{{liability.name}}" src="/static/assets/pencil.png" width="24" onclick="showDetailPage('liability', '{{liability._id}}')">
+                        <!-- <img class="edit" name="{{liability.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability', '{{liability._id}}', '{{liability.amount}}')"> -->
                         <img class="edit" name="{{liability.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability', '{{liability._id}}')"><span style="float:left">{{liability.name}}</span><span class="liabilities" style="float:right">${{liability.amount | abs}}</span>
                     </div><br>
                 {% endfor %}
@@ -66,8 +66,8 @@
                <h3>Equity</h3>
                 <form id="addEditEquityForm" name="addEquity" method="POST" action="/balance_sheet" hidden>
                     <input type="hidden" name="user_id" value="{{user._id}}">
-                    <input id="addEquityName" name="equity_name" type="text" placeholder="Equity name" tabindex="9" required>
-                    <input id="addEquityAmount" type="text" name="equity_amount" placeholder="Equity amount" tabindex="10" required><br>
+                    <input id="addEquityName" name="name" type="text" placeholder="Equity name" tabindex="9" required>
+                    <input id="addEquityAmount" type="text" name="amount" placeholder="Equity amount" tabindex="10" required><br>
                     <input type="button" onclick="cancelAddEdit('equity')" value="Cancel" tabindex="12">
                     <input id="submitEquity" type="submit" value="Add" tabindex="11">
                     <input type="hidden" name="equities_form"><br>
@@ -75,7 +75,7 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
                 {% for equity in equities %}
                     <div {% if equity.name not in ('Assets', 'Liabilities') %} onmouseover="showPencil('{{equity.name}}')" onmouseout="hidePencil('{{equity.name}}')" {% endif %}>
-                        <img class="edit" name="{{equity.name}}" src="/static/assets/eye.png" width="24" onclick="showDetailPage('equity', '{{equity._id}}')">
+                        <!-- <img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="24" onclick="showDetailPage('equity', '{{equity._id}}')"> -->
                         <img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity', '{{equity._id}}', '{{equity.amount}}')">
                         <img class="edit" name="{{equity.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity', '{{equity._id}}')"><span style="float:left">{{equity.name}}</span><span class="equityAssets equity" style="float:right">${{equity.amount}}</span>
                     </div><br>

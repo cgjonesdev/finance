@@ -5,8 +5,12 @@
             #details {
                 width: 50%;
             }
+            #message {
+                color: purple;
+                text-align: center;
+            }
             .main {
-                width: 70%;
+                width: 80%;
                 margin: auto;
             }
             h4 {
@@ -14,10 +18,19 @@
             }
             p.text {
                 margin-left: 2em;
-                padding: 1em .75em .5em .75em;
-                background-color: rgb(247, 252, 255);
-                width: 80%;
+                padding: 1.2em .75em .5em .75em;
+                background-color: rgb(252, 247, 240);
+                /*width: 80%;*/
                 text-align: center;
+            }
+            input {
+                max-width: 120px;
+            }
+            input[type=text] {
+                font-weight: bold;
+            }
+            input[type=date] {
+                max-width: 150px;
             }
             input[type=submit] {
                 margin-left: 2em;
@@ -33,19 +46,51 @@
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}
         <h1>{% if entity %}{{entity.name}}{% endif %}</h1><br>
+        <div id="message">{{message}}</div>
         <div class="main">
             <h3>{% if entity|string == 'Asset' %}Pay {% elif entity|string == 'Liability' %}Expense {% endif %}Cycle</h3>
-            <h4><p>Regular</p></h4>
+            <!-- <h4><p>Regular</p></h4> -->
             <form name="itemDetailsForm" method="POST" action="/balance_sheet/{{entity._id}}/update">
-                {% if entity|string == 'Asset' %}
-                    <p class="text">I get paid on <b>{{entity.name}}</b> every <select name="cycle_int">{% for i in range(1, 100) %}<option {% if i|string == entity.cycle_int %}value="{{entity.cycle_int|string}}" selected{% endif %}>{{i}}</option>{% endfor %}</select><select name="cycle_str">{% for option in ('day(s)', 'week(s)', 'month(s)', 'year(s)') %}<option {% if i|string == entity.cycle_str %}value="{{entity.cycle_str}}{% endif %} selected>{{option}}</option>{% endfor %}</select> on <input id="datePicker" type="date" name="date"><input type="submit" value="Update"></p>
-                {% elif entity|string == 'Liability' %}
-                    <p class="text"><b>{{entity.name}}</b> is due every <select name="cycle_int">{% for i in range(1, 100) %}<option>{{i}}</option>{% endfor %}</select><select name="cycle_str">{% for option in ('day(s)', 'week(s)', 'month(s)', 'year(s)') %}<option>{{option}}</option>{% endfor %}</select> on <input id="datePicker" type="date" name="date"><input type="submit" value="Update"></p>
-                {% endif %}
+                <p class="text">
+                    {% if entity|string == 'Asset' %}
+                        <input type="text" name="name" value="{{entity.name}}"/> pays me
+                        $<input type="text" name="amount" value="{{entity.amount}}"/>
+                        <input id="checkbox" type="checkbox" name="onetime" onclick="toggleCycle()"><span class="checkbox">Once</span></input>
+                    {% elif entity|string == 'Liability' %}
+                        $<input type="text" name="amount" value="{{entity.amount|abs}}"/> is due for
+                        <input type="text" name="name" value="{{entity.name}}"/> every
+                    {% endif %}
+                    <span id="cycle">or every
+                        <select name="cycle_int">
+                            {% for i in range(1, 100) %}
+                                <option {% if i == entity.cycle_int %}value="{{entity.cycle_int}}" selected{% endif %}>{{i}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="cycle_str">
+                            {% for option in ('day(s)', 'week(s)', 'month(s)', 'year(s)') %}
+                                {{entity.cycle_str}}
+                                <option {% if option == entity.cycle_str %}value="{{entity.cycle_str}}" selected{% else %}{% endif %}>{{option}}</option>
+                            {% endfor %}
+                        </select>
+                    </span> on
+                    <input id="datePicker" type="date" name="date" value="{% if entity.date %}{{entity.date}}{% endif %}">
+                    <input type="submit" value="Update">
+                </p>
                 <input type="hidden" name="{{entity|lower}}_details">
             </form>
-            <h4><p>Irregular</p></h4>
+            <!-- <h4><p>Irregular</p></h4> -->
         </div>
+        <script>
+            var toggleCycle = function() {
+                var cycle = document.getElementById("checkbox");
+                console.log(cycle);
+                if (cycle.checked) {
+                    document.getElementById("cycle").style.display = "none";
+                }
+                else {
+                    document.getElementById("cycle").style.display = "inline";
+                }
+            }
+        </script>
     </body>
-    <script type="text/javascript" src="/static/js/balance_sheet_detail.js"></script>
 </html>

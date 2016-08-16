@@ -51,11 +51,12 @@ class Multi(Base):
 
     def __iadd__(self, update_info):
         _id, data = update_info
+        self[_id].__dict__.update(data)
         if _id in self:
-            obj = self.form.to_obj(data, self.__class__)
+            obj = self.form.to_obj(self[_id].__dict__, self.__class__)
             self._dataconnector += (_id,
                                     {k: v for k, v in vars(obj).items() if k not
-                                     in ('_id', '__doc__', '__module__')})
+                                     in ('_id', 'items', '__doc__', '__module__')})
         else:
             raise Exception('PUT: _id {} not found in the database'.format(_id))
         return self

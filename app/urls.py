@@ -8,7 +8,7 @@ cfg = Config('configs/app.cfg')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = cfg['SECRET_KEY']
-app.permanent_session_lifetime = timedelta(hours=int(cfg['SESSION_LIFETIME']))
+app.permanent_session_lifetime = timedelta(minutes=int(cfg['SESSION_LIFETIME']))
 
 # Url resolvers
 app.add_url_rule('/', view_func=views.IndexView.as_view('index'))
@@ -19,5 +19,6 @@ app.add_url_rule('/logout', view_func=views.LogoutView.as_view('logout'))
 app.add_url_rule('/accounts', view_func=views.AccountsView.as_view('accounts'))
 app.add_url_rule('/accounts/<string:account_name>', view_func=views.AccountsView.as_view('accounts_byname'))
 app.add_url_rule('/balance_sheet', view_func=views.BalanceSheetView.as_view('balance_sheet'), methods=['GET', 'POST'])
+app.add_url_rule('/balance_sheet/<string:_id>', view_func=views.BalanceSheetView.as_view('balance_sheet-detail'))
 app.add_url_rule('/balance_sheet/<string:_id>/update', view_func=views.BalanceSheetView.as_view('balance_sheet-update'))
 app.add_url_rule('/balance_sheet/<string:_id>/delete', view_func=views.BalanceSheetView.as_view('balance_sheet-delete'))

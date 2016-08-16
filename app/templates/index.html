@@ -29,6 +29,7 @@
         {% if logged_in %}
             <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a></h2></center><br>
             <div class="admin-links"><a href="/logout">Logout</a></div>
+            <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}
         <h1>Spendsy</h1>
         <div id="main">

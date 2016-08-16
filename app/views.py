@@ -1,3 +1,4 @@
+import sys
 import os
 import logging
 import time
@@ -38,17 +39,22 @@ def login_required(func):
 class IndexView(MethodView):
 
     def get(self):
+        user = controllers.LoginController(session.get('user_digest')).user
         return render_template(
-            'index.html', logged_in=session.get('logged_in'))
+            'index.html', logged_in=session.get('logged_in'), user=user)
 
 
 class SignupView(MethodView):
+    context = {}
 
     def get(self):
+        self.context.update(
+            {'message': 'Enter an email address or phone number'
+                ' to receive a verification email or text to activate your account',
+             'tiny_message': 'If you enter a phone number, you will receive a '
+                'verification text to set up your account'})
         return render_template(
-            'signup.html',
-            message='Enter an email address to receive a verification email or '
-            'phone # to receive a verification text to activate your account')
+            'signup.html', **self.context)
 
     def post(self):
         users = controllers.SignupController().users
@@ -73,15 +79,12 @@ class LoginView(MethodView):
     context = {'message': '', 'color': 'black'}
 
     def get(self):
-        session.clear()
-        session['referrer'] = request.referrer
         return render_template('login.html')
 
     def post(self, message=''):
         login_data = dict(request.form.items())
         user_digest = make_digest(
             login_data['username'], login_data['password'])
-        logger.debug(user_digest)
         if controllers.LoginController(user_digest).user:
             session['user_digest'], session['logged_in'] = user_digest, True
             referrer = session.get('referrer') if not any(
@@ -147,6 +150,7 @@ class BalanceSheetView(MethodView):
         MethodView.__init__(self, *args, **kwargs)
         self.retrieve_data()
 
+    @login_required
     def retrieve_data(self):
         user = controllers.LoginController(session['user_digest']).user
         assets, liabilities, equities = controllers.BalanceSheetController()\
@@ -164,7 +168,20 @@ class BalanceSheetView(MethodView):
 
     @login_required
     def get(self, _id=None):
-        if request.endpoint == 'balance_sheet-delete':
+        if request.endpoint == 'balance_sheet-detail':
+            self.retrieve_data()
+            if _id in self.assets:
+                self.entity = self.assets[_id]
+            elif _id in self.liabilities:
+                self.entity = self.liabilities[_id]
+            elif _id in self.equities:
+                self.entity = self.equities[_id]
+            else:
+                self.entity = None
+            self.update_context(**self.__dict__)
+            return render_template(
+                'balance_sheet_detail.html', **self.context)
+        elif request.endpoint == 'balance_sheet-delete':
             self.post(_id)
         return render_template('balance_sheet.html', **self.context)
 
@@ -172,6 +189,7 @@ class BalanceSheetView(MethodView):
     def post(self, _id=None):
         self.__dict__.update(self.context)
         data = dict(request.form.items())
+        logger.debug('data: {}, request.endpoint: {}'.format(data, request.endpoint))
         if request.endpoint == 'balance_sheet':
             if any([key for key in data if 'assets_form' in key]):
                 self.assets + data
@@ -180,11 +198,14 @@ class BalanceSheetView(MethodView):
             elif any([key for key in data if 'equities_form' in key]):
                 self.equities + data
         elif request.endpoint == 'balance_sheet-update':
-            if any([key for key in data if 'assets_form' in key]):
+            if any([key for key in data if 'asset' in key]):
+                data.update(vars(self.assets[_id]))
                 self.assets += (_id, data)
-            elif any([key for key in data if 'liabilities_form' in key]):
+            elif any([key for key in data if 'liabilit' in key]):
+                data.update(vars(self.liabilities[_id]))
                 self.liabilities += (_id, data)
-            elif any([key for key in data if 'equities_form' in key]):
+            elif any([key for key in data if 'equit' in key]):
+                data.update(vars(self.equities[_id]))
                 self.equities += (_id, data)
         elif request.endpoint == 'balance_sheet-delete':
             if _id in self.assets:
@@ -195,4 +216,6 @@ class BalanceSheetView(MethodView):
                 self.equities - _id
         self.retrieve_data()
         self.update_context(**self.__dict__)
+        if any([key for key in data if 'detail' in key]):
+            return render_template('balance_sheet_detail.html', **self.context)
         return render_template('balance_sheet.html', **self.context)

@@ -31,7 +31,6 @@ class Liability(Singleton):
 
     def __init__(self, **kwargs):
         kwargs['amount'] = -kwargs['amount']
-        logger.debug(kwargs)
         self.__dict__.update(kwargs)
 
 

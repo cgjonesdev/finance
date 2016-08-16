@@ -1,4 +1,5 @@
-var monthNames = ["January", "February", "March", "April", "May", "June",
+var monthNames = [
+    "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
 var date = new Date();
@@ -77,6 +78,10 @@ document.addEventListener('mousemove', function(e) {
 });
 
 // console.log(activeElement.name);
+
+var showDetailPage = function(name, _id) {
+    window.location = "/balance_sheet/" + _id;
+}
 
 var showEditForm = function(name, _id, amount) {
     addSymbols = document.getElementsByClassName("addSymbol");

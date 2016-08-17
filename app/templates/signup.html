@@ -16,7 +16,7 @@
             }
             #message {
                 text-align: center;
-                width: 40%;
+                width: 25%;
                 margin: 0 auto -2em auto;
                 font-size: 1em;
                 color: purple;
@@ -51,11 +51,12 @@
         <div id="creds">
             <form id="signup-form" name="signup" method="POST" action="/signup" onmouseover="showTinyMessage()" onmouseleave="hideTinyMessage()">
                 <input type="text" name="email" placeholder="Email address" required><br>
-                <div id="tiny-message">{{tiny_message}}</div>
+                <!-- <div id="tiny-message">{{tiny_message}}</div> -->
                 <input type="text" name="phone" placeholder="Phone # (optional)"><br>
                 <input type="text" name="username" placeholder="Username" required><br>
                 <input type="password" name="password" placeholder="Password" required><br>
-                <input type="submit" value="Signup">
+                <input type="button" onclick="goBack()" value="Back" tabindex="4">
+                <input type="submit" value="Sign up">
             </form>
         </div>
     </body>
@@ -65,6 +66,9 @@
         }
         var hideTinyMessage = function() {
             document.getElementById("tiny-message").style.display = "none";
+        }
+        var goBack = function() {
+            window.location = "/";
         }
     </script>
 </html>

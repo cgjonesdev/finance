@@ -75,9 +75,8 @@ var cancelAddEdit = function(name) {
 
 document.addEventListener('mousemove', function(e) {
     activeElement = document.elementFromPoint(e.pageX, e.pageY);
+    console.log(activeElement.name);
 });
-
-// console.log(activeElement.name);
 
 var showDetailPage = function(name, _id) {
     window.location = "/balance_sheet/" + _id;

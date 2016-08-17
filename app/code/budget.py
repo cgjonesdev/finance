@@ -25,11 +25,17 @@ class Budget(object):
 
     @property
     def liability_to_asset_ratio(self):
-        return self.liabilities.total / self.assets.total
+        try:
+            return self.liabilities.total / self.assets.total
+        except ZeroDivisionError:
+            return 0.0
 
     @property
     def asset_to_liability_ratio(self):
-        return self.assets.total / self.liabilities.total
+        try:
+            return self.assets.total / self.liabilities.total
+        except ZeroDivisionError:
+            return 0.0
 
 
 if __name__ == '__main__':

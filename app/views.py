@@ -49,7 +49,7 @@ class SignupView(MethodView):
     def get(self):
         self.context.update(
             {'message': 'Enter an email address or phone number'
-                ' to receive a verification email or text to activate your account',
+                ' to receive a verification email or text',
              'tiny_message': 'If you enter a phone number, you will receive a '
                 'verification text to set up your account'})
         return render_template(
@@ -69,8 +69,9 @@ class SignupView(MethodView):
 
 class WelcomeView(MethodView):
 
+    @login_required
     def get(self):
-        user = controllers.LoginController(session['user_digest']).user
+        user = controllers.LoginController(session.get('user_digest')).user
         return render_template('welcome.html', user=user)
 
 

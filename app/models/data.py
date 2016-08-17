@@ -1,8 +1,7 @@
 from pprint import pprint
 from pymongo import MongoClient
 from bson import ObjectId
-from finance.app.config import Config
-cfg = Config('configs/app.cfg')
+from finance.app import cfg
 from finance.app.logger import logger
 
 

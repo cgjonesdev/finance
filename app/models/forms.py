@@ -3,7 +3,7 @@ from datetime import datetime
 from bson import ObjectId
 from finance.app.config import Config
 from finance.app.logger import logger
-cfg = Config('configs/app.cfg')
+from finance.app import cfg
 
 
 class Form(object):

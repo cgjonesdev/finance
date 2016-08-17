@@ -18,11 +18,10 @@ from flask import (
     abort)
 from flask.views import MethodView
 import controllers
-from config import Config
+from finance.app import cfg
 from crypt import make_digest
 from logger import logger
 
-cfg = Config('configs/app.cfg')
 app = Flask(__name__)
 
 

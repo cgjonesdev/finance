@@ -1,9 +1,7 @@
 from datetime import timedelta
 from flask import Flask, session
 import views
-from config import Config
-
-cfg = Config('configs/app.cfg')
+from finance.app import cfg
 
 
 app = Flask(__name__)

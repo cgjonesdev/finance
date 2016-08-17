@@ -11,12 +11,17 @@ class Form(object):
     def __init__(self, field_type):
         self.fields = dict(f.split(':') for f in cfg[field_type].split(','))
 
+    def _convert_floatstr_to_int(self, field, v):
+        if not isinstance(v, int) and self.fields[field] == 'int' and '.' in v:
+            return v[:v.index('.')]
+        return v
+
     def process(self, form_data):
-        # import sys; sys.exit('form_data: {}'.format(form_data))
         for k, v in form_data.items():
             for field in self.fields:
                 sub = re.sub('{}'.format(''.join(k.split(field))), '', k)
                 if field == k:
+                    v = self._convert_floatstr_to_int(field, v)
                     if v == '' and self.fields[field] == 'float':
                         continue
                     exec('self.__dict__[k] = {}(v)'.format(self.fields[field]))
@@ -28,6 +33,7 @@ class Form(object):
                     except:
                         continue
                 elif sub == field and sub != '_id':
+                    v = self._convert_floatstr_to_int(field, v)
                     if v == '' and self.fields[field] == 'float':
                         continue
                     exec('self.__dict__[\'{}\'] = {}(v)'.format(
@@ -36,5 +42,4 @@ class Form(object):
 
     def to_obj(self, form_data, klass):
         data = self.process(form_data)
-        obj = type(str(klass), (klass.__mro__[1],), data)
-        return obj
+        return type(str(klass), (klass.__mro__[1],), data)

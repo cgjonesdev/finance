@@ -23,6 +23,14 @@
                 /*width: 80%;*/
                 text-align: center;
             }
+            .checkbox {
+                padding: .25em;
+                margin: 1em .25em 1em;
+                border-radius: .2em;
+                font-size: 1em;
+                background-color: rgba(0, 100, 200, .05);
+                text-align: center;
+            }
             input {
                 max-width: 120px;
             }
@@ -35,6 +43,11 @@
             input[type=submit] {
                 margin-left: 2em;
                 font-size: .85em;
+                margin: 1em;
+            }
+            input[type=button] {
+                margin: 1em;
+                text-align: center;
             }
         </style>
     </head>
@@ -46,50 +59,68 @@
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}
         <h1>{% if entity %}{{entity.name}}{% endif %}</h1><br>
-        <div id="message">{{message}}</div>
+        <div id="message">{% if message %}Updated <i>{{message}}{% endif %}</i></div>
         <div class="main">
-            <h3>{% if entity|string == 'Asset' %}Pay {% elif entity|string == 'Liability' %}Expense {% endif %}Cycle</h3>
-            <!-- <h4><p>Regular</p></h4> -->
+            <!-- <h3>{% if entity|string == 'Asset' %}Pay {% elif entity|string == 'Liability' %}Expense {% endif %}Cycle</h3> -->
             <form name="itemDetailsForm" method="POST" action="/balance_sheet/{{entity._id}}/update">
                 <p class="text">
                     {% if entity|string == 'Asset' %}
                         <input type="text" name="name" value="{{entity.name}}"/> pays me
                         $<input type="text" name="amount" value="{{entity.amount}}"/>
-                        <input id="checkbox" type="checkbox" name="onetime" onclick="toggleCycle()"><span class="checkbox">Once</span></input>
+                        <span class="checkbox"><input id="checkbox" type="checkbox" name="one_time" value="True" onclick="toggleCycle()" {% if 'one_time' in entity.__dict__ and entity.one_time %}checked="true"{% endif %}>once</span>
                     {% elif entity|string == 'Liability' %}
                         $<input type="text" name="amount" value="{{entity.amount|abs}}"/> is due for
-                        <input type="text" name="name" value="{{entity.name}}"/> every
+                        <input type="text" name="name" value="{{entity.name}}"/>
+                        <span class="checkbox"><input id="checkbox" type="checkbox" name="one_time" value="True" onclick="toggleCycle()" {% if 'one_time' in entity.__dict__ and entity.one_time %}checked="true"{% endif %}>once</span>
                     {% endif %}
-                    <span id="cycle">or every
-                        <select name="cycle_int">
+                    <span id="or"><b><i>OR</i></b></span>
+                    <span id="cycle"> every
+                        <select name="cycle_int" onchange="hideOnce()">
                             {% for i in range(1, 100) %}
                                 <option {% if i == entity.cycle_int %}value="{{entity.cycle_int}}" selected{% endif %}>{{i}}</option>
                             {% endfor %}
                         </select>
-                        <select name="cycle_str">
+                        <select name="cycle_str" onchange="hideOnce()">
                             {% for option in ('day(s)', 'week(s)', 'month(s)', 'year(s)') %}
                                 {{entity.cycle_str}}
                                 <option {% if option == entity.cycle_str %}value="{{entity.cycle_str}}" selected{% else %}{% endif %}>{{option}}</option>
                             {% endfor %}
-                        </select>
+                        </select>next
                     </span> on
                     <input id="datePicker" type="date" name="date" value="{% if entity.date %}{{entity.date}}{% endif %}">
                     <input type="submit" value="Update">
                 </p>
                 <input type="hidden" name="{{entity|lower}}_details">
+                <center><input type="button" value="Back" onclick="goBack()"/></center>
             </form>
-            <!-- <h4><p>Irregular</p></h4> -->
         </div>
         <script>
             var toggleCycle = function() {
                 var cycle = document.getElementById("checkbox");
-                console.log(cycle);
                 if (cycle.checked) {
                     document.getElementById("cycle").style.display = "none";
+                    document.getElementById("or").style.display = "none";
                 }
                 else {
                     document.getElementById("cycle").style.display = "inline";
+                    document.getElementById("or").style.display = "inline";
+
                 }
+            }
+            var once = document.getElementsByClassName("checkbox");
+            var or = document.getElementById("or");
+            var hideOnce = function() {
+                once[0].style.display = "none";
+                or.style.display = "none";
+            }
+            var showOnce = function() {
+                once[0].style.display = "inline";
+                or.style.display = "inline";
+            }
+            toggleCycle();
+
+            var goBack = function() {
+                window.location = "/balance_sheet";
             }
         </script>
     </body>

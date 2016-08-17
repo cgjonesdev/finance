@@ -203,12 +203,20 @@ class BalanceSheetView(MethodView):
                 self.equities + data
         elif request.endpoint == 'balance_sheet-update':
             if any([key for key in data if 'asset' in key]):
+                if hasattr(self.assets[_id], 'one_time') and 'one_time' not in data:
+                    self.assets[_id].one_time = False
                 self.assets += (_id, data)
-                self.message = 'Updated {}'.format(self.assets[_id].name)
+                self.message = '{}'.format(self.assets[_id].name)
             elif any([key for key in data if 'liabilit' in key]):
+                if hasattr(self.liabilities[_id], 'one_time') and 'one_time' not in data:
+                    self.liabilities[_id].one_time = False
                 self.liabilities += (_id, data)
+                self.message = '{}'.format(self.liabilities[_id].name)
             elif any([key for key in data if 'equit' in key]):
+                if hasattr(self.equities[_id], 'one_time') and 'one_time' not in data:
+                    self.equities[_id].one_time = False
                 self.equities += (_id, data)
+                self.message = '{}'.format(self.equities[_id].name)
         elif request.endpoint == 'balance_sheet-delete':
             if _id in self.assets:
                 self.assets - _id

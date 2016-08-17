@@ -67,14 +67,6 @@ input[type=text], input[type=password] {
     text-align: center;
     width: 150px;
 }
-.checkbox {
-    padding: .25em;
-    margin: 1em .25em 1em;
-    border-radius: .2em;
-    font-size: 1em;
-    background-color: rgba(0, 100, 200, .05);
-    text-align: center;
-}
 input[type=submit] {
     margin: 0 0 -2em 1em;
     padding: .25em;
@@ -98,6 +90,14 @@ input[type=submit]:hover {
 input[type=submit]:focus {
     background: linear-gradient(rgb(40,120,25), rgb(95,205,85));
     color: white;
+}
+input[type=button]:hover {
+    background: linear-gradient(gray, silver);
+    color: black;
+}
+input[type=button]:focus {
+    background: linear-gradient(silver, gray);
+    color: black;
 }
 input[type=date] {
     font-size: .9em;

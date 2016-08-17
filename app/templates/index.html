@@ -21,13 +21,14 @@
             .admin-links {
                 float: right;
                 padding-right: 1em;
+                margin-top: -.1em;
             }
         </style>
     </head>
     <body>
         {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div><div class="admin-links"><a href="/signup">Signup</a></div>{% endif %}
         {% if logged_in %}
-            <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a></h2></center><br>
+            <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a> | <a href="/budget">Budget</a></h2></center><br>
             <div class="admin-links"><a href="/logout">Logout</a></div>
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}

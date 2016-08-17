@@ -15,7 +15,9 @@ class Budget(object):
 
     @property
     def savings(self):
-        return round(self.assets.total * (1 - (budget.liability_to_asset_ratio * budget.liability_to_asset_ratio)), 2)
+        return round(
+            self.assets.total * (1 - (self.liability_to_asset_ratio *
+                self.liability_to_asset_ratio)), 2)
 
     @property
     def spending(self):

@@ -70,7 +70,7 @@ class SignupView(MethodView):
 class WelcomeView(MethodView):
 
     def get(self):
-        user = controllers.WelcomeController(session['user_digest']).user
+        user = controllers.LoginController(session['user_digest']).user
         return render_template('welcome.html', user=user)
 
 
@@ -173,8 +173,8 @@ class BalanceSheetView(MethodView):
             logged_in=session.get('logged_in'),
             message=self.message if hasattr(self, 'message') else '')
 
-    def update_context(self, **data):
-        self.__dict__.update(data)
+    def update_context(self, **kwargs):
+        self.__dict__.update(kwargs)
         self.context.update(self.__dict__)
 
     @login_required
@@ -228,3 +228,25 @@ class BalanceSheetView(MethodView):
         if any([key for key in data if 'detail' in key]):
             return render_template('balance_sheet_detail.html', **self.context)
         return render_template('balance_sheet.html', **self.context)
+
+
+class BudgetView(MethodView):
+    context = {}
+
+    @login_required
+    def get(self):
+        self.retrieve_data()
+        return render_template('budget.html', **self.context)
+
+    @login_required
+    def retrieve_data(self, _id=None):
+        user = controllers.LoginController(session['user_digest']).user
+        budget = controllers.BudgetController(session['user_digest']).budget
+        self.update_context(
+            user=user,
+            budget=budget,
+            logged_in=session.get('logged_in'))
+
+    def update_context(self, **kwargs):
+        self.__dict__.update(kwargs)
+        self.context.update(self.__dict__)

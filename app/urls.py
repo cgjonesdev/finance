@@ -20,3 +20,4 @@ app.add_url_rule('/balance_sheet', view_func=views.BalanceSheetView.as_view('bal
 app.add_url_rule('/balance_sheet/<string:_id>', view_func=views.BalanceSheetView.as_view('balance_sheet-detail'))
 app.add_url_rule('/balance_sheet/<string:_id>/update', view_func=views.BalanceSheetView.as_view('balance_sheet-update'))
 app.add_url_rule('/balance_sheet/<string:_id>/delete', view_func=views.BalanceSheetView.as_view('balance_sheet-delete'))
+app.add_url_rule('/budget', view_func=views.BudgetView.as_view('budget'))

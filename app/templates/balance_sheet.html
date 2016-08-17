@@ -2,6 +2,9 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
         <style>
+            h3 {
+                width: 100%;
+            }
             .admin-links {
                 float: right;
                 padding-right: 1em;
@@ -33,7 +36,7 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"></span><br>
                 {% for asset in assets %}
                     <div onmouseover="showPencil('{{asset.name}}')" onmouseout="hidePencil('{{asset.name}}')">
-                        <img class="edit" name="{{asset.name}}" src="/static/assets/eye.png" width="24" onclick="showDetailPage('asset', '{{asset._id}}')">
+                        <img class="edit" name="{{asset.name}}" src="/static/assets/eye.png" width="20" style="margin-top:.1em" onclick="showDetailPage('asset', '{{asset._id}}')">
                         <img class="edit" name="{{asset.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('asset', '{{asset._id}}', '{{asset.amount}}')">
                         <img class="edit" name="{{asset.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('asset', '{{asset._id}}')"><span style="float:left">{{asset.name}}</span><span class="assets" style="float:right">${{asset.amount}}</span>
                     </div><br>
@@ -54,7 +57,7 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('liability')"></span><br>
                 {% for liability in liabilities %}
                     <div onmouseover="showPencil('{{liability.name}}')" onmouseout="hidePencil('{{liability.name}}')">
-                        <img class="edit" name="{{liability.name}}" src="/static/assets/eye.png" width="24" onclick="showDetailPage('liability', '{{liability._id}}')">
+                        <img class="edit" name="{{liability.name}}" src="/static/assets/eye.png" width="20" style="margin-top:.1em"  onclick="showDetailPage('liability', '{{liability._id}}')">
                         <img class="edit" name="{{liability.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('liability', '{{liability._id}}', '{{liability.amount}}')">
                         <img class="edit" name="{{liability.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('liability', '{{liability._id}}')"><span style="float:left">{{liability.name}}</span><span class="liabilities" style="float:right">${{liability.amount | abs}}</span>
                     </div><br>
@@ -75,13 +78,13 @@
                 <span style="float:left"><img class="addSymbol" src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('equity')"></span><br>
                 {% for equity in equities %}
                     <div {% if equity.name not in ('Assets', 'Liabilities') %} onmouseover="showPencil('{{equity.name}}')" onmouseout="hidePencil('{{equity.name}}')" {% endif %}>
-                        <!-- <img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="24" onclick="showDetailPage('equity', '{{equity._id}}')"> -->
+                        <!-- <img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="20" style="margin-top:.1em"  onclick="showDetailPage('equity', '{{equity._id}}')"> -->
                         <img class="edit" name="{{equity.name}}" src="/static/assets/pencil.png" width="24" onclick="showEditForm('equity', '{{equity._id}}', '{{equity.amount}}')">
-                        <img class="edit" name="{{equity.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity', '{{equity._id}}')"><span style="float:left">{{equity.name}}</span><span class="equityAssets equity" style="float:right">${{equity.amount}}</span>
+                        <img class="edit" name="{{equity.name}}" style="margin-top:.2em" src="/static/assets/trashcan.png" width="15" onclick="showDelete('equity', '{{equity._id}}')"><span style="float:left">{{equity.name}}</span><span class="equityAssets equity" style="float:right">${{equity.amount|abs}}</span>
                     </div><br>
                 {% endfor %}
                 <hr>
-                <b><span style="float:left"><b>Total Equity</b></span><span id="equityTotal" style="float:right">${{equities.total}}</span><br></b>
+                <b><span style="float:left"><b>Total Equity</b></span><span id="equityTotal" style="float:right">${% if equities.total < 0 %}({{equities.total|abs}}){% else %}{{equities.total|abs}}{% endif %}</span><br></b>
             </div>
         </div>
     <script type="text/javascript" src="/static/js/balance_sheet.js"></script>

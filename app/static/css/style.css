@@ -5,6 +5,10 @@ body {
 }
 h1 {
     width: 55%;
+    font-weight: normal;
+}
+h2 {
+    font-weight: normal;
 }
 form {
     margin-bottom: 1em;

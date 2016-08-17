@@ -4,32 +4,50 @@
         <title>Spendsy</title>
         <style>
             body {
+                /*text-align: center;*/
+            }
+            h3 {
+                font-size: 1em;
+                width: 100%;
+                font-weight: normal;
                 text-align: center;
+                border-bottom: none;
+                margin: 2em auto .25em auto;
+                background-color: rgba(200, 200, 200, .15);
+                max-width: 200px;
+                padding: .25em;
+            }
+            #main {
+                font-size: 1.2em;
             }
             #message {
-                text-align: center;
+                /*text-align: center;*/
                 width: 50%;
-                margin: 2em auto;
+                margin: 2em auto 5em auto;
                 font-size: 1.25em;
+                font-size: .95em;
             }
-            #creds {
-                margin-top: 2em;
-                font-size: 1.25em;
-            }
-            input[type=text], input[type=password] {
-                background-color: rgb(245, 245, 245);
-                min-width: 200px;
-            }
-            input[type=submit] {
-                margin-top: .3em;
-                font-size: .9em;
-                min-width: 125px;
+            #main-text p {
+                font-size: .75em;
+                margin: 1em;
             }
         </style>
     </head>
     <body>
-        <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a> | <a href="/budget">Budget</a></h2></center>
+        <center><h2 style="width:100%"><a href="/">Home</a> | <a href="/balance_sheet">Balance Sheet</a> | <a href="/budget">Budget</a></h2></center>
         <h1>Welcome to Spendsy</h1>
-        <div id="message">Hi <b>{{user.username}}</b>, and welcome to Spendsy. Let's get you started on your journey toward financial freedom and empowerment!</div>
+        <div id="message">
+            <center><p id="main">Hi <b>{{user.username}}</b>, and welcome to Spendsy. Let's get you started on your journey toward financial freedom and empowerment!</p></center>
+            <h3><a href="/balance_sheet">Your Balance Sheet</a></h3>
+            <p>This is where you start. Take a look at your finances and when you have a list of your assets and liabilities, start entering them in the balance sheet by clicking the <img src="/static/assets/add.png" style="margin-top:.2em" width="12" onclick="showAddForm('asset')"> icon under the correct heading. Your equities will automatically populate with the balance of your assets and liabilities.</p>
+            <p>Once you've got some items on your balance sheet, you'll be able to check out your <a href="/budget">budget</a>. This will give you direction on what to do with your money each month.</a></p>
+            <p>Having a balance sheet is something that can help tremendously. Being able to look at your assets, liabilities and the resulting equity gives a snapshot of your financial health and can help you identify expenses you may want to cut out of your spending.</p>
+            <p>A balance sheet is an indicator of where you are with your finances and is something you can check in with often.</p>
+
+            <h3><a href="/budget">A Budget</a></h3>
+            <p>What finance application could survive without a budget?</p>
+            <p>Your budget is one of the most powerful tools to guide and direct the allocation of your bills, savings, and spending money.</p>
+            <p>A budget should be simple. It should tell you in no more than 3 categories what do to with the money you earn. You give it what you working with and it gives you a formula for success!</p>
+        </div>
     </body>
 </html>

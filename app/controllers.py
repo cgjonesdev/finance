@@ -14,7 +14,7 @@ class SignupController(object):
 
 class LoginController(object):
 
-    def __init__(self, user_digest):
+    def __init__(self, user_digest=None):
         self.user = Users().get_by_digest(user_digest)
 
     def __nonzero__(self):

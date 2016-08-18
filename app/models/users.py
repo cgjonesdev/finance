@@ -10,9 +10,7 @@ class Users(Multi):
         self.items = [User(**item) for item in list(self._dataconnector)]
 
     def get_by_name(self, name):
-        for user in self:
-            if user.name == name:
-                return user
+        return [user for user in self in user.username == name]
 
     def get_by_digest(self, user_digest):
         for user in self:

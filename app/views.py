@@ -36,6 +36,7 @@ def login_required(func):
 
 
 class IndexView(MethodView):
+    controller = controllers.IndexController
 
     def get(self):
         user = controllers.LoginController(session.get('user_digest')).user
@@ -44,6 +45,7 @@ class IndexView(MethodView):
 
 
 class SignupView(MethodView):
+    controller = controllers.SignupController
     context = {}
 
     def get(self):
@@ -56,7 +58,7 @@ class SignupView(MethodView):
             'signup.html', **self.context)
 
     def post(self):
-        users = controllers.SignupController().users
+        users = self.controller().users
         signup_data = dict(request.form.items())
         user_digest = make_digest(
             signup_data['username'], signup_data['password'])
@@ -68,14 +70,16 @@ class SignupView(MethodView):
 
 
 class WelcomeView(MethodView):
+    controller = controllers.LoginController
 
     @login_required
     def get(self):
-        user = controllers.LoginController(session.get('user_digest')).user
+        user = self.controller(session.get('user_digest')).user
         return render_template('welcome.html', user=user)
 
 
 class LoginView(MethodView):
+    controller = controllers.LoginController
     context = {'message': '', 'color': 'black'}
 
     def get(self):
@@ -139,6 +143,7 @@ class AccountsView(MethodView):
                 return redirect('/accounts/{}'.format(account_name))
 
 class BalanceSheetView(MethodView):
+    controller = controllers.BalanceSheetController
     context = {
         'user': None,
         'assets': [],
@@ -154,8 +159,7 @@ class BalanceSheetView(MethodView):
     @login_required
     def retrieve_data(self, _id=None):
         user = controllers.LoginController(session['user_digest']).user
-        assets, liabilities, equities = controllers.BalanceSheetController()\
-            .get(str(user._id))
+        assets, liabilities, equities = self.controller().get(str(user._id))
 
         if _id in assets:
             entity = assets[_id]
@@ -232,6 +236,7 @@ class BalanceSheetView(MethodView):
 
 
 class BudgetView(MethodView):
+    controller = controllers.BudgetController
     context = {}
 
     @login_required
@@ -242,7 +247,7 @@ class BudgetView(MethodView):
     @login_required
     def retrieve_data(self, _id=None):
         user = controllers.LoginController(session['user_digest']).user
-        budget = controllers.BudgetController(session['user_digest']).budget
+        budget = self.controller(session['user_digest']).budget
         self.update_context(
             user=user,
             budget=budget,

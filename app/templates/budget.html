@@ -115,33 +115,49 @@
             <div class="main-section">
                 <a href="#bills">
                     <h3>Bills</h3>
-                    <div class="detail bills">${{budget.bills}}</div>
+                    <div class="detail bills">${{budget.bills|abs}}</div>
                 </a>
             </div>
 
             <div class="main-section">
                 <a href="#savings">
                     <h3>Savings</h3>
-                    <div class="detail savings">${{budget.savings}}</div>
+                    {% if budget.equities.total >= 0 %}
+                        <div class="detail savings">${{budget.savings}}</div>
+                    {% else %}
+                        <div class="detail savings">$0</div>
+                    {% endif %}
                 </a>
             </div>
 
             <div class="main-section">
                  <a href="#spending">
                     <h3>Spending</h3>
-                    <div class="detail spending">${{budget.spending}}</div>
+                    {% if budget.equities.total >= 0 %}
+                        <div class="detail spending">${{budget.spending}}</div>
+                    {% else %}
+                        <div class="detail spending">$0</div>
+                    {% endif %}
                 </a>
             </div>
             <div class="sub-section">
                 <a href="#income-to-expenses-ratio">
                     <h3>Expense to Income Ratio</h3>
-                    <div class="detail expense-to-income-ratio">{{budget.liability_to_asset_ratio|round(2) * 100}}%</div>
+                    {% if budget.equities.total >= 0 %}
+                        <div class="detail expense-to-income-ratio">{{(budget.liability_to_asset_ratio|round(3) * 100)|abs}}%</div>
+                    {% else %}
+                        <div class="detail expense-to-income-ratio">{{(budget.liability_to_asset_ratio|round(3) * 100)}}%</div>
+                    {% endif %}
                 </a>
             </div>
             <div class="sub-section">
                 <a href="#expenses-to-income-ratio">
                     <h3>Income to Expense Ratio</h3>
-                    <div class="detail income-to-expense-ratio">{{budget.asset_to_liability_ratio|round(2) * 100}}%</div>
+                    {% if budget.equities.total >= 0 %}
+                        <div class="detail expense-to-income-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)|abs}}%</div>
+                    {% else %}
+                        <div class="detail expense-to-income-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)}}%</div>
+                    {% endif %}
                 </a>
             </div>
         </div>

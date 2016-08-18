@@ -1,6 +1,77 @@
 from base import *
 
 
+class Cycle(object):
+    _cycle_map = {
+        'day(s)': 1.0,
+        'week(s)': 7.0,
+        'month(s)': 30.44,
+        'year(s)': 365.28}
+    _time_frame_map = {
+        'daily': _cycle_map['day(s)'],
+        'weekly': _cycle_map['week(s)'],
+        'bi-weekly': _cycle_map['week(s)'] * 2,
+        'semi-monthly': _cycle_map['day(s)'] * 15,
+        'monthly': _cycle_map['month(s)'],
+        'quarterly': _cycle_map['month(s)'] * 3,
+        'semi-annually': _cycle_map['month(s)'] * 6,
+        'annually': _cycle_map['year(s)']}
+
+    def __init__(self, obj, time_frame=None):
+        self.obj = obj
+        self._time_frame = time_frame
+        self._divisor = self._time_frame_map[time_frame] if time_frame else 1.0
+
+    def __str__(self):
+        return '{}.{}'.format(str(self.obj), self.__class__.__name__)
+
+    def __repr__(self):
+        return str(self)
+
+    def _attribute_check(self):
+        if not hasattr(self.obj, 'cycle_int') or not hasattr(self.obj, 'cycle_str'):
+            raise AttributeError(
+                '{} (name: {}, id: {}) doesn\'t have one or both of the attributes '
+                '"cycle_int" or "cycle_str"'.format(
+                    str(self.obj), self.obj.name, str(self.obj._id)))
+
+    @property
+    def days(self):
+        # self._attribute_check()
+        try:
+            return self.obj.cycle_int * self._cycle_map[self.obj.cycle_str]
+        except:
+            return 1.0
+
+    @property
+    def time_frame(self):
+        return self._time_frame
+
+    @time_frame.setter
+    def time_frame(self, value):
+        if value not in self._time_frame_map:
+            raise AttributeError(
+                '{} is not an available time frame'.format(value))
+
+    @property
+    def amount(self):
+        # self._attribute_check()
+        try:
+            self._amount = self.obj.amount / (
+                (self.obj.cycle_int * self._cycle_map[self.obj.cycle_str]) /
+                 self._divisor)
+            return round(self._amount, 2)
+        except:
+            return 0.0
+
+
+class BaseSingleton(Singleton):
+
+    def __init__(self, time_frame='monthly', **kwargs):
+        Singleton.__init__(self, **kwargs)
+        self.cycle = Cycle(self, time_frame)
+
+
 class Assets(Multi):
     _dataconnector = DataConnector('assets')
     form = Form('BALANCE_SHEET')
@@ -12,7 +83,7 @@ class Assets(Multi):
                           {'user_id': self.user_id})]
 
 
-class Asset(Singleton):
+class Asset(BaseSingleton):
     pass
 
 
@@ -27,9 +98,10 @@ class Liabilities(Multi):
                           {'user_id': self.user_id})]
 
 
-class Liability(Singleton):
+class Liability(BaseSingleton):
 
     def __init__(self, **kwargs):
+        BaseSingleton.__init__(self, **kwargs)
         kwargs['amount'] = -kwargs['amount']
         self.__dict__.update(kwargs)
 
@@ -48,35 +120,42 @@ class Equities(Multi):
                 Equity(
                     **{'user_id': assets.user_id,
                        'name': 'Assets',
-                       'amount': assets.total}))
+                       'amount': assets.cycle_total}))
         if liabilities:
             self.items.append(
                 Equity(
                     **{'user_id': liabilities.user_id,
                        'name': 'Liabilities',
-                       'amount': -liabilities.total}))
+                       'amount': liabilities.cycle_total}))
 
 
-class Equity(Singleton):
+class Equity(BaseSingleton):
     _id = None
 
 
 if __name__ == '__main__':
-    assets = Assets('57a3c6a9acf6088060156578')
-    # assets.clear()
-    job = Asset(**{'user_id': assets.user_id, 'name': 'job', 'amount': 5000.0})
-    assets + job
-    print 'assets.total: {}'.format(assets.total)
+    assets = Assets('57b4eb27acf608ac5d56c2ba')
+    print 'Assets cycle total: {}'.format(assets.cycle_total)
+    for asset in assets:
+        print '{}; Time frame: {}, Number of days: {}, Original amount: {}, New amount: {}'.format(str(asset), asset.cycle.time_frame, asset.cycle.days, asset.amount, asset.cycle.amount)
+    liabilities = Liabilities('57b4eb27acf608ac5d56c2ba')
+    print '\nLiabilities cycle total: {}'.format(liabilities.cycle_total)
+    for liability in liabilities:
+        print '{}; Time frame: {}, Number of days: {}, Original amount: {}, New amount: {}'.format(str(liability), liability.cycle.time_frame, liability.cycle.days, liability.amount, liability.cycle.amount)
+    # # assets.clear()
+    # job = Asset(**{'user_id': assets.user_id, 'name': 'job', 'amount': 5000.0})
+    # assets + job
+    # print 'assets.total: {}'.format(assets.total)
 
-    liabilities = Liabilities('57a3c6a9acf6088060156578')
-    # liabilities.clear()
-    rent = Liability(**{'user_id': assets.user_id, 'name': 'rent', 'amount': 1000.0})
-    liabilities + rent
-    print 'liabilities.total: {}'.format(liabilities.total)
+    # liabilities = Liabilities('57a3c6a9acf6088060156578')
+    # # liabilities.clear()
+    # rent = Liability(**{'user_id': assets.user_id, 'name': 'rent', 'amount': 1000.0})
+    # liabilities + rent
+    # print 'liabilities.total: {}'.format(liabilities.total)
 
-    equities = Equities()
-    # equities.clear()
-    equities += assets
-    equities += liabilities
+    # equities = Equities()
+    # # equities.clear()
+    # equities += assets
+    # equities += liabilities
 
-    print 'equities.total: {}'.format(equities.total)
+    # print 'equities.total: {}'.format(equities.total)

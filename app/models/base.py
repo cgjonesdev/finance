@@ -68,8 +68,23 @@ class Multi(Base):
         else:
             return round(sum(item.amount for item in self), 2)
 
+    @property
+    def cycle_total(self):
+        if all(hasattr(item, 'cycle') for item in self):
+            return round(sum(item.cycle.amount for item in self), 2)
+        raise AttributeError(
+            'The items in {}  for user (user_id: {}) has no "cycle" attribute'.format(
+                str(self), self.user_id))
+
+
     def clear(self):
-        self._dataconnector.clear()
+        answer = raw_input('Are you sure you want to clear all the {} data for'
+            ' user (user_id: {})?'.format(str(self), self._user_id))
+        if answer in ('Y', 'y', 'Yes', 'yes'):
+            self._dataconnector.clear()
+        else:
+            sys.exit('Someone tried to clear the {} data for user (user_id: {})'\
+                .format(str(self), self._user_id))
 
 
 class Singleton(Base):

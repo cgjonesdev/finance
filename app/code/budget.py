@@ -12,7 +12,7 @@ class Budget(object):
 
     @property
     def bills(self):
-        return self.liabilities.total
+        return self.liabilities.cycle_total
 
     @property
     def savings(self):
@@ -27,14 +27,14 @@ class Budget(object):
     @property
     def liability_to_asset_ratio(self):
         try:
-            return self.liabilities.total / self.assets.total
+            return self.liabilities.cycle_total / self.assets.cycle_total
         except ZeroDivisionError:
             return 0.0
 
     @property
     def asset_to_liability_ratio(self):
         try:
-            return self.assets.total / self.liabilities.total
+            return self.assets.cycle_total / self.liabilities.cycle_total
         except ZeroDivisionError:
             return 0.0
 

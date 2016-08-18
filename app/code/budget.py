@@ -8,6 +8,7 @@ class Budget(object):
     def __init__(self, user_id):
         self.assets = Assets(user_id)
         self.liabilities = Liabilities(user_id)
+        self.equities = Equities(user_id, self.assets, self.liabilities)
 
     @property
     def bills(self):
@@ -16,12 +17,12 @@ class Budget(object):
     @property
     def savings(self):
         return round(
-            self.assets.total * (1 - (self.liability_to_asset_ratio *
+            self.equities.total * (1 - (self.liability_to_asset_ratio *
                 self.liability_to_asset_ratio)), 2)
 
     @property
     def spending(self):
-        return round(self.assets.total - self.savings, 2)
+        return round(self.equities.total - self.savings, 2)
 
     @property
     def liability_to_asset_ratio(self):

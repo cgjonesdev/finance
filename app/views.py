@@ -17,6 +17,7 @@ from flask import (
     url_for,
     abort)
 from flask.views import MethodView
+from bson import ObjectId
 import controllers
 from finance.app import cfg
 from crypt import make_digest
@@ -153,13 +154,21 @@ class BalanceSheetView(MethodView):
 
     def __init__(self, *args, **kwargs):
         MethodView.__init__(self, *args, **kwargs)
-        self._id = None
         self.retrieve_data()
 
     @login_required
     def retrieve_data(self, _id=None):
         user = controllers.LoginController(session['user_digest']).user
         assets, liabilities, equities = self.controller().get(str(user._id))
+        time_frame_keys = list(assets)[0].cycle._time_frame_keys if list(assets) else ()
+        if _id in time_frame_keys:
+            time_frame = _id
+            for asset in assets:
+                asset.cycle.time_frame = time_frame
+            for liability in liabilities:
+                liability.cycle.time_frame = time_frame
+            equities = self.controller().refresh_equitiies(
+                str(user._id), assets, liabilities)
 
         if _id in assets:
             entity = assets[_id]
@@ -169,12 +178,15 @@ class BalanceSheetView(MethodView):
             entity = equities[_id]
         else:
             entity = None
+
         self.update_context(
             user=user,
             assets=assets,
             liabilities=liabilities,
             equities=equities,
             entity=entity,
+            session_time_frame=session.get('time_frame'),
+            time_frames=time_frame_keys,
             logged_in=session.get('logged_in'),
             message=self.message if hasattr(self, 'message') else '')
 
@@ -184,12 +196,16 @@ class BalanceSheetView(MethodView):
 
     @login_required
     def get(self, _id=None):
-        self._id = _id
         if request.endpoint == 'balance_sheet-detail':
             self.retrieve_data(_id)
             self.update_context()
-            return render_template(
-                'balance_sheet_detail.html', **self.context)
+            try:
+                ObjectId(_id)
+                return render_template(
+                    'balance_sheet_detail.html', **self.context)
+            except:
+                return render_template(
+                    'balance_sheet.html', **self.context)
         elif request.endpoint == 'balance_sheet-delete':
             self.post(_id)
         return render_template('balance_sheet.html', **self.context)
@@ -246,8 +262,9 @@ class BudgetView(MethodView):
             asset.cycle.time_frame = time_frame
         for liability in self.budget.liabilities:
             liability.cycle.time_frame = time_frame
-        self.budget = self.controller(session.get('user_digest')).refresh_equitiies(
-            self.budget.assets, self.budget.liabilities)
+        self.budget = self.controller(
+            session.get('user_digest')).refresh_equitiies(
+                self.budget.assets, self.budget.liabilities)
         self.update_context(budget=self.budget)
         return render_template('budget.html', **self.context)
 
@@ -255,10 +272,35 @@ class BudgetView(MethodView):
     def retrieve_data(self, _id=None):
         user = controllers.LoginController(session.get('user_digest')).user
         budget = self.controller(session.get('user_digest')).budget
+        time_frame_keys = (list(budget.assets)[0].cycle._time_frame_keys if
+                           list(budget.assets) else ())
         self.update_context(
             user=user,
             budget=budget,
-            time_frames=list(budget.assets)[0].cycle._time_frame_keys,
+            session_time_frame=session.get('time_frame'),
+            time_frames=time_frame_keys,
+            logged_in=session.get('logged_in'))
+
+    def update_context(self, **kwargs):
+        self.__dict__.update(kwargs)
+        self.context.update(self.__dict__)
+
+
+class BurnrateView(MethodView):
+    controller = controllers.BurnrateController
+    context = {}
+
+    @login_required
+    def get(self):
+        self.retrieve_data()
+        self.update_context()
+        return render_template('burnrate.html', **self.context)
+
+    @login_required
+    def retrieve_data(self):
+        user = controllers.LoginController(session['user_digest']).user
+        self.update_context(
+            user=user,
             logged_in=session.get('logged_in'))
 
     def update_context(self, **kwargs):

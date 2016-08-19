@@ -27,6 +27,9 @@ class BalanceSheetController(object):
         assets, liabilities = Assets(user_id), Liabilities(user_id)
         return assets, liabilities, Equities(user_id, assets, liabilities)
 
+    def refresh_equitiies(self, user_id, assets, liabilities):
+        return Equities(str(user_id), assets, liabilities)
+
 
 class BudgetController(object):
 
@@ -39,3 +42,7 @@ class BudgetController(object):
         self.budget.liabilities = liabilities
         self.budget.equities = Equities(str(self.user._id), assets, liabilities)
         return self.budget
+
+
+class BurnrateController(object):
+    pass

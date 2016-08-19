@@ -14,9 +14,9 @@ class Cycle(object):
         '15-days',
         '3-weeks',
         '4-weeks',
+        'monthly',
         '5-weeks',
         '6-weeks',
-        'monthly',
         '2-months',
         'quarterly',
         '4-months',
@@ -24,6 +24,8 @@ class Cycle(object):
         '9-months',
         'yearly',
         '2-years',
+        '3-years',
+        '4-years',
         '5-years',
         '10-years')
     _time_frame_values = (
@@ -33,9 +35,9 @@ class Cycle(object):
         _cycle_map['month(s)'] / 2,
         _cycle_map['week(s)'] * 3,
         _cycle_map['week(s)'] * 4,
+        _cycle_map['month(s)'],
         _cycle_map['week(s)'] * 5,
         _cycle_map['week(s)'] * 6,
-        _cycle_map['month(s)'],
         _cycle_map['month(s)'] * 2,
         _cycle_map['month(s)'] * 3,
         _cycle_map['month(s)'] * 4,
@@ -43,6 +45,8 @@ class Cycle(object):
         _cycle_map['month(s)'] * 9,
         _cycle_map['year(s)'],
         _cycle_map['year(s)'] * 2,
+        _cycle_map['year(s)'] * 3,
+        _cycle_map['year(s)'] * 4,
         _cycle_map['year(s)'] * 5,
         _cycle_map['year(s)'] * 10)
     _time_frame_map = dict(zip(_time_frame_keys, _time_frame_values))

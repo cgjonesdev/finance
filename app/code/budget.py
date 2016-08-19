@@ -16,9 +16,7 @@ class Budget(object):
 
     @property
     def savings(self):
-        return round(
-            self.equities.total * (1 - (self.liability_to_asset_ratio *
-                self.liability_to_asset_ratio)), 2)
+        return round(self.equities.total * self.savings_calculation_ratio, 2)
 
     @property
     def spending(self):
@@ -35,6 +33,17 @@ class Budget(object):
     def asset_to_liability_ratio(self):
         try:
             return self.assets.cycle_total / self.liabilities.cycle_total
+        except ZeroDivisionError:
+            return 0.0
+
+    @property
+    def savings_calculation_ratio(self):
+        return 1 - (self.liability_to_asset_ratio ** 2)
+
+    @property
+    def savings_ratio(self):
+        try:
+            return self.savings / self.assets.cycle_total
         except ZeroDivisionError:
             return 0.0
 

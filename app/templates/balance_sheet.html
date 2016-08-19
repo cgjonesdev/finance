@@ -12,6 +12,9 @@
                 float: right;
                 padding-right: 1em;
             }
+            #main {
+                margin-top: .3em;
+            }
             #assets {
                 transition: background-color 1s ease;
                 margin-bottom: 5em;
@@ -42,16 +45,58 @@
             #equity:hover {
                 background-color: white;
             }
+            select {
+                margin-top: -1.15em;
+                font-size: 1.2em;
+                background-color: rgba(100, 100, 100, .1);
+                padding: .25em 1em .25em 1em;
+                text-align: center;
+            }
+            #assetSwitchQuestion {
+                width: 100px;
+                font-size: .7em;
+                margin-top: -.7em;
+                color: darkblue;
+                transition: margin-top 2s ease;
+            }
+            #assetSwitchQuestion:hover {
+                width: 200px;
+                font-size: 1.2em;
+                margin: -.5em 1em 0;
+            }
+            #assetSwitchQuestion:hover img {
+                width: 30px;
+            }
+            #assetSwitchAnswer {
+                margin: 2em;
+                color: purple;
+                display: none;
+                transition: display 1s ease;
+            }
+            #assetSwitchAnswer:hover {
+                display: none;
+            }
         </style>
     </head>
     <body>
-        <center><h2><a href="/">Home</a> | <a href="/budget">Budget</a></h2></center>
+        <center><h2><a href="/">Home</a> | <a href="/budget">Budget</a> | <a href="/burnrate">Cash Burnrate</a></h2></center>
         {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div>{% endif %}
         {% if logged_in %}
             <div class="admin-links"><a href="/logout">Logout</a></div>
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}
         <h1 id="monthHeading">Monthly Balance Sheet</h1><br>
+        <center>
+            <div id="sessionTimeFrame" hidden>{{session_time_frame}}</div>
+            <select onchange="timeframeSelected()">
+                <option>default (monthly)</option>
+                {% for time_frame in time_frames %}
+                    <option>{{time_frame}}</option>
+                {% endfor %}
+            </select>
+            <div id="assetSwitchQuestion" onmouseover="showTimeFrameSelectorInfo()" onmouseout="hideTimeFrameSelectorInfo()">What's this ? <img src="/static/assets/up-to-the-right.jpg" width="16px"></div>
+            <div id="assetSwitchAnswer">Change the value in the selector above to see your balance sheet for the selected time frame. Currently, it's set to monthly.</div>
+        </center><br>
         <div id="main">
             <div id="assets">
                 <h3>Assets</h3>

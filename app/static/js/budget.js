@@ -26,11 +26,14 @@ var timeframeSelected = function() {
     }
 }
 
-pathnameArray = window.location.pathname.split("/");
-time_frame = pathnameArray[pathnameArray.length - 1];
+var sessionTimeFrame = document.getElementById("sessionTimeFrame").innerHTML;
+var pathnameArray = window.location.pathname.split("/");
+var timeFrame = pathnameArray[pathnameArray.length - 1];
+
 for (var i=0; i < options.length; i++) {
-    if (options[i].innerHTML == time_frame) {
-        options[i].selected = time_frame;
+    if (options[i].innerHTML == timeFrame) {
+        options[i].selected = timeFrame;
+        console.log("timeFrame");
         document.getElementById("assetSwitchQuestion").style.display = "none";
     }
 }

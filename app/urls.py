@@ -22,3 +22,4 @@ app.add_url_rule('/balance_sheet/<string:_id>/update', view_func=views.BalanceSh
 app.add_url_rule('/balance_sheet/<string:_id>/delete', view_func=views.BalanceSheetView.as_view('balance_sheet-delete'))
 app.add_url_rule('/budget', view_func=views.BudgetView.as_view('budget'))
 app.add_url_rule('/budget/<string:time_frame>', view_func=views.BudgetView.as_view('budget-time_frame'))
+app.add_url_rule('/burnrate', view_func=views.BurnrateView.as_view('burnrate'))

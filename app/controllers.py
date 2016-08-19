@@ -31,5 +31,11 @@ class BalanceSheetController(object):
 class BudgetController(object):
 
     def __init__(self, user_digest):
-        user = LoginController(user_digest).user
-        self.budget = Budget(str(user._id))
+        self.user = LoginController(user_digest).user
+        self.budget = Budget(str(self.user._id))
+
+    def refresh_equitiies(self, assets, liabilities):
+        self.budget.assets = assets
+        self.budget.liabilities = liabilities
+        self.budget.equities = Equities(str(self.user._id), assets, liabilities)
+        return self.budget

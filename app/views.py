@@ -240,17 +240,25 @@ class BudgetView(MethodView):
     context = {}
 
     @login_required
-    def get(self):
+    def get(self, time_frame='monthly'):
         self.retrieve_data()
+        for asset in self.budget.assets:
+            asset.cycle.time_frame = time_frame
+        for liability in self.budget.liabilities:
+            liability.cycle.time_frame = time_frame
+        self.budget = self.controller(session.get('user_digest')).refresh_equitiies(
+            self.budget.assets, self.budget.liabilities)
+        self.update_context(budget=self.budget)
         return render_template('budget.html', **self.context)
 
     @login_required
     def retrieve_data(self, _id=None):
-        user = controllers.LoginController(session['user_digest']).user
-        budget = self.controller(session['user_digest']).budget
+        user = controllers.LoginController(session.get('user_digest')).user
+        budget = self.controller(session.get('user_digest')).budget
         self.update_context(
             user=user,
             budget=budget,
+            time_frames=list(budget.assets)[0].cycle._time_frame_keys,
             logged_in=session.get('logged_in'))
 
     def update_context(self, **kwargs):

@@ -7,15 +7,45 @@ class Cycle(object):
         'week(s)': 7.0,
         'month(s)': 30.44,
         'year(s)': 365.28}
-    _time_frame_map = {
-        'daily': _cycle_map['day(s)'],
-        'weekly': _cycle_map['week(s)'],
-        'bi-weekly': _cycle_map['week(s)'] * 2,
-        'semi-monthly': _cycle_map['day(s)'] * 15,
-        'monthly': _cycle_map['month(s)'],
-        'quarterly': _cycle_map['month(s)'] * 3,
-        'semi-annually': _cycle_map['month(s)'] * 6,
-        'annually': _cycle_map['year(s)']}
+    _time_frame_keys = (
+        'daily',
+        'weekly',
+        'bi-weekly',
+        '15-days',
+        '3-weeks',
+        '4-weeks',
+        '5-weeks',
+        '6-weeks',
+        'monthly',
+        '2-months',
+        'quarterly',
+        '4-months',
+        '6-months',
+        '9-months',
+        'yearly',
+        '2-years',
+        '5-years',
+        '10-years')
+    _time_frame_values = (
+        _cycle_map['day(s)'],
+        _cycle_map['week(s)'],
+        _cycle_map['week(s)'] * 2,
+        _cycle_map['month(s)'] / 2,
+        _cycle_map['week(s)'] * 3,
+        _cycle_map['week(s)'] * 4,
+        _cycle_map['week(s)'] * 5,
+        _cycle_map['week(s)'] * 6,
+        _cycle_map['month(s)'],
+        _cycle_map['month(s)'] * 2,
+        _cycle_map['month(s)'] * 3,
+        _cycle_map['month(s)'] * 4,
+        _cycle_map['month(s)'] * 6,
+        _cycle_map['month(s)'] * 9,
+        _cycle_map['year(s)'],
+        _cycle_map['year(s)'] * 2,
+        _cycle_map['year(s)'] * 5,
+        _cycle_map['year(s)'] * 10)
+    _time_frame_map = dict(zip(_time_frame_keys, _time_frame_values))
 
     def __init__(self, obj, time_frame=None):
         self.obj = obj
@@ -52,6 +82,8 @@ class Cycle(object):
         if value not in self._time_frame_map:
             raise AttributeError(
                 '{} is not an available time frame'.format(value))
+        self._time_frame = value
+        self._divisor = self._time_frame_map[self._time_frame]
 
     @property
     def amount(self):

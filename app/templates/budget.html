@@ -10,7 +10,7 @@
                 text-decoration: none;
             }
             #main {
-                margin: 3em auto;
+                margin: 1.5em auto;
                 width: 85%;
             }
             .main-section {
@@ -101,6 +101,36 @@
                 padding: 1px;
                 margin-bottom: .5em;
             }
+            select {
+                font-size: 1.2em;
+                background-color: rgba(100, 100, 100, .1);
+                padding: 0 1em 0 1em;
+            }
+            #assetSwitchQuestion {
+                width: 100px;
+                font-size: .7em;
+                margin-top: -.7em;
+                color: darkblue;
+                transition: margin-top 2s ease;
+            }
+            #assetSwitchQuestion:hover {
+                width: 200px;
+                font-size: 1.2em;
+                margin: -.5em 1em 0;
+                /*text-decoration: underline;*/
+            }
+            #assetSwitchQuestion:hover img {
+                width: 30px;
+            }
+            #assetSwitchAnswer {
+                margin: 2em;
+                color: purple;
+                display: none;
+                transition: display 1s ease;
+            }
+            #assetSwitchAnswer:hover {
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -111,6 +141,16 @@
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}
         <h1 id="monthHeading">Monthly Budget</h1>
+        <center>
+            <select onchange="timeframeSelected()">
+                <option>default (monthly)</option>
+                {% for time_frame in time_frames %}
+                    <option>{{time_frame}}</option>
+                {% endfor %}
+            </select>
+            <div id="assetSwitchQuestion" onmouseover="showTimeFrameSelectorInfo()" onmouseout="hideTimeFrameSelectorInfo()">What's this ? <img src="/static/assets/up-to-the-right.jpg" width="16px"></div>
+            <div id="assetSwitchAnswer">Change the value in the selector above to see your budget for the selected time frame. Currently, it's set to monthly.</div>
+        </center>
         <div id="main">
             <div class="main-section">
                 <a href="#bills">
@@ -154,9 +194,9 @@
                 <a href="#expenses-to-income-ratio">
                     <h3>Income to Expense Ratio</h3>
                     {% if budget.equities.total >= 0 %}
-                        <div class="detail expense-to-income-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)|abs}}%</div>
+                        <div class="detail income-to-expense-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)|abs}}%</div>
                     {% else %}
-                        <div class="detail expense-to-income-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)}}%</div>
+                        <div class="detail income-to-expense-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)}}%</div>
                     {% endif %}
                 </a>
             </div>

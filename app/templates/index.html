@@ -5,10 +5,14 @@
         <style>
             h1 {
                 margin-top: 1.3em;
+                width: 45%;
             }
             h2 {
-                width: 50%;
+                width: 100%;
                 margin: auto;
+            }
+            #main-heading {
+                border-bottom: 3px solid rgba(0, 25, 50, .15);
             }
             h3 {
                 font-size: 1em;
@@ -26,7 +30,7 @@
                 margin-bottom: 2em;
             }
             #main {
-                width: 65%;
+                width: 80%;
                 margin: 3em auto;
                 text-align: left;
             }
@@ -42,12 +46,13 @@
             #footer hr {
                 width: 100%;
                 border: none;
-                padding: 1px;
-                background-color: silver;
+                padding: 4px;
+                background-color: rgba(0, 25, 50, .1);
+                border-radius: .15em;
             }
             #footer {
                 /*width: 60%;*/
-                margin: 5em 10em 5em 10em;
+                margin: 5em;
             }
             .footer-items {
                 width: 16.9%;
@@ -62,7 +67,7 @@
     <body>
         {% if not logged_in %}<div class="admin-links"><a href="/login">Login</a></div><div class="admin-links"><a href="/signup">Signup</a></div>{% endif %}
         {% if logged_in %}
-            <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a> | <a href="/budget">Budget</a></h2></center><br>
+            <center><h2 style="width:100%"><a href="/balance_sheet">Balance Sheet</a> | <a href="/budget">Budget</a> | <a href="/burnrate">Cash Burnrate</a></h2></center><br>
             <div class="admin-links"><a href="/logout">Logout</a></div>
             <div class="admin-links">Logged in as <b>{{user.username}}</b></div>
         {% endif %}

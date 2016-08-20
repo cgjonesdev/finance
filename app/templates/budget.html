@@ -172,7 +172,7 @@
             <div class="main-section">
                 <a href="#savings">
                     <h3>Savings</h3>
-                    {% if budget.equities.total >= 0 %}
+                    {% if budget.equities.total >= 0.0 %}
                         <div class="detail savings">${{budget.savings}}</div>
                     {% else %}
                         <div class="detail savings">$0</div>
@@ -183,7 +183,7 @@
             <div class="main-section">
                  <a href="#spending">
                     <h3>Spending</h3>
-                    {% if budget.equities.total >= 0 %}
+                    {% if budget.equities.total >= 0.0 %}
                         <div class="detail spending">${{budget.spending}}</div>
                     {% else %}
                         <div class="detail spending">$0</div>
@@ -193,7 +193,7 @@
             <div class="sub-section">
                 <a href="#income-to-expenses-ratio">
                     <h3>Expense to Income Ratio</h3>
-                    {% if budget.equities.total >= 0 %}
+                    {% if budget.equities.total >= 0.0 %}
                         <div class="detail expense-to-income-ratio">{{(budget.liability_to_asset_ratio|round(3) * 100)|abs}}%</div>
                     {% else %}
                         <div class="detail expense-to-income-ratio">{{(budget.liability_to_asset_ratio|round(3) * 100)}}%</div>
@@ -203,7 +203,7 @@
             <div class="sub-section">
                 <a href="#savings-ratio">
                     <h3>Savings Ratio</h3>
-                    {% if budget.equities.total >= 0 %}
+                    {% if budget.equities.total >= 0.0 %}
                         <div class="detail savings-ratio">{{(budget.savings_ratio|round(3) * 100)|abs}}%</div>
                     {% else %}
                         <div class="detail savings-ratio">{{(budget.savings_ratio|round(3) * 100)}}%</div>
@@ -213,11 +213,7 @@
             <div class="sub-section">
                 <a href="#expenses-to-income-ratio">
                     <h3>Income to Expense Ratio</h3>
-                    {% if budget.equities.total >= 0 %}
-                        <div class="detail income-to-expense-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)|abs}}%</div>
-                    {% else %}
-                        <div class="detail income-to-expense-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)}}%</div>
-                    {% endif %}
+                    <div class="detail income-to-expense-ratio">{{(budget.asset_to_liability_ratio|round(3) * 100)|abs}}%</div>
                 </a>
             </div>
         </div>

@@ -13,6 +13,15 @@ h1 {
 h2 {
     font-weight: normal;
 }
+h2 a {
+    transition: font-size .5s ease;
+}
+h2 a:hover {
+    text-decoration: none;
+    /*font-weight: bold;*/
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px silver;
+}
 form {
     margin-bottom: 1em;
 }
